@@ -3,11 +3,11 @@ import { InternItem } from "@/types/os";
 export const INTERNS_DATA: InternItem[] = [
   {
     id: "intern-1",
-    name: "Priya Sitoula",
-    institute: "Siliguri Institute of Technology",
+    name: "Sanjeevani Pawar",
+    institute: "Shivaji University",
     track: "Content Writing",
     domain: "Content Writing",
-    offerLetter: "Priya Sitoula",
+    offerLetter: "Sanjeevani Pawar",
   },
   {
     id: "intern-2",
