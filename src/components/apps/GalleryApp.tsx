@@ -119,7 +119,7 @@ const RECAP_DATA: EventRecap[] = [
     summary:
       "The student organizers, technical leads, and track coordinators mapped out the semester calendar, open-source repository architecture guidelines, and workshop themes for the academic year.",
     highlights: [
-      "Formulated student cohort structure across student interns",
+      "Formulated student cohort structure across student builders",
       "Finalized curriculum for AWS certification study groups",
       "Established project milestones for campus IoT telemetry",
     ],

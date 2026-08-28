@@ -2,8 +2,7 @@
 
 import React, { useState } from "react";
 import { TEAM_MEMBERS } from "@/data/team";
-import { INTERNS_DATA } from "@/data/interns";
-import { TeamMember, InternItem } from "@/types/os";
+import { TeamMember } from "@/types/os";
 import {
   Folder,
   FolderOpen,
@@ -13,8 +12,6 @@ import {
   ChevronDown,
   HardDrive,
   ExternalLink,
-  GraduationCap,
-  Building,
   Shield,
   Sparkles,
 } from "lucide-react";
@@ -22,7 +19,6 @@ import {
 export const TeamApp: React.FC = () => {
   const [activeFolder, setActiveFolder] = useState<string>("Leadership");
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(TEAM_MEMBERS[0]);
-  const [selectedIntern, setSelectedIntern] = useState<InternItem | null>(null);
   const [treeExpanded, setTreeExpanded] = useState<Record<string, boolean>>({
     Team: true,
   });
@@ -36,15 +32,13 @@ export const TeamApp: React.FC = () => {
     { id: "Technical", label: "Technical/", count: TEAM_MEMBERS.filter((m) => m.category === "Technical").length },
     { id: "Community Management", label: "Community Management/", count: TEAM_MEMBERS.filter((m) => m.category === "Community Management").length },
     { id: "Social Media & Management", label: "Social Media & Mgmt/", count: TEAM_MEMBERS.filter((m) => m.category === "Social Media & Management").length },
-    { id: "Interns Directory", label: "Interns Directory/", count: INTERNS_DATA.length },
   ];
 
-  const isInternFolder = activeFolder === "Interns Directory";
   const folderMembers = TEAM_MEMBERS.filter((m) => m.category === activeFolder);
 
   return (
     <div className="flex flex-col h-full font-sans select-none">
-      {/* Windows 11 File Explorer Path Bar / Breadcrumbs */}
+      {/* Windows Explorer Path Bar / Breadcrumbs */}
       <div className="h-10 px-4 border-b border-slate-800 bg-slate-900/70 flex items-center justify-between text-xs text-slate-300 font-sans">
         <div className="flex items-center gap-1.5 overflow-x-auto">
           <HardDrive className="w-3.5 h-3.5 text-sky-400" />
@@ -59,11 +53,11 @@ export const TeamApp: React.FC = () => {
         </div>
 
         <div className="text-[10px] font-mono text-slate-500 hidden sm:block">
-          {isInternFolder ? `${INTERNS_DATA.length} Interns` : `${folderMembers.length} Core Members`}
+          {folderMembers.length} Core Members
         </div>
       </div>
 
-      {/* Main Finder Body */}
+      {/* Main Explorer Body */}
       <div className="flex-1 flex overflow-hidden">
         {/* Hierarchical Folder Tree Sidebar */}
         <div className="w-56 border-r border-slate-800 bg-slate-950/60 p-3 space-y-2 overflow-y-auto hidden sm:block shrink-0">
@@ -97,12 +91,8 @@ export const TeamApp: React.FC = () => {
                         key={f.id}
                         onClick={() => {
                           setActiveFolder(f.id);
-                          if (f.id === "Interns Directory") {
-                            setSelectedIntern(INTERNS_DATA[0]);
-                          } else {
-                            const first = TEAM_MEMBERS.find((m) => m.category === f.id);
-                            if (first) setSelectedMember(first);
-                          }
+                          const first = TEAM_MEMBERS.find((m) => m.category === f.id);
+                          if (first) setSelectedMember(first);
                         }}
                         className={`w-full flex items-center justify-between px-2 py-1 rounded text-left transition-colors ${
                           isSelected
@@ -138,9 +128,7 @@ export const TeamApp: React.FC = () => {
                 Folder: /{activeFolder}
               </h2>
               <p className="text-xs text-slate-400">
-                {isInternFolder
-                  ? "Active student interns directory: Name & College/Institute details."
-                  : "Core Team Organizational Structure (2026-27) hierarchy."}
+                Core Team Organizational Structure (2026-27) hierarchy.
               </p>
             </div>
             <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-900 text-slate-400 border border-slate-800">
@@ -148,148 +136,66 @@ export const TeamApp: React.FC = () => {
             </span>
           </div>
 
-          {isInternFolder ? (
-            /* ================= INTERNS GRID ================= */
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-              {INTERNS_DATA.map((intern, i) => {
-                const isSelected = selectedIntern?.id === intern.id;
+          {/* ================= CORE MEMBERS GRID ================= */}
+          {folderMembers.length > 0 ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {folderMembers.map((member) => {
+                const isSelected = selectedMember?.id === member.id;
                 return (
                   <div
-                    key={intern.id}
-                    onClick={() => setSelectedIntern(intern)}
-                    className={`p-3.5 rounded-xl border transition-all cursor-pointer flex flex-col justify-between ${
+                    key={member.id}
+                    onClick={() => setSelectedMember(member)}
+                    className={`p-4 rounded-xl border transition-all cursor-pointer flex flex-col justify-between ${
                       isSelected
-                        ? "border-sky-500/80 bg-sky-950/40 shadow-lg ring-1 ring-sky-500/30"
+                        ? "border-sky-500/80 bg-sky-950/40 shadow-lg shadow-sky-500/10 ring-1 ring-sky-500/30"
                         : "border-slate-800/90 bg-slate-900/50 hover:bg-slate-900/90 hover:border-slate-700"
                     }`}
                   >
                     <div>
-                      <div className="flex items-center justify-between mb-2">
-                        <div className="p-1.5 rounded-md bg-slate-800 border border-slate-700 text-sky-400">
-                          <GraduationCap className="w-3.5 h-3.5" />
+                      <div className="flex items-center justify-between mb-2.5">
+                        <div className="p-2 rounded-lg bg-slate-800 border border-slate-700 text-sky-400">
+                          <FileCode className="w-4 h-4" />
                         </div>
-                        <span className="text-[10px] font-mono text-slate-500">
-                          #{String(i + 1).padStart(2, "0")}
-                        </span>
+                        {member.tier && (
+                          <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-sky-300 border border-slate-700">
+                            {member.tier}
+                          </span>
+                        )}
                       </div>
 
-                      <h3 className="text-xs font-bold text-white leading-snug">
-                        {intern.name}
+                      <h3 className="text-sm font-semibold text-white truncate">
+                        {member.name}
                       </h3>
-
-                      <div className="flex items-start gap-1.5 text-[11px] text-slate-300 mt-1">
-                        <Building className="w-3 h-3 text-slate-500 shrink-0 mt-0.5" />
-                        <span className="leading-tight">{intern.institute}</span>
-                      </div>
+                      <p className="text-xs text-sky-300 font-medium truncate mt-0.5">
+                        {member.role}
+                      </p>
+                      <p className="text-[11px] text-slate-400 truncate mt-1">
+                        {member.affiliation} • {member.institute}
+                      </p>
                     </div>
 
-                    <div className="mt-3 pt-2 border-t border-slate-800/80 flex items-center justify-between text-[10px] font-mono text-slate-500">
-                      <span>{intern.track || "Intern"}</span>
-                      <span className="text-emerald-400">Active</span>
+                    <div className="mt-4 pt-3 border-t border-slate-800/80 flex flex-wrap gap-1">
+                      {member.focusAreas.slice(0, 2).map((fa, i) => (
+                        <span
+                          key={i}
+                          className="px-1.5 py-0.5 rounded bg-slate-950 text-[10px] font-mono text-slate-400 border border-slate-800"
+                        >
+                          {fa}
+                        </span>
+                      ))}
                     </div>
                   </div>
                 );
               })}
             </div>
           ) : (
-            /* ================= CORE MEMBERS GRID ================= */
-            folderMembers.length > 0 ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {folderMembers.map((member) => {
-                  const isSelected = selectedMember?.id === member.id;
-                  return (
-                    <div
-                      key={member.id}
-                      onClick={() => setSelectedMember(member)}
-                      className={`p-4 rounded-xl border transition-all cursor-pointer flex flex-col justify-between ${
-                        isSelected
-                          ? "border-sky-500/80 bg-sky-950/40 shadow-lg shadow-sky-500/10 ring-1 ring-sky-500/30"
-                          : "border-slate-800/90 bg-slate-900/50 hover:bg-slate-900/90 hover:border-slate-700"
-                      }`}
-                    >
-                      <div>
-                        <div className="flex items-center justify-between mb-2.5">
-                          <div className="p-2 rounded-lg bg-slate-800 border border-slate-700 text-sky-400">
-                            <FileCode className="w-4 h-4" />
-                          </div>
-                          {member.tier && (
-                            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-sky-300 border border-slate-700">
-                              {member.tier}
-                            </span>
-                          )}
-                        </div>
-
-                        <h3 className="text-sm font-semibold text-white truncate">
-                          {member.name}
-                        </h3>
-                        <p className="text-xs text-sky-300 font-medium truncate mt-0.5">
-                          {member.role}
-                        </p>
-                        <p className="text-[11px] text-slate-400 truncate mt-1">
-                          {member.affiliation} • {member.institute}
-                        </p>
-                      </div>
-
-                      <div className="mt-4 pt-3 border-t border-slate-800/80 flex flex-wrap gap-1">
-                        {member.focusAreas.slice(0, 2).map((fa, i) => (
-                          <span
-                            key={i}
-                            className="px-1.5 py-0.5 rounded bg-slate-950 text-[10px] font-mono text-slate-400 border border-slate-800"
-                          >
-                            {fa}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            ) : (
-              <div className="p-12 text-center text-xs font-mono text-slate-500 border border-dashed border-slate-800 rounded-2xl">
-                Directory empty for /{activeFolder}
-              </div>
-            )
-          )}
-
-          {/* Bottom Inspector Card for selected item */}
-          {isInternFolder && selectedIntern && (
-            <div className="mt-6 p-4 rounded-xl border border-slate-800 bg-slate-950/80 text-xs select-text">
-              <div className="flex flex-wrap items-center justify-between gap-2 pb-2 mb-3 border-b border-slate-800">
-                <div className="flex items-center gap-2">
-                  <span className="font-mono text-sky-400 font-bold">
-                    PREVIEW: {selectedIntern.name}
-                  </span>
-                  <span className="text-slate-500">—</span>
-                  <span className="text-slate-300">{selectedIntern.track || "Intern Cohort"}</span>
-                </div>
-                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-900 text-sky-300 border border-slate-800">
-                  {selectedIntern.institute}
-                </span>
-              </div>
-
-              <div className="flex flex-wrap items-center justify-between gap-4 text-slate-300">
-                <div className="flex items-center gap-2 text-xs">
-                  <span className="text-slate-500 font-mono">Domain:</span>
-                  <span className="px-2 py-0.5 rounded bg-slate-900 border border-slate-800 font-mono text-emerald-400">
-                    {selectedIntern.domain || selectedIntern.track || "Builder"}
-                  </span>
-                </div>
-                {selectedIntern.offerLetter && (
-                  <div className="flex items-center gap-2 text-xs">
-                    <span className="text-slate-500 font-mono">Offer Letter Issued:</span>
-                    <span className="font-semibold text-white">
-                      {selectedIntern.offerLetter}
-                    </span>
-                  </div>
-                )}
-                <div className="text-[11px] font-mono text-slate-400">
-                  Status: <span className="text-emerald-400 font-semibold">Active Cohort (2026-27)</span>
-                </div>
-              </div>
+            <div className="p-12 text-center text-xs font-mono text-slate-500 border border-dashed border-slate-800 rounded-2xl">
+              Directory empty for /{activeFolder}
             </div>
           )}
 
-          {!isInternFolder && selectedMember && (
+          {/* Bottom Inspector Card for selected item */}
+          {selectedMember && (
             <div className="mt-6 p-4 rounded-xl border border-slate-800 bg-slate-950/80 text-xs select-text">
               <div className="flex flex-wrap items-center justify-between gap-2 pb-2 mb-3 border-b border-slate-800">
                 <div className="flex items-center gap-2">
@@ -300,24 +206,26 @@ export const TeamApp: React.FC = () => {
                   <span className="text-slate-300">{selectedMember.role}</span>
                 </div>
                 <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-900 text-sky-300 border border-slate-800">
-                  {selectedMember.institute}
+                  {selectedMember.affiliation}
                 </span>
               </div>
 
-              <p className="text-slate-300 leading-relaxed mb-3">
-                {selectedMember.bio}
-              </p>
+              <div className="space-y-2 text-slate-300">
+                <p className="leading-relaxed">{selectedMember.bio}</p>
 
-              <div className="flex flex-wrap gap-1.5">
-                <span className="text-slate-500 font-mono">Focus:</span>
-                {selectedMember.focusAreas.map((fa, i) => (
-                  <span
-                    key={i}
-                    className="px-2 py-0.5 rounded bg-slate-900 border border-slate-800 font-mono text-slate-300"
-                  >
-                    {fa}
+                <div className="flex flex-wrap gap-1.5 pt-2">
+                  <span className="text-slate-500 font-mono text-[11px] self-center mr-1">
+                    Focus Areas:
                   </span>
-                ))}
+                  {selectedMember.focusAreas.map((area, i) => (
+                    <span
+                      key={i}
+                      className="px-2 py-0.5 rounded bg-sky-950 text-sky-300 border border-sky-800/80 font-mono text-[10px]"
+                    >
+                      {area}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           )}

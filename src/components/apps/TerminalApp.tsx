@@ -3,7 +3,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { AppId } from "@/types/os";
 import { SOCIAL_LINKS } from "@/config/socials";
-import { INTERNS_DATA } from "@/data/interns";
 import confetti from "canvas-confetti";
 
 interface TerminalAppProps {
@@ -60,7 +59,6 @@ export const TerminalApp: React.FC<TerminalAppProps> = ({ onOpenApp }) => {
             "CERTS      Opens 100 Free Cloud Certifications & Digital Badges.",
             "LEADS      Displays official Core Team organizational hierarchy.",
             "TEAM       Displays departmental breakdown.",
-            `INTERNS    Lists official 2026-27 interns directory (${INTERNS_DATA.length} students).`,
             "RESOURCES  Displays cloud library & whitepapers.",
             "ABOUT      Displays AWS Student Builder Group manifesto.",
             "CONTACT    Displays official WhatsApp, Meetup, and LinkedIn portals.",
@@ -101,11 +99,10 @@ export const TerminalApp: React.FC<TerminalAppProps> = ({ onOpenApp }) => {
             "08/28/2026  05:30 PM    <DIR>          CloudRoadmap",
             "08/28/2026  05:30 PM    <DIR>          Certifications",
             "08/28/2026  05:30 PM    <DIR>          CoreTeam",
-            "08/28/2026  05:30 PM    <DIR>          InternsDirectory",
             "08/28/2026  05:30 PM             9,535 README.txt",
             "08/28/2026  05:30 PM             1,084 LICENSE.txt",
             "               2 File(s)         10,619 bytes",
-            "               8 Dir(s)   99,999,999,999 bytes free",
+            "               7 Dir(s)   99,999,999,999 bytes free",
           ].join("\n"),
         });
         break;
@@ -173,22 +170,7 @@ export const TerminalApp: React.FC<TerminalAppProps> = ({ onOpenApp }) => {
             "  ├── Leadership & Advisory\\      (Lead: Vishwanath Barve, Co-Lead: Armaan Kachhawa, Co-Ordinator: Ashwani Dwivedi Sir)",
             "  ├── Technical Team\\             (Lead: Harshpreet Singh, Co-Lead: Satyam Mishra)",
             "  ├── Community Management\\       (Lead: Rahul Wakhale, Co-Lead: Lakshya Gupta)",
-            "  ├── Social Media & Management\\  (Lead: Lakshay Khandelwal, Co-Lead: Kavita Dixit)",
-            `  └── Interns Directory\\          (${INTERNS_DATA.length} Interns across IITs, NITs & Universities)`,
-          ].join("\n"),
-        });
-        break;
-
-      case "interns":
-        newOutputs.push({
-          type: "output",
-          text: [
-            `AWS SBG IIT JODHPUR — OFFICIAL INTERNS DIRECTORY (${INTERNS_DATA.length} Students):`,
-            "",
-            ...INTERNS_DATA.map(
-              (intern, i) =>
-                `  [${String(i + 1).padStart(2, "0")}] ${intern.name.padEnd(28)} | ${intern.institute}`
-            ),
+            "  └── Social Media & Management\\  (Lead: Lakshay Khandelwal, Co-Lead: Kavita Dixit)",
           ].join("\n"),
         });
         break;
@@ -235,7 +217,6 @@ export const TerminalApp: React.FC<TerminalAppProps> = ({ onOpenApp }) => {
           "roadmap",
           "certifications",
           "resources",
-          "internships",
           "terminal",
           "feed",
           "contact",
@@ -392,7 +373,6 @@ export const TerminalApp: React.FC<TerminalAppProps> = ({ onOpenApp }) => {
         <span>PROJECTS</span>
         <span>ROADMAP</span>
         <span>LEADS</span>
-        <span>INTERNS</span>
         <span>START [APP]</span>
         <span>CLS</span>
       </div>

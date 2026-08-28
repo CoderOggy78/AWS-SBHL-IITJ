@@ -35,10 +35,7 @@ export const CloudMapApp: React.FC<CloudMapAppProps> = ({ onOpenApp }) => {
   ];
 
   const communityNodes = [
-    { id: "events", name: "Events & Workshops", icon: Calendar, appId: "events" as AppId, desc: "Campus tech talks, immersion days, and cloud labs." },
-    { id: "cohorts", name: "Builder Cohorts", icon: Users, appId: "contact" as AppId, desc: "WhatsApp groups, peer programming, and study sessions." },
-    { id: "design", name: "UI/UX & Media", icon: Sparkles, appId: "about" as AppId, desc: "Visual branding, posters, diagrams, and frontend polish." },
-    { id: "interns", name: "Student Internships", icon: Briefcase, appId: "internships" as AppId, desc: "Recruiting passionate student builders across campus." },
+    { id: "leads", name: "Leadership Cohort", icon: Users, appId: "leads" as AppId, desc: "Core organizational leadership and student coordinators." },
   ];
 
   return (

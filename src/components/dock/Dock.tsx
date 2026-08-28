@@ -97,13 +97,6 @@ const DOCK_ITEMS: DockItem[] = [
     iconColor: "text-white",
   },
   {
-    id: "internships",
-    label: "Internships",
-    icon: Briefcase,
-    gradient: "from-rose-500 to-pink-600",
-    iconColor: "text-white",
-  },
-  {
     id: "contact",
     label: "Join & Contact",
     icon: Mail,

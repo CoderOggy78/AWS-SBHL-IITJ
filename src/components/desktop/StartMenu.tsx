@@ -182,17 +182,6 @@ export const StartMenu: React.FC<StartMenuProps> = ({
                 <Terminal className="w-4 h-4 text-slate-800 group-hover:text-white shrink-0" />
                 <span className="truncate text-[11px]">Command Prompt</span>
               </button>
-
-              <button
-                onClick={() => {
-                  onOpenApp("internships");
-                  onClose();
-                }}
-                className="w-full flex items-center gap-2.5 p-1.5 rounded hover:bg-[#2f71cd] hover:text-white transition-colors text-left group"
-              >
-                <Briefcase className="w-4 h-4 text-rose-600 group-hover:text-white shrink-0" />
-                <span className="truncate text-[11px]">Internships Directory</span>
-              </button>
             </div>
 
             {/* All Programs Button */}

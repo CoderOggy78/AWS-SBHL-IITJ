@@ -7,7 +7,6 @@ export type AppId =
   | "roadmap"
   | "certifications"
   | "resources"
-  | "internships"
   | "terminal"
   | "feed"
   | "contact";
@@ -33,8 +32,7 @@ export interface TeamMember {
     | "Technical"
     | "Community Management"
     | "Social Media & Management"
-    | "Advisors"
-    | "Interns";
+    | "Advisors";
   tier?: "Lead" | "Co-Lead" | "Core Team" | "Coordinator";
   department?: string;
   affiliation: string;
@@ -44,16 +42,6 @@ export interface TeamMember {
   focusAreas: string[];
   responsibilities?: string[];
   email?: string;
-}
-
-export interface InternItem {
-  id: string;
-  name: string;
-  institute: string;
-  track?: string;
-  domain?: string;
-  offerLetter?: string;
-  year?: string;
 }
 
 export type ProjectStatus = "IDEA" | "BUILDING" | "SHIPPED" | "EXPERIMENTAL";

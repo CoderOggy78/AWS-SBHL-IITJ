@@ -50,12 +50,11 @@ Rather than a conventional static campus club landing page, this project impleme
 | :--- | :--- |
 | **Home.app** | Hero manifesto, dynamic Cloud Status dashboard, and interactive 5-stage cloud architecture pipeline. |
 | **About.app** | Core manifesto, engineering philosophy ("Learn deeply. Build together. Break things. Fix them. Ship something meaningful."), and 8 disciplines. |
-| **Leads.app** | Finder-style leadership directory featuring Vishwanath Barve, Armaan Kachhawa, Ashwani Dwivedi, and Tanmay Da with profile inspector. |
-| **Team.app** | Hierarchical Finder folder tree (`Team/Leadership`, `Technical`, `Community`, `Operations`, `Design`, `Interns`). |
+| **Leads.app** | Finder-style leadership directory featuring Vishwanath Barve, Armaan Kachhawa, Ashwani Dwivedi, and Core Leads with profile inspector. |
+| **Team.app** | Hierarchical Finder folder tree (`Team/Leadership`, `Technical`, `Community Management`, `Social Media & Management`). |
 | **Builder Lab** | Project cards with status filters (`IDEA`, `BUILDING`, `SHIPPED`, `EXPERIMENTAL`), interactive node topology diagrams, and tech specs. |
 | **Events.app** | Scheduled immersion sessions, workshops, and hackathons linked directly to the official Meetup chapter. |
 | **Resources.app**| Cloud library with categorized AWS whitepapers, architecture specs, and certification study guides. |
-| **Internships.app**| Student recruitment tracks, selection workflow, application form, and prominent community initiative disclaimer. |
 | **CloudMap.app** | Interactive architectural graph connecting leadership, technical systems, and community branches. |
 | **Feed.app** | Verified chronological audit log of commits, releases, and milestones. |
 | **Photos.app** | High-resolution gallery featuring the official modular grid poster, silicon chip branding, and workshop moments. |
@@ -140,7 +139,7 @@ Edit `src/data/team.ts`:
   id: "builder-id",
   name: "Builder Name",
   role: "Role in Club",
-  category: "Technical", // "Leadership" | "Technical" | "Community" | "Operations" | "Design" | "Interns"
+  category: "Technical", // "Leadership" | "Technical" | "Community Management" | "Social Media & Management" | "Advisors"
   affiliation: "AWS Student Builder Group",
   institute: "Indian Institute of Technology Jodhpur",
   bio: "Short biography...",
@@ -187,7 +186,7 @@ Edit `src/data/events.ts`:
 ## 🛡️ Disclaimer
 
 > **Important Community Initiative Disclaimer**:
-> Internships and opportunities organized by the AWS Student Builder Group at IIT Jodhpur are student community initiatives and must not be represented as employment or internships directly with Amazon Web Services or Amazon unless explicitly stated otherwise.
+> The AWS Student Builder Group at IIT Jodhpur is a student developer community initiative and must not be represented as employment directly with Amazon Web Services or Amazon unless explicitly stated otherwise.
 
 ---
 

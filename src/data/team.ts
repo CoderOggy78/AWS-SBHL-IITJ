@@ -1,7 +1,4 @@
 import { TeamMember } from "@/types/os";
-import { INTERNS_DATA } from "./interns";
-
-export { INTERNS_DATA };
 
 export const TEAM_MEMBERS: TeamMember[] = [
   // ================= LEADERSHIP & ADVISORY =================

@@ -40,7 +40,6 @@ const APP_ICONS: Record<AppId, React.ElementType> = {
   roadmap: Compass,
   certifications: Award,
   resources: BookOpen,
-  internships: Briefcase,
   terminal: Terminal,
   feed: Activity,
   contact: Mail,

@@ -3,7 +3,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { AppId } from "@/types/os";
 import { TEAM_MEMBERS } from "@/data/team";
-import { INTERNS_DATA } from "@/data/interns";
 import { PROJECTS_DATA } from "@/data/projects";
 import { RESOURCES_DATA } from "@/data/resources";
 import {
@@ -64,7 +63,6 @@ export const Spotlight: React.FC<SpotlightProps> = ({
     { id: "certifications", name: "100 Free Cloud Certifications", desc: "Free cloud badges & course catalog" },
     { id: "resources", name: "Cloud Learning Library", desc: "Whitepapers, labs and specs" },
     { id: "leads", name: "Team Hierarchy Directory", desc: "Official Core Team organizational structure" },
-    { id: "internships", name: "Internships Directory", desc: "2026-27 student builder cohorts" },
     { id: "terminal", name: "Command Prompt (cmd.exe)", desc: "Windows XP command shell" },
     { id: "about", name: "About AWS SBG (README.txt)", desc: "Manifesto, philosophy & tracks" },
     { id: "contact", name: "Join Us & Socials", desc: "WhatsApp, Meetup & LinkedIn links" },
@@ -95,23 +93,6 @@ export const Spotlight: React.FC<SpotlightProps> = ({
         title: m.name,
         subtitle: `${m.role} • ${m.category}`,
         appId: "leads",
-        category: "People",
-        icon: User,
-      });
-    }
-  });
-
-  INTERNS_DATA.forEach((intern) => {
-    if (
-      intern.name.toLowerCase().includes(q) ||
-      intern.institute.toLowerCase().includes(q) ||
-      (intern.track && intern.track.toLowerCase().includes(q))
-    ) {
-      results.push({
-        id: intern.id,
-        title: intern.name,
-        subtitle: `Intern • ${intern.institute}`,
-        appId: "internships",
         category: "People",
         icon: User,
       });

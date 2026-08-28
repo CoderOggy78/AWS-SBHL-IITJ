@@ -45,8 +45,7 @@ export const MobileOS: React.FC<MobileOSProps> = ({
     { id: "roadmap", name: "Roadmap", icon: Compass, gradient: "from-emerald-500 to-teal-600" },
     { id: "certifications", name: "Free Certs", icon: Award, gradient: "from-amber-500 to-orange-600" },
     { id: "resources", name: "Library", icon: BookOpen, gradient: "from-blue-600 to-cyan-600" },
-    { id: "internships", name: "Internships", icon: Briefcase, gradient: "from-rose-500 to-pink-600" },
-    { id: "terminal", name: "PowerShell", icon: Terminal, gradient: "from-slate-800 to-slate-950" },
+    { id: "terminal", name: "Command Prompt", icon: Terminal, gradient: "from-slate-800 to-slate-950" },
     { id: "feed", name: "Activity", icon: Activity, gradient: "from-teal-600 to-emerald-700" },
     { id: "contact", name: "Join Us", icon: Mail, gradient: "from-sky-600 to-cyan-600" },
   ];

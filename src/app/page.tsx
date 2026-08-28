@@ -17,7 +17,6 @@ import { LeadsApp } from "@/components/apps/LeadsApp";
 import { TeamApp } from "@/components/apps/TeamApp";
 import { ProjectsApp } from "@/components/apps/ProjectsApp";
 import { ResourcesApp } from "@/components/apps/ResourcesApp";
-import { InternshipsApp } from "@/components/apps/InternshipsApp";
 import { TerminalApp } from "@/components/apps/TerminalApp";
 import { RoadmapApp } from "@/components/apps/RoadmapApp";
 import { CertificationsApp } from "@/components/apps/CertificationsApp";
@@ -37,7 +36,6 @@ const INITIAL_WINDOWS: Record<AppId, Omit<WindowState, "zIndex" | "isOpen" | "is
   roadmap: { id: "roadmap", title: "Cloud Engineering Roadmap — Milestone Curriculum", position: { x: 95, y: 40 }, size: { width: 930, height: 590 }, icon: "compass" },
   certifications: { id: "certifications", title: "100 Free Cloud Certifications & Badges", position: { x: 105, y: 50 }, size: { width: 940, height: 600 }, icon: "award" },
   resources: { id: "resources", title: "AWS Cloud Learning Library — 100 Resources", position: { x: 115, y: 60 }, size: { width: 900, height: 570 }, icon: "book-open" },
-  internships: { id: "internships", title: "Internships & Student Cohorts Directory", position: { x: 120, y: 65 }, size: { width: 870, height: 560 }, icon: "briefcase" },
   terminal: { id: "terminal", title: "Command Prompt (cmd.exe)", position: { x: 135, y: 80 }, size: { width: 780, height: 480 }, icon: "terminal" },
   feed: { id: "feed", title: "My Network Places — Real-Time Activity Feed", position: { x: 125, y: 70 }, size: { width: 830, height: 540 }, icon: "activity" },
   contact: { id: "contact", title: "Connect & Community Portals — IIT Jodhpur", position: { x: 110, y: 60 }, size: { width: 870, height: 570 }, icon: "mail" },
@@ -214,8 +212,6 @@ export default function DesktopPage() {
         return <CertificationsApp />;
       case "resources":
         return <ResourcesApp />;
-      case "internships":
-        return <InternshipsApp />;
       case "terminal":
         return <TerminalApp onOpenApp={openApp} />;
       case "feed":

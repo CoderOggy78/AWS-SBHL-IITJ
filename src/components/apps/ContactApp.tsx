@@ -66,10 +66,10 @@ export const ContactApp: React.FC<ContactAppProps> = ({ onOpenApp }) => {
         {/* Action CTAs */}
         <div className="flex flex-wrap gap-3 pt-2">
           <button
-            onClick={() => onOpenApp("internships")}
+            onClick={() => onOpenApp("projects")}
             className="flex items-center gap-2 px-5 py-3 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-medium text-xs shadow-lg shadow-sky-500/20 transition-all hover:scale-102"
           >
-            <span>Apply to Build With Us</span>
+            <span>Explore Builder Lab</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </button>
           <button

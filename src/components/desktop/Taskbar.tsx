@@ -53,7 +53,6 @@ const APP_TASK_INFO: Record<
   roadmap: { label: "Cloud Roadmap", icon: Compass },
   certifications: { label: "Free Certs", icon: Award },
   resources: { label: "Cloud Library", icon: BookOpen },
-  internships: { label: "Internships", icon: Briefcase },
   terminal: { label: "Command Prompt", icon: Terminal },
   feed: { label: "Build Feed", icon: Radio },
   contact: { label: "Join Us", icon: Mail },

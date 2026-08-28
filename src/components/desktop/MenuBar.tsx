@@ -73,7 +73,6 @@ export const MenuBar: React.FC<MenuBarProps> = ({
       roadmap: "Cloud Roadmap",
       certifications: "Free Certifications",
       resources: "Cloud Library",
-      internships: "Internships",
       terminal: "Terminal (~/aws-sbg)",
       feed: "Build Feed",
       contact: "Connect & Socials",
