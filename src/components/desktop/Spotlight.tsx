@@ -5,17 +5,19 @@ import { AppId } from "@/types/os";
 import { TEAM_MEMBERS } from "@/data/team";
 import { INTERNS_DATA } from "@/data/interns";
 import { PROJECTS_DATA } from "@/data/projects";
-
 import { RESOURCES_DATA } from "@/data/resources";
 import {
   Search,
   User,
   FolderGit2,
-  Calendar,
   BookOpen,
   Terminal,
   ArrowRight,
-  Command,
+  Sparkles,
+  X,
+  FileCode,
+  Globe,
+  Folder,
 } from "lucide-react";
 
 interface SpotlightProps {
@@ -43,7 +45,6 @@ export const Spotlight: React.FC<SpotlightProps> = ({
 
   if (!isOpen) return null;
 
-  // Search indexing
   const q = query.toLowerCase().trim();
 
   const results: Array<{
@@ -51,11 +52,38 @@ export const Spotlight: React.FC<SpotlightProps> = ({
     title: string;
     subtitle: string;
     appId: AppId;
-    category: "People" | "Projects" | "Events" | "Resources" | "Apps";
+    category: "Programs" | "People" | "Projects" | "Resources";
     icon: React.ElementType;
   }> = [];
 
-  // Index Team
+  // Core Programs
+  const coreApps: Array<{ id: AppId; name: string; desc: string }> = [
+    { id: "home", name: "My Computer (Overview)", desc: "AWS Student Builder OS overview" },
+    { id: "projects", name: "Builder Lab (50 Projects)", desc: "50 real AWS blueprints and architecture diagrams" },
+    { id: "roadmap", name: "Cloud Engineering Roadmap", desc: "Foundational to Advanced milestones" },
+    { id: "certifications", name: "100 Free Cloud Certifications", desc: "Free cloud badges & course catalog" },
+    { id: "resources", name: "Cloud Learning Library", desc: "Whitepapers, labs and specs" },
+    { id: "leads", name: "Team Hierarchy Directory", desc: "Official Core Team organizational structure" },
+    { id: "internships", name: "Internships Directory", desc: "2026-27 student builder cohorts" },
+    { id: "terminal", name: "Command Prompt (cmd.exe)", desc: "Windows XP command shell" },
+    { id: "about", name: "About AWS SBG (README.txt)", desc: "Manifesto, philosophy & tracks" },
+    { id: "contact", name: "Join Us & Socials", desc: "WhatsApp, Meetup & LinkedIn links" },
+  ];
+
+  coreApps.forEach((a) => {
+    if (a.name.toLowerCase().includes(q) || a.desc.toLowerCase().includes(q)) {
+      results.push({
+        id: a.id,
+        title: a.name,
+        subtitle: a.desc,
+        appId: a.id,
+        category: "Programs",
+        icon: FileCode,
+      });
+    }
+  });
+
+  // People
   TEAM_MEMBERS.forEach((m) => {
     if (
       m.name.toLowerCase().includes(q) ||
@@ -73,7 +101,6 @@ export const Spotlight: React.FC<SpotlightProps> = ({
     }
   });
 
-  // Index Interns
   INTERNS_DATA.forEach((intern) => {
     if (
       intern.name.toLowerCase().includes(q) ||
@@ -91,7 +118,7 @@ export const Spotlight: React.FC<SpotlightProps> = ({
     }
   });
 
-  // Index Projects
+  // Projects
   PROJECTS_DATA.forEach((p) => {
     if (
       p.name.toLowerCase().includes(q) ||
@@ -109,8 +136,7 @@ export const Spotlight: React.FC<SpotlightProps> = ({
     }
   });
 
-
-  // Index Resources
+  // Resources
   RESOURCES_DATA.forEach((r) => {
     if (
       r.title.toLowerCase().includes(q) ||
@@ -124,31 +150,6 @@ export const Spotlight: React.FC<SpotlightProps> = ({
         appId: "resources",
         category: "Resources",
         icon: BookOpen,
-      });
-    }
-  });
-
-  // Index Core Apps
-  const coreApps: Array<{ id: AppId; name: string; desc: string }> = [
-    { id: "projects", name: "Builder Lab", desc: "50 real AWS project ideas and blueprints" },
-    { id: "roadmap", name: "Cloud Roadmap", desc: "Beginner to Advanced engineering milestones" },
-    { id: "certifications", name: "Free Certifications", desc: "100 free cloud courses and digital badges" },
-    { id: "terminal", name: "Terminal", desc: "Interactive builder command line shell" },
-    { id: "home", name: "Overview", desc: "Home dashboard and architecture pipeline" },
-    { id: "about", name: "About SBG", desc: "Philosophy, focus tracks, and culture" },
-    { id: "internships", name: "Internships", desc: "Student builder recruitment directory" },
-    { id: "contact", name: "Join Us", desc: "WhatsApp, Meetup, and community links" },
-  ];
-
-  coreApps.forEach((a) => {
-    if (a.name.toLowerCase().includes(q) || a.desc.toLowerCase().includes(q)) {
-      results.push({
-        id: a.id,
-        title: a.name,
-        subtitle: a.desc,
-        appId: a.id,
-        category: "Apps",
-        icon: Terminal,
       });
     }
   });
@@ -173,36 +174,54 @@ export const Spotlight: React.FC<SpotlightProps> = ({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-start justify-center pt-24 px-4 bg-slate-950/60 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-start justify-center pt-20 px-4 bg-black/40"
       onClick={onClose}
     >
       <div
-        className="w-full max-w-xl rounded-2xl border border-slate-700/80 bg-slate-900/90 backdrop-blur-2xl shadow-[0_20px_60px_rgba(0,0,0,0.8)] overflow-hidden text-slate-100 animate-in fade-in zoom-in-95 duration-150"
+        className="w-full max-w-xl bg-[#ece9d8] border-2 border-[#0055ea] rounded-t-[6px] shadow-[0_12px_36px_rgba(0,0,0,0.8)] overflow-hidden font-sans select-none animate-in fade-in zoom-in-95 duration-100"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Search Input Bar */}
-        <div className="flex items-center gap-3 px-4 py-3.5 border-b border-slate-800">
-          <Search className="w-5 h-5 text-slate-400" />
-          <input
-            ref={inputRef}
-            type="text"
-            placeholder="Search people, roles, projects, events, resources... (Cmd+K)"
-            value={query}
-            onChange={(e) => {
-              setQuery(e.target.value);
-              setSelectedIndex(0);
-            }}
-            onKeyDown={handleKeyDown}
-            className="w-full bg-transparent text-sm text-slate-100 placeholder-slate-500 focus:outline-none font-sans"
-          />
-          <div className="flex items-center gap-1 px-1.5 py-0.5 rounded border border-slate-700 bg-slate-800 text-[10px] font-mono text-slate-400">
-            <Command className="w-3 h-3" />
-            <span>K</span>
+        {/* Luna Blue Search Header */}
+        <div className="h-[28px] bg-gradient-to-r from-[#0058ee] via-[#267df8] to-[#0050d8] px-2.5 flex items-center justify-between text-white border-b border-[#003882]">
+          <div className="flex items-center gap-1.5 font-bold tracking-tight text-xs drop-shadow-sm">
+            <Search className="w-3.5 h-3.5" />
+            <span>Search Companion</span>
           </div>
+          <button
+            onClick={onClose}
+            className="w-[19px] h-[19px] rounded-[2px] bg-[#d13b19] hover:bg-[#e04322] border border-white/80 flex items-center justify-center text-white"
+          >
+            <X className="w-3.5 h-3.5 stroke-[2.5]" />
+          </button>
+        </div>
+
+        {/* Search Input Bar */}
+        <div className="p-3 bg-[#ece9d8] border-b border-[#d8d0c5] flex items-center gap-2">
+          <div className="relative flex-1">
+            <Search className="w-4 h-4 text-slate-400 absolute left-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+            <input
+              ref={inputRef}
+              type="text"
+              placeholder="Search for programs, projects, leads, free certs..."
+              value={query}
+              onChange={(e) => {
+                setQuery(e.target.value);
+                setSelectedIndex(0);
+              }}
+              onKeyDown={handleKeyDown}
+              className="w-full h-8 pl-8 pr-3 bg-white border border-[#7f9db9] rounded-sm text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#316ac5]"
+            />
+          </div>
+          <button
+            onClick={() => displayResults[0] && onOpenApp(displayResults[0].appId)}
+            className="px-3 h-8 bg-[#ece9d8] hover:bg-[#dedad0] border border-[#7f9db9] rounded-sm text-xs font-bold text-slate-900 shadow-sm active:shadow-inner"
+          >
+            Search
+          </button>
         </div>
 
         {/* Results List */}
-        <div className="p-2 max-h-96 overflow-y-auto space-y-1">
+        <div className="p-2 bg-white max-h-80 overflow-y-auto space-y-0.5 no-scrollbar text-xs">
           {displayResults.length > 0 ? (
             displayResults.map((item, idx) => {
               const ItemIcon = item.icon;
@@ -215,50 +234,38 @@ export const Spotlight: React.FC<SpotlightProps> = ({
                     onClose();
                   }}
                   onMouseEnter={() => setSelectedIndex(idx)}
-                  className={`w-full flex items-center justify-between p-2.5 rounded-xl text-left transition-all ${
+                  className={`w-full flex items-center justify-between p-2 rounded-sm text-left transition-colors ${
                     isSelected
-                      ? "bg-sky-600/90 text-white shadow-md"
-                      : "hover:bg-slate-800/60 text-slate-200"
+                      ? "bg-[#316ac5] text-white"
+                      : "hover:bg-blue-50 text-slate-900"
                   }`}
                 >
-                  <div className="flex items-center gap-3 min-w-0">
-                    <div
-                      className={`p-2 rounded-lg ${
-                        isSelected ? "bg-white/20 text-white" : "bg-slate-800 text-sky-400"
-                      }`}
-                    >
-                      <ItemIcon className="w-4 h-4" />
-                    </div>
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <ItemIcon className={`w-4 h-4 shrink-0 ${isSelected ? "text-white" : "text-[#0055ea]"}`} />
                     <div className="min-w-0">
-                      <p className="text-xs font-medium truncate">{item.title}</p>
-                      <p
-                        className={`text-[11px] truncate ${
-                          isSelected ? "text-sky-100" : "text-slate-400"
-                        }`}
-                      >
+                      <p className="font-bold text-xs truncate">{item.title}</p>
+                      <p className={`text-[11px] truncate ${isSelected ? "text-sky-100" : "text-slate-500"}`}>
                         {item.subtitle}
                       </p>
                     </div>
                   </div>
-                  <div className="flex items-center gap-2 text-[10px] font-mono opacity-80 shrink-0">
-                    <span className="px-1.5 py-0.5 rounded bg-black/20">{item.category}</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </div>
+                  <span className={`text-[10px] font-mono shrink-0 px-1.5 py-0.5 rounded ${isSelected ? "bg-white/20 text-white" : "bg-slate-100 text-slate-500"}`}>
+                    {item.category}
+                  </span>
                 </button>
               );
             })
           ) : (
-            <div className="py-8 text-center text-xs text-slate-500 font-mono">
-              No matching records found for &ldquo;{query}&rdquo;
+            <div className="py-8 text-center text-xs text-slate-400 font-sans">
+              No matching Windows XP records found for &ldquo;{query}&rdquo;
             </div>
           )}
         </div>
 
-        {/* Footer Hint */}
-        <div className="px-4 py-2 bg-slate-950/60 border-t border-slate-800/80 flex items-center justify-between text-[10px] font-mono text-slate-500">
-          <span>Navigate: ↑ ↓</span>
-          <span>Open: ↵</span>
-          <span>Close: Esc</span>
+        {/* XP Status Footer */}
+        <div className="h-6 px-3 bg-[#ece9d8] border-t border-[#d8d0c5] flex items-center justify-between text-[11px] text-slate-600 font-sans">
+          <span>{displayResults.length} item(s) found</span>
+          <span>Press Enter to Open</span>
         </div>
       </div>
     </div>

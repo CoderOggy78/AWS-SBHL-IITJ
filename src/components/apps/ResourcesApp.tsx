@@ -123,29 +123,29 @@ export const ResourcesApp: React.FC = () => {
 
   return (
     <div className="flex flex-col h-full font-sans select-none bg-slate-950 text-slate-100">
-      {/* Finder Navigation Bar */}
-      <div className="h-12 px-4 border-b border-slate-800 bg-slate-900/80 flex items-center justify-between gap-4 shrink-0">
-        <div className="flex items-center gap-1.5 text-xs text-slate-400 font-mono overflow-x-auto">
-          <HardDrive className="w-3.5 h-3.5 text-slate-500" />
-          <span>Cloud Storage</span>
+      {/* Windows 11 File Explorer Navigation Bar */}
+      <div className="h-11 px-4 border-b border-slate-800 bg-slate-900/80 flex items-center justify-between gap-4 shrink-0">
+        <div className="flex items-center gap-1.5 text-xs text-slate-300 font-sans overflow-x-auto">
+          <HardDrive className="w-3.5 h-3.5 text-sky-400" />
+          <span className="text-slate-400 hover:text-slate-200 cursor-pointer">This PC</span>
           <ChevronRight className="w-3 h-3 text-slate-600" />
           <Folder className="w-3.5 h-3.5 text-amber-400" />
-          <span>AWS 100 Library</span>
+          <span className="text-slate-300">AWS Cloud Library</span>
           <ChevronRight className="w-3 h-3 text-slate-600" />
-          <span className="text-amber-300 font-semibold truncate max-w-[180px]">
-            {activeCategory}/
+          <span className="text-amber-400 font-medium truncate max-w-[180px]">
+            {activeCategory}
           </span>
         </div>
 
         {/* Search */}
         <div className="relative w-48 sm:w-64">
-          <Search className="w-3.5 h-3.5 text-slate-500 absolute left-2.5 top-1/2 -translate-y-1/2" />
+          <Search className="w-3.5 h-3.5 text-slate-400 absolute left-2.5 top-1/2 -translate-y-1/2" />
           <input
             type="text"
             placeholder="Search 100 AWS resources..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-8 pr-7 py-1.5 bg-slate-950/80 border border-slate-800 rounded-xl text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-amber-500 font-mono"
+            className="w-full pl-8 pr-7 py-1 bg-slate-950/80 border border-slate-700/80 rounded-md text-xs text-slate-200 placeholder-slate-400 focus:outline-none focus:border-amber-400 font-sans"
           />
           {searchQuery && (
             <button

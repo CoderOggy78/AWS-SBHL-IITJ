@@ -5,7 +5,6 @@ import { AppId } from "@/types/os";
 import { SOCIAL_LINKS } from "@/config/socials";
 import { INTERNS_DATA } from "@/data/interns";
 import confetti from "canvas-confetti";
-import { Terminal as TerminalIcon, Sparkles } from "lucide-react";
 
 interface TerminalAppProps {
   onOpenApp: (id: AppId) => void;
@@ -21,8 +20,9 @@ export const TerminalApp: React.FC<TerminalAppProps> = ({ onOpenApp }) => {
   const [history, setHistory] = useState<string[]>([]);
   const [historyIdx, setHistoryIdx] = useState<number>(-1);
   const [outputs, setOutputs] = useState<OutputEntry[]>([
-    { type: "system", text: "AWS BUILDER OS SHELL (IIT Jodhpur Node)" },
-    { type: "system", text: "Type 'help' to inspect available commands or 'open [app]'." },
+    { type: "system", text: "Microsoft Windows XP [Version 5.1.2600.5512]" },
+    { type: "system", text: "(C) Copyright 1985-2001 Microsoft Corp. (AWS SBG IIT Jodhpur Node)" },
+    { type: "system", text: "Type 'help' to view available commands or 'start [app]'." },
   ]);
 
   const bottomRef = useRef<HTMLDivElement | null>(null);
@@ -49,43 +49,84 @@ export const TerminalApp: React.FC<TerminalAppProps> = ({ onOpenApp }) => {
         newOutputs.push({
           type: "output",
           text: [
-            "Available commands:",
-            "  whoami        Inspect current user identity",
-            "  cloud-status  Print real-time AWS SBG infrastructure status",
-            "  leads         Display official Core Team organizational hierarchy",
-            "  team          Display departmental tiers (Leadership, Tech, Community, Mgmt)",
-            `  interns       List official 2026-27 interns directory & colleges (${INTERNS_DATA.length} interns)`,
-            "  projects      List active builder lab projects",
-            "  events        List scheduled workshops & sessions",
-            "  resources     Display cloud learning library categories",
-            "  about         Show AWS SBG manifesto",
-            "  contact       Show official WhatsApp, Meetup & LinkedIn links",
-            "  open <app>    Launch an application (e.g. 'open projects', 'open leads')",
-            "  date          Print system time and region",
-            "  clear         Clear the terminal screen",
-            "  coffee        Refuel developer state",
+            "For more information on a specific command, type HELP command-name",
+            "",
+            "CLS        Clears the screen.",
+            "DIR        Displays a list of files and subdirectories in a directory.",
+            "VER        Displays the Windows version.",
+            "WHOAMI     Displays the active builder user account and permissions.",
+            "PROJECTS   Displays 50 active AWS Builder Lab project blueprints.",
+            "ROADMAP    Opens Cloud Engineering Roadmap.",
+            "CERTS      Opens 100 Free Cloud Certifications & Digital Badges.",
+            "LEADS      Displays official Core Team organizational hierarchy.",
+            "TEAM       Displays departmental breakdown.",
+            `INTERNS    Lists official 2026-27 interns directory (${INTERNS_DATA.length} students).`,
+            "RESOURCES  Displays cloud library & whitepapers.",
+            "ABOUT      Displays AWS Student Builder Group manifesto.",
+            "CONTACT    Displays official WhatsApp, Meetup, and LinkedIn portals.",
+            "START      Starts a separate window to run a specified program.",
+            "DATE       Displays or sets the date.",
+            "COFFEE     Dispenses developer coffee.",
           ].join("\n"),
+        });
+        break;
+
+      case "ver":
+        newOutputs.push({
+          type: "output",
+          text: "Microsoft Windows XP [Version 5.1.2600] Service Pack 3 (AWS SBG Cloud Node)",
         });
         break;
 
       case "whoami":
         newOutputs.push({
           type: "output",
-          text: "> You are a builder exploring AWS Student Builder Group — IIT Jodhpur.",
+          text: "IITJ-CLOUD-NODE\\StudentBuilder [Role: Cloud Engineer / Builder]",
         });
         break;
 
-      case "cloud-status":
+      case "dir":
         newOutputs.push({
           type: "output",
           text: [
-            "COMMUNITY ........ ONLINE",
-            "BUILDERS ......... ACTIVE",
-            "PROJECTS ......... BUILDING",
-            "SYSTEM ........... OPERATIONAL",
-            "REGION ........... ap-south-iitj",
+            " Volume in drive C is AWS_BUILDER_XP",
+            " Volume Serial Number is 4C28-11F2",
+            "",
+            " Directory of C:\\Documents and Settings\\Builder",
+            "",
+            "08/28/2026  05:30 PM    <DIR>          .",
+            "08/28/2026  05:30 PM    <DIR>          ..",
+            "08/28/2026  05:30 PM    <DIR>          My Documents",
+            "08/28/2026  05:30 PM    <DIR>          BuilderLab",
+            "08/28/2026  05:30 PM    <DIR>          CloudRoadmap",
+            "08/28/2026  05:30 PM    <DIR>          Certifications",
+            "08/28/2026  05:30 PM    <DIR>          CoreTeam",
+            "08/28/2026  05:30 PM    <DIR>          InternsDirectory",
+            "08/28/2026  05:30 PM             9,535 README.txt",
+            "08/28/2026  05:30 PM             1,084 LICENSE.txt",
+            "               2 File(s)         10,619 bytes",
+            "               8 Dir(s)   99,999,999,999 bytes free",
           ].join("\n"),
         });
+        break;
+
+      case "type":
+        if (args[0]?.toLowerCase().includes("readme")) {
+          newOutputs.push({
+            type: "output",
+            text: [
+              "AWS Student Builder Group — Indian Institute of Technology Jodhpur",
+              "==================================================================",
+              "An interactive cloud operating experience exploring AWS architectures,",
+              "software engineering, serverless microservices, and AI/ML.",
+            ].join("\n"),
+          });
+        } else {
+          newOutputs.push({
+            type: "error",
+            text: `The system cannot find the file specified: ${args[0]}`,
+          });
+        }
         break;
 
       case "leads":
@@ -93,34 +134,33 @@ export const TerminalApp: React.FC<TerminalAppProps> = ({ onOpenApp }) => {
           type: "output",
           text: [
             "AWS SBG IIT JODHPUR — CORE TEAM ORGANIZATIONAL STRUCTURE (2026-27)",
+            "==================================================================",
             "",
-            "// LEADERSHIP & ADVISORY",
+            "[LEADERSHIP & ADVISORY]",
             "  • Vishwanath Barve      [Club Lead and Organizer]",
             "  • Ashwani Dwivedi Sir   [Club Co-Ordinator]",
             "  • Armaan Kachhawa       [Club Co-Lead]",
             "",
-            "// 1. COMMUNITY MANAGEMENT TEAM",
+            "[1. COMMUNITY MANAGEMENT TEAM]",
             "  • Rahul Wakhale         [Team Lead]",
             "  • Lakshya Gupta         [Co-Lead]",
             "  • Dishant Chaudhary     [Core Team Member]",
             "  • Quazi Arqam           [Core Team Member]",
             "  • Sainesh P             [Core Team Member]",
             "",
-            "// 2. TECHNICAL TEAM",
+            "[2. TECHNICAL TEAM]",
             "  • Harshpreet Singh      [Team Lead]",
             "  • Satyam Mishra         [Co-Lead]",
             "  • Tanmay Damre          [Core Team Member]",
             "  • Yash Gogawale         [Core Team Member]",
             "",
-            "// 3. SOCIAL MEDIA & MANAGEMENT TEAM",
+            "[3. SOCIAL MEDIA & MANAGEMENT TEAM]",
             "  • Lakshay Khandelwal    [Team Lead]",
             "  • Kavita Dixit          [Co-Lead]",
             "  • Bishal Saha           [Management Core]",
             "  • Tanujit Khatkar       [Core Team Member]",
             "  • Tanmay Srivastava     [Core Team Member]",
             "  • Vindhya Verma         [Core Team Member]",
-            "",
-            `Type 'interns' to list all ${INTERNS_DATA.length} student interns across partner institutes.`,
           ].join("\n"),
         });
         break;
@@ -129,15 +169,12 @@ export const TerminalApp: React.FC<TerminalAppProps> = ({ onOpenApp }) => {
         newOutputs.push({
           type: "output",
           text: [
-            "AWS SBG IIT Jodhpur Departmental Structure:",
-            "  Team/",
-            "  ├── Leadership & Advisory/      (Lead: Vishwanath Barve, Co-Lead: Armaan Kachhawa, Co-Ordinator: Ashwani Dwivedi Sir)",
-            "  ├── Technical Team/             (Lead: Harshpreet Singh, Co-Lead: Satyam Mishra)",
-            "  ├── Community Management/       (Lead: Rahul Wakhale, Co-Lead: Lakshya Gupta)",
-            "  ├── Social Media & Management/  (Lead: Lakshay Khandelwal, Co-Lead: Kavita Dixit)",
-            `  └── Interns Directory/          (${INTERNS_DATA.length} Interns across IITs, NITs & Universities)`,
-            "",
-            "Run 'open team' or 'open leads' to inspect in Finder.",
+            "C:\\Documents and Settings\\Builder\\Team",
+            "  ├── Leadership & Advisory\\      (Lead: Vishwanath Barve, Co-Lead: Armaan Kachhawa, Co-Ordinator: Ashwani Dwivedi Sir)",
+            "  ├── Technical Team\\             (Lead: Harshpreet Singh, Co-Lead: Satyam Mishra)",
+            "  ├── Community Management\\       (Lead: Rahul Wakhale, Co-Lead: Lakshya Gupta)",
+            "  ├── Social Media & Management\\  (Lead: Lakshay Khandelwal, Co-Lead: Kavita Dixit)",
+            `  └── Interns Directory\\          (${INTERNS_DATA.length} Interns across IITs, NITs & Universities)`,
           ].join("\n"),
         });
         break;
@@ -152,8 +189,6 @@ export const TerminalApp: React.FC<TerminalAppProps> = ({ onOpenApp }) => {
               (intern, i) =>
                 `  [${String(i + 1).padStart(2, "0")}] ${intern.name.padEnd(28)} | ${intern.institute}`
             ),
-            "",
-            "Run 'open interns' to view full credentials and search.",
           ].join("\n"),
         });
         break;
@@ -167,58 +202,6 @@ export const TerminalApp: React.FC<TerminalAppProps> = ({ onOpenApp }) => {
             "  [SHIPPED]      IITJ Solar & Sensor Stream Pipeline (IoT Core, Kinesis)",
             "  [EXPERIMENTAL] Isolated Code Sandbox Engine (Fargate, MicroVM)",
             "  [IDEA]         IITJ Multi-Tier CDK Starter (AWS CDK, ECS, Aurora)",
-            "Run 'open projects' to inspect full architecture diagrams.",
-          ].join("\n"),
-        });
-        break;
-
-      case "events":
-        newOutputs.push({
-          type: "output",
-          text: [
-            "Upcoming Events:",
-            "  • AWS Builder Kickoff & Cloud Architecture Immersion",
-            "  • Hands-on GenAI: Building RAG Pipelines with Amazon Bedrock",
-            "  • Jodhpur Cloud Hack: 36-Hour Builder Challenge",
-            `Meetup Page: ${SOCIAL_LINKS.meetup}`,
-          ].join("\n"),
-        });
-        break;
-
-      case "resources":
-        newOutputs.push({
-          type: "output",
-          text: [
-            "Cloud Learning Library:",
-            "  • AWS Well-Architected Framework (6 Pillars)",
-            "  • AWS CDK TypeScript Workshop",
-            "  • Serverless Land Microservices Patterns",
-            "  • Amazon Bedrock Generative AI Spec",
-            "Run 'open resources' to explore documents.",
-          ].join("\n"),
-        });
-        break;
-
-      case "about":
-        newOutputs.push({
-          type: "output",
-          text: [
-            "Not Another Campus Club.",
-            "The AWS Student Builder Group at IIT Jodhpur is a student-led technical community focused on learning by building.",
-            "Philosophy: Learn deeply. Build together. Break things. Fix them. Ship something meaningful.",
-          ].join("\n"),
-        });
-        break;
-
-      case "contact":
-        newOutputs.push({
-          type: "output",
-          text: [
-            "Official AWS SBG IIT Jodhpur Links:",
-            `  WhatsApp: ${SOCIAL_LINKS.whatsapp}`,
-            `  LinkedIn: ${SOCIAL_LINKS.linkedin}`,
-            `  Meetup:   ${SOCIAL_LINKS.meetup}`,
-            `  Email:    ${SOCIAL_LINKS.email}`,
           ].join("\n"),
         });
         break;
@@ -227,7 +210,7 @@ export const TerminalApp: React.FC<TerminalAppProps> = ({ onOpenApp }) => {
         onOpenApp("roadmap");
         newOutputs.push({
           type: "system",
-          text: "Opening Cloud Engineering Roadmap (Beginner to Advanced)...",
+          text: "Starting Cloud Roadmap...",
         });
         break;
 
@@ -236,10 +219,11 @@ export const TerminalApp: React.FC<TerminalAppProps> = ({ onOpenApp }) => {
         onOpenApp("certifications");
         newOutputs.push({
           type: "system",
-          text: "Opening 100 Free Cloud Certifications & Badges...",
+          text: "Starting 100 Free Cloud Certifications & Badges...",
         });
         break;
 
+      case "start":
       case "open":
         const targetApp = (args[0] || "").toLowerCase() as AppId;
         const validApps: AppId[] = [
@@ -260,67 +244,60 @@ export const TerminalApp: React.FC<TerminalAppProps> = ({ onOpenApp }) => {
           onOpenApp(targetApp);
           newOutputs.push({
             type: "system",
-            text: `Opening application: [${targetApp}]`,
+            text: `Started program: [${targetApp}.exe]`,
           });
         } else {
           newOutputs.push({
             type: "error",
-            text: `Error: Unknown application '${args[0]}'. Valid apps: ${validApps.join(", ")}`,
+            text: `Cannot find file '${args[0]}'. Valid programs: ${validApps.join(", ")}`,
           });
         }
+        break;
+
+      case "about":
+        newOutputs.push({
+          type: "output",
+          text: "Not Another Campus Club. AWS Student Builder Group @ IIT Jodhpur.",
+        });
+        break;
+
+      case "contact":
+        newOutputs.push({
+          type: "output",
+          text: [
+            "Official AWS SBG IIT Jodhpur Links:",
+            `  WhatsApp: ${SOCIAL_LINKS.whatsapp}`,
+            `  LinkedIn: ${SOCIAL_LINKS.linkedin}`,
+            `  Meetup:   ${SOCIAL_LINKS.meetup}`,
+          ].join("\n"),
+        });
         break;
 
       case "date":
         newOutputs.push({
           type: "output",
-          text: new Date().toString() + " (Region: ap-south-iitj)",
+          text: `The current date is: ${new Date().toLocaleDateString()}`,
         });
         break;
 
-      case "clear":
+      case "cls":
         setOutputs([]);
         setInput("");
         return;
 
-      // Easter Eggs
       case "sudo":
         if (args.join(" ") === "build-the-cloud") {
           try {
             confetti({
-              particleCount: 70,
-              spread: 60,
+              particleCount: 80,
+              spread: 70,
               origin: { y: 0.6 },
-              colors: ["#38bdf8", "#a855f7", "#ffffff"],
+              colors: ["#38bdf8", "#48b543", "#ffcc00", "#d13b19"],
             });
-          } catch {
-            // Confetti fallback
-          }
+          } catch {}
           newOutputs.push({
             type: "output",
-            text: [
-              "Permission granted.",
-              "Initializing builders...",
-              "☁️ Cloud deployed successfully.",
-            ].join("\n"),
-          });
-        } else {
-          newOutputs.push({
-            type: "output",
-            text: `sudo: ${args.join(" ")}: builder has superuser privileges.`,
-          });
-        }
-        break;
-
-      case "rm":
-        if (args.join(" ") === "-rf procrastination") {
-          newOutputs.push({
-            type: "output",
-            text: "Procrastination removed successfully.",
-          });
-        } else {
-          newOutputs.push({
-            type: "error",
-            text: "rm: operation prohibited by AWS Builder OS safety sandbox.",
+            text: "Administrator privileges enabled. ☁️ AWS Cloud deployed successfully.",
           });
         }
         break;
@@ -328,14 +305,14 @@ export const TerminalApp: React.FC<TerminalAppProps> = ({ onOpenApp }) => {
       case "coffee":
         newOutputs.push({
           type: "output",
-          text: "Developer fuel initialized. ☕",
+          text: "☕ Coffee brewed successfully.",
         });
         break;
 
       default:
         newOutputs.push({
           type: "error",
-          text: `zsh: command not found: ${cmd}. Type 'help' for command manual.`,
+          text: `'${cmd}' is not recognized as an internal or external command, operable program or batch file.`,
         });
         break;
     }
@@ -372,36 +349,29 @@ export const TerminalApp: React.FC<TerminalAppProps> = ({ onOpenApp }) => {
   return (
     <div
       onClick={() => inputRef.current?.focus()}
-      className="p-4 h-full bg-[#080d1a] font-mono text-xs text-slate-200 select-text overflow-y-auto cursor-text flex flex-col justify-between"
+      className="p-3 h-full bg-black font-mono text-xs text-white select-text overflow-y-auto cursor-text flex flex-col justify-between"
     >
-      <div className="space-y-2">
-        {/* Terminal Header Info */}
-        <div className="pb-2 mb-2 border-b border-slate-800 text-[11px] text-slate-500 flex items-center justify-between">
-          <span>aws-builder-iitj -- zsh (x86_64-apple-darwin24)</span>
-          <span className="text-emerald-400">● LIVE</span>
-        </div>
-
-        {/* Output lines */}
+      <div className="space-y-1.5">
         {outputs.map((out, idx) => (
           <div key={idx} className="leading-relaxed">
             {out.type === "input" ? (
-              <div className="flex items-center gap-2 text-sky-400">
-                <span className="text-purple-400">builder@iitj:~$</span>
-                <span className="text-white font-semibold">{out.text}</span>
+              <div className="flex items-center gap-1.5 text-white">
+                <span className="text-white">C:\Documents and Settings\Builder&gt;</span>
+                <span className="text-white font-bold">{out.text}</span>
               </div>
             ) : out.type === "error" ? (
-              <div className="text-rose-400 pl-4 whitespace-pre-wrap">{out.text}</div>
+              <div className="text-red-400 whitespace-pre-wrap">{out.text}</div>
             ) : out.type === "system" ? (
-              <div className="text-slate-500 italic pl-1 whitespace-pre-wrap">{out.text}</div>
+              <div className="text-slate-300 whitespace-pre-wrap">{out.text}</div>
             ) : (
-              <div className="text-slate-300 pl-4 whitespace-pre-wrap">{out.text}</div>
+              <div className="text-slate-200 whitespace-pre-wrap">{out.text}</div>
             )}
           </div>
         ))}
 
-        {/* Interactive Prompt Input */}
-        <div className="flex items-center gap-2 pt-1">
-          <span className="text-purple-400 shrink-0">builder@iitj:~$</span>
+        {/* Command Prompt Input */}
+        <div className="flex items-center gap-1.5 pt-0.5">
+          <span className="text-white shrink-0">C:\Documents and Settings\Builder&gt;</span>
           <input
             ref={inputRef}
             type="text"
@@ -409,22 +379,22 @@ export const TerminalApp: React.FC<TerminalAppProps> = ({ onOpenApp }) => {
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
             autoFocus
-            className="flex-1 bg-transparent text-white outline-none border-none p-0 font-mono caret-sky-400"
+            className="flex-1 bg-transparent text-white outline-none border-none p-0 font-mono caret-white"
           />
         </div>
 
         <div ref={bottomRef} />
       </div>
 
-      {/* Terminal Footer shortcuts */}
-      <div className="mt-4 pt-2 border-t border-slate-900 text-[10px] text-slate-600 flex flex-wrap gap-3 pointer-events-none select-none">
-        <span>Try: whoami</span>
-        <span>cloud-status</span>
-        <span>leads</span>
-        <span>projects</span>
-        <span>open [app]</span>
-        <span>sudo build-the-cloud</span>
-        <span>coffee</span>
+      <div className="mt-4 pt-2 border-t border-slate-800 text-[10px] text-slate-500 flex flex-wrap gap-3 pointer-events-none select-none">
+        <span>HELP</span>
+        <span>DIR</span>
+        <span>PROJECTS</span>
+        <span>ROADMAP</span>
+        <span>LEADS</span>
+        <span>INTERNS</span>
+        <span>START [APP]</span>
+        <span>CLS</span>
       </div>
     </div>
   );

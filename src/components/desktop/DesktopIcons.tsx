@@ -12,7 +12,11 @@ import {
   Compass,
   Award,
   ExternalLink,
-  Cloud,
+  HardDrive,
+  Trash2,
+  Globe,
+  Folder,
+  Network,
 } from "lucide-react";
 
 interface DesktopIconsProps {
@@ -26,77 +30,92 @@ interface DesktopShortcut {
   iconBg: string;
   iconColor: string;
   externalUrl?: string;
+  isRecycle?: boolean;
 }
 
 const SHORTCUTS: DesktopShortcut[] = [
   {
+    id: "home",
+    label: "My Computer",
+    icon: HardDrive,
+    iconBg: "from-[#2f71cd] to-[#124294]",
+    iconColor: "text-white",
+  },
+  {
     id: "projects",
-    label: "Builder Lab",
-    icon: FolderGit2,
-    iconBg: "from-sky-500 to-blue-600",
+    label: "My Documents",
+    icon: Folder,
+    iconBg: "from-[#f4b400] to-[#db8a00]",
+    iconColor: "text-white",
+  },
+  {
+    id: "feed",
+    label: "My Network Places",
+    icon: Network,
+    iconBg: "from-[#0f9d58] to-[#0b6c3c]",
+    iconColor: "text-white",
+  },
+  {
+    label: "Recycle Bin",
+    icon: Trash2,
+    iconBg: "from-[#607d8b] to-[#37474f]",
+    iconColor: "text-slate-200",
+    isRecycle: true,
+  },
+  {
+    label: "Internet Explorer",
+    icon: Globe,
+    iconBg: "from-[#0055ea] to-[#003399]",
+    iconColor: "text-[#ffd700]",
+    externalUrl: "https://builder.aws.com/",
+  },
+  {
+    id: "terminal",
+    label: "Command Prompt",
+    icon: TerminalIcon,
+    iconBg: "from-slate-900 to-black",
     iconColor: "text-white",
   },
   {
     id: "roadmap",
     label: "Cloud Roadmap",
     icon: Compass,
-    iconBg: "from-emerald-500 to-teal-600",
+    iconBg: "from-[#0288d1] to-[#01579b]",
     iconColor: "text-white",
   },
   {
     id: "certifications",
     label: "Free Certifications",
     icon: Award,
-    iconBg: "from-amber-500 to-orange-600",
+    iconBg: "from-[#e65100] to-[#bf360c]",
     iconColor: "text-white",
-  },
-  {
-    label: "Builder Center",
-    icon: Cloud,
-    iconBg: "from-purple-500 to-indigo-600",
-    iconColor: "text-white",
-    externalUrl: "https://builder.aws.com/",
   },
   {
     id: "resources",
-    label: "Resources",
+    label: "Cloud Library",
     icon: Library,
-    iconBg: "from-cyan-500 to-blue-600",
+    iconBg: "from-[#5e35b1] to-[#311b92]",
     iconColor: "text-white",
   },
   {
-    id: "team",
-    label: "Team Directory",
+    id: "leads",
+    label: "Team Hierarchy",
     icon: Users,
-    iconBg: "from-indigo-500 to-purple-600",
+    iconBg: "from-[#00897b] to-[#004d40]",
     iconColor: "text-white",
-  },
-  {
-    id: "internships",
-    label: "Internships",
-    icon: Briefcase,
-    iconBg: "from-rose-500 to-pink-600",
-    iconColor: "text-white",
-  },
-  {
-    id: "terminal",
-    label: "Terminal.app",
-    icon: TerminalIcon,
-    iconBg: "from-slate-700 to-slate-900",
-    iconColor: "text-emerald-400",
   },
   {
     id: "about",
-    label: "README.md",
+    label: "README.txt",
     icon: FileText,
-    iconBg: "from-slate-600 to-slate-800",
+    iconBg: "from-slate-700 to-slate-800",
     iconColor: "text-slate-200",
   },
 ];
 
 export const DesktopIcons: React.FC<DesktopIconsProps> = ({ onOpenApp }) => {
   return (
-    <div className="absolute top-11 left-4 z-10 hidden sm:flex flex-col gap-3.5 select-none pointer-events-auto">
+    <div className="absolute top-3 left-3 z-10 hidden sm:flex flex-col gap-2 select-none pointer-events-auto font-sans">
       {SHORTCUTS.map((item, idx) => {
         const IconComponent = item.icon;
 
@@ -107,18 +126,21 @@ export const DesktopIcons: React.FC<DesktopIconsProps> = ({ onOpenApp }) => {
               href={item.externalUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex flex-col items-center gap-1 w-20 p-1.5 rounded-xl hover:bg-white/10 active:bg-white/20 transition-all text-center focus:outline-none focus:ring-1 focus:ring-sky-400/50 cursor-pointer"
-              title="Open AWS Builder Center in a new tab"
+              className="group flex flex-col items-center gap-1 w-20 p-1.5 rounded hover:bg-[#0055ea]/30 active:bg-[#0055ea]/50 transition-all text-center focus:outline-none cursor-pointer"
+              title="Open AWS Builder Center in new window"
             >
               <div
-                className={`w-11 h-11 rounded-xl bg-gradient-to-br ${item.iconBg} shadow-lg flex items-center justify-center border border-white/20 group-hover:scale-105 transition-transform duration-200 relative`}
+                className={`w-9 h-9 rounded bg-gradient-to-br ${item.iconBg} shadow-md flex items-center justify-center border border-white/40 group-hover:scale-105 transition-transform duration-100 relative`}
               >
                 <IconComponent className={`w-5 h-5 ${item.iconColor}`} />
-                <div className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-slate-900 border border-white/30 flex items-center justify-center">
-                  <ExternalLink className="w-2.5 h-2.5 text-sky-400" />
+                <div className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-slate-900 border border-white/40 flex items-center justify-center">
+                  <ExternalLink className="w-2 h-2 text-sky-400" />
                 </div>
               </div>
-              <span className="text-[10px] font-medium text-slate-100 tracking-tight drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)] px-1 rounded group-hover:bg-sky-600/70 leading-tight">
+              <span
+                className="text-[11px] font-normal text-white leading-tight px-1 rounded group-hover:bg-[#0055ea] group-hover:text-white"
+                style={{ textShadow: "1px 1px 2px rgba(0,0,0,0.9)" }}
+              >
                 {item.label}
               </span>
             </a>
@@ -128,15 +150,24 @@ export const DesktopIcons: React.FC<DesktopIconsProps> = ({ onOpenApp }) => {
         return (
           <button
             key={item.id || `shortcut-${idx}`}
-            onClick={() => item.id && onOpenApp(item.id)}
-            className="group flex flex-col items-center gap-1 w-20 p-1.5 rounded-xl hover:bg-white/10 active:bg-white/20 transition-all text-center focus:outline-none focus:ring-1 focus:ring-sky-400/50"
+            onClick={() => {
+              if (item.id) {
+                onOpenApp(item.id);
+              } else if (item.isRecycle) {
+                onOpenApp("about");
+              }
+            }}
+            className="group flex flex-col items-center gap-1 w-20 p-1.5 rounded hover:bg-[#0055ea]/30 active:bg-[#0055ea]/50 transition-all text-center focus:outline-none"
           >
             <div
-              className={`w-11 h-11 rounded-xl bg-gradient-to-br ${item.iconBg} shadow-lg flex items-center justify-center border border-white/20 group-hover:scale-105 transition-transform duration-200`}
+              className={`w-9 h-9 rounded bg-gradient-to-br ${item.iconBg} shadow-md flex items-center justify-center border border-white/40 group-hover:scale-105 transition-transform duration-100`}
             >
               <IconComponent className={`w-5 h-5 ${item.iconColor}`} />
             </div>
-            <span className="text-[10px] font-medium text-slate-100 tracking-tight drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)] px-1 rounded group-hover:bg-sky-600/70 leading-tight">
+            <span
+              className="text-[11px] font-normal text-white leading-tight px-1 rounded group-hover:bg-[#0055ea] group-hover:text-white"
+              style={{ textShadow: "1px 1px 2px rgba(0,0,0,0.9)" }}
+            >
               {item.label}
             </span>
           </button>

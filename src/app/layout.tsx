@@ -14,9 +14,9 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://aws-sbg-iitj.ac.in"),
-  title: "AWS Builder OS — IIT Jodhpur | AWS Student Builder Group",
+  title: "Windows XP — AWS Builder Edition | IIT Jodhpur",
   description:
-    "Official website for the AWS Student Builder Group at Indian Institute of Technology Jodhpur. A macOS-inspired cloud operating system for student developers exploring cloud computing, software engineering, AI/ML, and DevOps.",
+    "Official website for the AWS Student Builder Group at Indian Institute of Technology Jodhpur. An authentic Windows XP Luna Edition cloud operating experience for student builders.",
   keywords: [
     "AWS",
     "AWS Student Builder Group",
@@ -25,16 +25,16 @@ export const metadata: Metadata = {
     "Cloud Computing",
     "DevOps",
     "Software Engineering",
-    "Bedrock",
-    "Builder OS",
+    "Windows XP",
+    "Bliss",
   ],
   authors: [{ name: "AWS Student Builder Group at IIT Jodhpur" }],
   openGraph: {
-    title: "AWS Builder OS — IIT Jodhpur",
+    title: "Windows XP — AWS Builder Edition (IIT Jodhpur)",
     description:
-      "A macOS-inspired cloud operating system built specifically for the AWS technical builder community at IIT Jodhpur.",
+      "A nostalgic Windows XP Luna Edition cloud operating system built for the technical builder community at IIT Jodhpur.",
     url: "https://aws-sbg-iitj.ac.in",
-    siteName: "AWS Builder OS — IIT Jodhpur",
+    siteName: "Windows XP — AWS Builder Edition",
     images: [
       {
         url: "/brand/aws-sbg-theme-poster.png",

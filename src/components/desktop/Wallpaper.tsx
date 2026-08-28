@@ -26,84 +26,199 @@ export const Wallpaper: React.FC<WallpaperProps> = ({ theme = "sky" }) => {
     };
     window.addEventListener("resize", handleResize);
 
-    // Drifting realistic volumetric clouds
-    const clouds = Array.from({ length: 9 }, () => ({
+    // Drifting Puffy Clouds
+    const cloudCount = 6;
+    const clouds = Array.from({ length: cloudCount }, () => ({
       x: Math.random() * width,
-      y: Math.random() * height * 0.75,
-      vx: (Math.random() * 0.16 + 0.05) * (Math.random() > 0.4 ? 1 : -1),
-      radius: Math.random() * 280 + 160,
-      opacity: Math.random() * 0.28 + 0.22,
-      isSunGlow: Math.random() > 0.6,
+      y: Math.random() * (height * 0.4) + 20,
+      vx: (Math.random() * 0.15 + 0.05),
+      scale: Math.random() * 0.7 + 0.8,
     }));
 
     const render = () => {
       ctx.clearRect(0, 0, width, height);
 
-      // Light Sky Blue Atmospheric Gradient (Best One: Crisp daylight sky with horizon glow)
-      const bgGrad = ctx.createLinearGradient(0, 0, 0, height);
+      // 1. Sky Gradient
+      const skyGrad = ctx.createLinearGradient(0, 0, 0, height * 0.75);
       if (theme === "midnight") {
-        bgGrad.addColorStop(0, "#080c16");
-        bgGrad.addColorStop(0.5, "#0b1222");
-        bgGrad.addColorStop(1, "#070a12");
+        skyGrad.addColorStop(0, "#050b18");
+        skyGrad.addColorStop(0.5, "#0b1938");
+        skyGrad.addColorStop(1, "#122a5a");
       } else if (theme === "azure") {
-        bgGrad.addColorStop(0, "#0284c7");
-        bgGrad.addColorStop(0.4, "#0ea5e9");
-        bgGrad.addColorStop(0.8, "#7dd3fc");
-        bgGrad.addColorStop(1, "#bae6fd");
+        skyGrad.addColorStop(0, "#0047ba");
+        skyGrad.addColorStop(0.4, "#006ee6");
+        skyGrad.addColorStop(0.8, "#3aa6ff");
+        skyGrad.addColorStop(1, "#99d6ff");
       } else {
-        // Default: Light Theme Sky Blue (Crisp, modern, airy, ethereal)
-        bgGrad.addColorStop(0, "#0284c7"); // Deep Azure peak
-        bgGrad.addColorStop(0.28, "#0ea5e9"); // Sky Blue 500
-        bgGrad.addColorStop(0.62, "#38bdf8"); // Sky Blue 400
-        bgGrad.addColorStop(0.88, "#7dd3fc"); // Sky Blue 300
-        bgGrad.addColorStop(1, "#e0f2fe"); // Luminous daylight cloud base
+        // Classic Windows XP Bliss Sky (Rich Radiant Azure)
+        skyGrad.addColorStop(0, "#084999");
+        skyGrad.addColorStop(0.25, "#1565c0");
+        skyGrad.addColorStop(0.55, "#2196f3");
+        skyGrad.addColorStop(0.85, "#64b5f6");
+        skyGrad.addColorStop(1, "#bbdefb");
       }
-      ctx.fillStyle = bgGrad;
+      ctx.fillStyle = skyGrad;
       ctx.fillRect(0, 0, width, height);
 
-      // Sun / Ambient highlight in upper right
+      // Sun Ambient Highlight in Upper Right
       if (theme !== "midnight") {
         const sunGrad = ctx.createRadialGradient(
-          width * 0.85,
-          height * 0.15,
+          width * 0.82,
+          height * 0.18,
           0,
-          width * 0.85,
-          height * 0.15,
-          width * 0.5
+          width * 0.82,
+          height * 0.18,
+          width * 0.4
         );
-        sunGrad.addColorStop(0, "rgba(255, 255, 255, 0.4)");
-        sunGrad.addColorStop(0.4, "rgba(224, 242, 254, 0.2)");
+        sunGrad.addColorStop(0, "rgba(255, 255, 255, 0.45)");
+        sunGrad.addColorStop(0.4, "rgba(255, 255, 240, 0.2)");
         sunGrad.addColorStop(1, "rgba(255, 255, 255, 0)");
         ctx.fillStyle = sunGrad;
         ctx.fillRect(0, 0, width, height);
       }
 
-      // Floating clouds
-      for (const c of clouds) {
-        c.x += c.vx;
-        if (c.x - c.radius > width) c.x = -c.radius;
-        if (c.x + c.radius < 0) c.x = width + c.radius;
-
-        const radGrad = ctx.createRadialGradient(c.x, c.y, 0, c.x, c.y, c.radius);
-        if (theme === "midnight") {
-          radGrad.addColorStop(0, "rgba(14, 165, 233, 0.04)");
-          radGrad.addColorStop(1, "rgba(0, 0, 0, 0)");
-        } else {
-          // Soft bright white and light azure cloud puffs
-          const colorCenter = c.isSunGlow
-            ? `rgba(255, 255, 255, ${c.opacity * 1.2})`
-            : `rgba(240, 249, 255, ${c.opacity})`;
-          const colorMid = `rgba(224, 242, 254, ${c.opacity * 0.5})`;
-          radGrad.addColorStop(0, colorCenter);
-          radGrad.addColorStop(0.6, colorMid);
-          radGrad.addColorStop(1, "rgba(255, 255, 255, 0)");
+      // 2. Floating Puffy Cumulus Clouds
+      clouds.forEach((cloud) => {
+        cloud.x += cloud.vx;
+        if (cloud.x - 250 > width) {
+          cloud.x = -250;
+          cloud.y = Math.random() * (height * 0.4) + 20;
         }
 
-        ctx.fillStyle = radGrad;
-        ctx.beginPath();
-        ctx.arc(c.x, c.y, c.radius, 0, Math.PI * 2);
-        ctx.fill();
+        ctx.save();
+        ctx.translate(cloud.x, cloud.y);
+        ctx.scale(cloud.scale, cloud.scale);
+
+        // Multiple overlapping soft circles to build a cumulus puff
+        const puffs = [
+          { cx: 0, cy: 0, r: 40, a: 0.75 },
+          { cx: 35, cy: -10, r: 48, a: 0.85 },
+          { cx: 75, cy: -8, r: 42, a: 0.8 },
+          { cx: 105, cy: 5, r: 35, a: 0.7 },
+          { cx: 45, cy: 12, r: 38, a: 0.65 },
+          { cx: -25, cy: 10, r: 30, a: 0.6 },
+        ];
+
+        puffs.forEach((p) => {
+          const puffGrad = ctx.createRadialGradient(
+            p.cx - 5,
+            p.cy - 8,
+            0,
+            p.cx,
+            p.cy,
+            p.r
+          );
+          if (theme === "midnight") {
+            puffGrad.addColorStop(0, `rgba(180, 210, 255, ${p.a * 0.15})`);
+            puffGrad.addColorStop(1, "rgba(0, 0, 0, 0)");
+          } else {
+            puffGrad.addColorStop(0, `rgba(255, 255, 255, ${p.a * 0.95})`);
+            puffGrad.addColorStop(0.6, `rgba(240, 248, 255, ${p.a * 0.75})`);
+            puffGrad.addColorStop(1, "rgba(255, 255, 255, 0)");
+          }
+          ctx.fillStyle = puffGrad;
+          ctx.beginPath();
+          ctx.arc(p.cx, p.cy, p.r, 0, Math.PI * 2);
+          ctx.fill();
+        });
+
+        ctx.restore();
+      });
+
+      // 3. Iconic Windows XP Bliss Rolling Green Hills (Layered Terrain)
+
+      // Background Hill (Soft muted depth)
+      ctx.beginPath();
+      ctx.moveTo(0, height * 0.58);
+      ctx.bezierCurveTo(
+        width * 0.25, height * 0.52,
+        width * 0.55, height * 0.62,
+        width, height * 0.55
+      );
+      ctx.lineTo(width, height);
+      ctx.lineTo(0, height);
+      ctx.closePath();
+
+      const hillBgGrad = ctx.createLinearGradient(0, height * 0.5, 0, height);
+      if (theme === "midnight") {
+        hillBgGrad.addColorStop(0, "#081b1e");
+        hillBgGrad.addColorStop(1, "#040e10");
+      } else if (theme === "azure") {
+        hillBgGrad.addColorStop(0, "#026aa2");
+        hillBgGrad.addColorStop(1, "#034870");
+      } else {
+        // Distant soft green ridge
+        hillBgGrad.addColorStop(0, "#568e22");
+        hillBgGrad.addColorStop(0.5, "#487a1c");
+        hillBgGrad.addColorStop(1, "#386214");
       }
+      ctx.fillStyle = hillBgGrad;
+      ctx.fill();
+
+      // Midground Main Rolling Hill (The signature steep Bliss hill)
+      ctx.beginPath();
+      ctx.moveTo(0, height * 0.68);
+      ctx.bezierCurveTo(
+        width * 0.28, height * 0.48,
+        width * 0.68, height * 0.56,
+        width, height * 0.72
+      );
+      ctx.lineTo(width, height);
+      ctx.lineTo(0, height);
+      ctx.closePath();
+
+      const hillMidGrad = ctx.createLinearGradient(
+        width * 0.28, height * 0.48,
+        width * 0.6, height
+      );
+      if (theme === "midnight") {
+        hillMidGrad.addColorStop(0, "#0d2b27");
+        hillMidGrad.addColorStop(0.4, "#091e1c");
+        hillMidGrad.addColorStop(1, "#040d0c");
+      } else if (theme === "azure") {
+        hillMidGrad.addColorStop(0, "#0284c7");
+        hillMidGrad.addColorStop(0.5, "#0369a1");
+        hillMidGrad.addColorStop(1, "#075985");
+      } else {
+        // Lush Vibrant Windows XP Grass
+        hillMidGrad.addColorStop(0, "#8ecf38"); // Sunlit bright grass peak
+        hillMidGrad.addColorStop(0.2, "#74b827");
+        hillMidGrad.addColorStop(0.55, "#529117");
+        hillMidGrad.addColorStop(0.85, "#3d730e");
+        hillMidGrad.addColorStop(1, "#2b5608");
+      }
+      ctx.fillStyle = hillMidGrad;
+      ctx.fill();
+
+      // Foreground Right Hill Crest (Adds classic Bliss 3D contour)
+      ctx.beginPath();
+      ctx.moveTo(width * 0.38, height);
+      ctx.bezierCurveTo(
+        width * 0.55, height * 0.65,
+        width * 0.85, height * 0.59,
+        width, height * 0.64
+      );
+      ctx.lineTo(width, height);
+      ctx.closePath();
+
+      const hillFgGrad = ctx.createLinearGradient(
+        width * 0.75, height * 0.59,
+        width * 0.85, height
+      );
+      if (theme === "midnight") {
+        hillFgGrad.addColorStop(0, "#103830");
+        hillFgGrad.addColorStop(1, "#061512");
+      } else if (theme === "azure") {
+        hillFgGrad.addColorStop(0, "#38bdf8");
+        hillFgGrad.addColorStop(1, "#0284c7");
+      } else {
+        hillFgGrad.addColorStop(0, "#9de03f"); // Warm sunny highlight
+        hillFgGrad.addColorStop(0.3, "#7cbd25");
+        hillFgGrad.addColorStop(0.7, "#589816");
+        hillFgGrad.addColorStop(1, "#366b0a");
+      }
+      ctx.fillStyle = hillFgGrad;
+      ctx.fill();
 
       animId = requestAnimationFrame(render);
     };
@@ -118,21 +233,11 @@ export const Wallpaper: React.FC<WallpaperProps> = ({ theme = "sky" }) => {
 
   return (
     <div className="absolute inset-0 pointer-events-none select-none z-0 overflow-hidden">
-      {/* Dynamic canvas */}
+      {/* Dynamic Bliss Terrain Canvas */}
       <canvas ref={canvasRef} className="absolute inset-0" />
 
-      {/* Blueprint Grid lines with modular squares */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(2,132,199,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(2,132,199,0.08)_1px,transparent_1px)] bg-[size:42px_42px]" />
-
-      {/* Subtle diagonal micro-dots */}
-      <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#0369a1_1px,transparent_1px)] [background-size:16px_16px]" />
-
-      {/* Center glowing logo watermark */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.05] pointer-events-none scale-150">
-        <div className="w-96 h-96 border-4 border-sky-600 rounded-3xl rotate-12 flex items-center justify-center">
-          <div className="w-64 h-64 border-2 border-white rounded-2xl -rotate-12" />
-        </div>
-      </div>
+      {/* Subtle blueprint grid overlay */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[size:48px_48px]" />
     </div>
   );
 };

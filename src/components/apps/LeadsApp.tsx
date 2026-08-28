@@ -71,37 +71,41 @@ export const LeadsApp: React.FC = () => {
 
   return (
     <div className="flex flex-col h-full font-sans">
-      {/* Finder Top Toolbar */}
-      <div className="h-12 px-4 border-b border-slate-800 bg-slate-900/60 flex items-center justify-between gap-4 select-none">
-        <div className="flex items-center gap-2 text-xs text-slate-400 font-mono">
-          <Folder className="w-4 h-4 text-sky-400" />
-          <span>Roster</span>
-          <ChevronRight className="w-3 h-3 text-slate-600" />
-          <span className="text-slate-200">
-            {categories.find((c) => c.id === selectedCategory)?.label || selectedCategory}
-          </span>
-          <span className="text-slate-600">/</span>
-          <span className="text-slate-500 text-[11px]">
-            {isInternView ? `${filteredInterns.length} Interns` : `${filteredMembers.length} Members`}
+      {/* Windows 11 File Explorer Command Bar & Breadcrumbs */}
+      <div className="h-11 px-4 border-b border-slate-800 bg-slate-900/80 flex items-center justify-between gap-3 select-none">
+        {/* Windows 11 Breadcrumbs */}
+        <div className="flex items-center gap-1.5 text-xs text-slate-300 font-sans min-w-0">
+          <span className="text-slate-400 hover:text-slate-200 cursor-pointer">This PC</span>
+          <ChevronRight className="w-3 h-3 text-slate-500 shrink-0" />
+          <span className="text-slate-400 hover:text-slate-200 cursor-pointer">AWS SBG Node</span>
+          <ChevronRight className="w-3 h-3 text-slate-500 shrink-0" />
+          <div className="flex items-center gap-1 px-2 py-0.5 rounded bg-slate-950/60 border border-slate-800 text-sky-400 font-medium">
+            <Folder className="w-3.5 h-3.5 text-sky-400 shrink-0" />
+            <span className="truncate">
+              {categories.find((c) => c.id === selectedCategory)?.label || selectedCategory}
+            </span>
+          </div>
+          <span className="text-slate-500 text-[11px] font-mono hidden sm:inline ml-1">
+            ({isInternView ? `${filteredInterns.length} Interns` : `${filteredMembers.length} Members`})
           </span>
         </div>
 
-        {/* Search Input */}
-        <div className="relative w-64">
-          <Search className="w-3.5 h-3.5 text-slate-500 absolute left-2.5 top-1/2 -translate-y-1/2" />
+        {/* Windows Search Bar */}
+        <div className="relative w-60 shrink-0">
+          <Search className="w-3.5 h-3.5 text-slate-400 absolute left-2.5 top-1/2 -translate-y-1/2" />
           <input
             type="text"
-            placeholder={isInternView ? "Search intern or college..." : "Filter by name, track..."}
+            placeholder={isInternView ? "Search intern or college..." : "Search leads, roles..."}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-8 pr-3 py-1 bg-slate-950/60 border border-slate-800 rounded-lg text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-sky-500 font-mono"
+            className="w-full pl-8 pr-3 py-1 bg-slate-950/70 border border-slate-700/80 rounded-md text-xs text-slate-200 placeholder-slate-400 focus:outline-none focus:border-sky-400 font-sans"
           />
         </div>
       </div>
 
-      {/* Finder Body: Sidebar + Main List + Inspector Pane */}
+      {/* File Explorer Body: Sidebar + Main List + Inspector Pane */}
       <div className="flex-1 flex overflow-hidden">
-        {/* Left Sidebar (macOS Finder style) */}
+        {/* Left Navigation Pane (Windows 11 File Explorer style) */}
         <div className="w-52 border-r border-slate-800 bg-slate-950/50 p-3 space-y-1 hidden sm:block select-none overflow-y-auto shrink-0">
           <p className="px-2 pb-1.5 text-[10px] font-mono uppercase tracking-wider text-slate-500">
             Tiers & Teams (2026-27)

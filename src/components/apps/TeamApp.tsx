@@ -44,19 +44,21 @@ export const TeamApp: React.FC = () => {
 
   return (
     <div className="flex flex-col h-full font-sans select-none">
-      {/* Path Bar / Breadcrumbs */}
-      <div className="h-10 px-4 border-b border-slate-800 bg-slate-900/60 flex items-center justify-between text-xs text-slate-400 font-mono">
+      {/* Windows 11 File Explorer Path Bar / Breadcrumbs */}
+      <div className="h-10 px-4 border-b border-slate-800 bg-slate-900/70 flex items-center justify-between text-xs text-slate-300 font-sans">
         <div className="flex items-center gap-1.5 overflow-x-auto">
-          <HardDrive className="w-3.5 h-3.5 text-slate-500" />
-          <span>Macintosh HD</span>
+          <HardDrive className="w-3.5 h-3.5 text-sky-400" />
+          <span className="text-slate-400 hover:text-slate-200 cursor-pointer">This PC</span>
+          <ChevronRight className="w-3 h-3 text-slate-600" />
+          <span className="text-slate-400 hover:text-slate-200 cursor-pointer">Local Disk (C:)</span>
           <ChevronRight className="w-3 h-3 text-slate-600" />
           <Folder className="w-3.5 h-3.5 text-sky-400" />
-          <span>Team</span>
+          <span className="text-slate-300">AWS-SBG</span>
           <ChevronRight className="w-3 h-3 text-slate-600" />
-          <span className="text-sky-300 font-semibold">{activeFolder}</span>
+          <span className="text-sky-400 font-medium">{activeFolder}</span>
         </div>
 
-        <div className="text-[10px] text-slate-500 hidden sm:block">
+        <div className="text-[10px] font-mono text-slate-500 hidden sm:block">
           {isInternFolder ? `${INTERNS_DATA.length} Interns` : `${folderMembers.length} Core Members`}
         </div>
       </div>

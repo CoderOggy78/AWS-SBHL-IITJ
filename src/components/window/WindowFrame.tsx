@@ -2,7 +2,24 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import { AppId, WindowState } from "@/types/os";
-import { Minus, Square, X, Maximize2 } from "lucide-react";
+import {
+  Minus,
+  Square,
+  Copy,
+  X,
+  Home,
+  Info,
+  UserCheck,
+  Users,
+  FolderGit2,
+  Compass,
+  Award,
+  BookOpen,
+  Briefcase,
+  Terminal,
+  Activity,
+  Mail,
+} from "lucide-react";
 
 interface WindowFrameProps {
   windowState: WindowState;
@@ -13,6 +30,21 @@ interface WindowFrameProps {
   onMaximize: () => void;
   children: React.ReactNode;
 }
+
+const APP_ICONS: Record<AppId, React.ElementType> = {
+  home: Home,
+  about: Info,
+  leads: UserCheck,
+  team: Users,
+  projects: FolderGit2,
+  roadmap: Compass,
+  certifications: Award,
+  resources: BookOpen,
+  internships: Briefcase,
+  terminal: Terminal,
+  feed: Activity,
+  contact: Mail,
+};
 
 export const WindowFrame: React.FC<WindowFrameProps> = ({
   windowState,
@@ -27,14 +59,12 @@ export const WindowFrame: React.FC<WindowFrameProps> = ({
   const [isDragging, setIsDragging] = useState(false);
   const dragStartRef = useRef({ mouseX: 0, mouseY: 0, winX: 0, winY: 0 });
 
-  // Update if external state resets position
   useEffect(() => {
     setPosition(windowState.position);
   }, [windowState.position]);
 
   const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
-    // Only drag from title bar
-    if ((e.target as HTMLElement).closest(".window-control-btn")) return;
+    if ((e.target as HTMLElement).closest(".xp-win-btn")) return;
 
     onFocus();
     if (windowState.isMaximized) return;
@@ -54,8 +84,8 @@ export const WindowFrame: React.FC<WindowFrameProps> = ({
       const dx = e.clientX - dragStartRef.current.mouseX;
       const dy = e.clientY - dragStartRef.current.mouseY;
 
-      const newX = Math.max(10, Math.min(window.innerWidth - 300, dragStartRef.current.winX + dx));
-      const newY = Math.max(36, Math.min(window.innerHeight - 100, dragStartRef.current.winY + dy));
+      const newX = Math.max(0, Math.min(window.innerWidth - 200, dragStartRef.current.winX + dx));
+      const newY = Math.max(0, Math.min(window.innerHeight - 80, dragStartRef.current.winY + dy));
 
       setPosition({ x: newX, y: newY });
     };
@@ -80,15 +110,17 @@ export const WindowFrame: React.FC<WindowFrameProps> = ({
   }
 
   const isMax = windowState.isMaximized;
+  const AppIconComponent = APP_ICONS[windowState.id] || FolderGit2;
 
   const style: React.CSSProperties = isMax
     ? {
         position: "fixed",
-        top: "32px",
+        top: "0px",
         left: "0px",
         width: "100vw",
-        height: "calc(100vh - 32px - 72px)",
+        height: "calc(100vh - 30px)", // 30px for XP Taskbar
         zIndex: windowState.zIndex,
+        borderRadius: "0px",
       }
     : {
         position: "fixed",
@@ -96,8 +128,8 @@ export const WindowFrame: React.FC<WindowFrameProps> = ({
         left: `${position.x}px`,
         width: `${windowState.size.width}px`,
         height: `${windowState.size.height}px`,
-        maxWidth: "calc(100vw - 32px)",
-        maxHeight: "calc(100vh - 120px)",
+        maxWidth: "calc(100vw - 16px)",
+        maxHeight: "calc(100vh - 46px)",
         zIndex: windowState.zIndex,
       };
 
@@ -105,78 +137,88 @@ export const WindowFrame: React.FC<WindowFrameProps> = ({
     <div
       style={style}
       onClick={onFocus}
-      className={`rounded-2xl border transition-all duration-200 overflow-hidden flex flex-col backdrop-blur-2xl ${
+      className={`flex flex-col shadow-[0_12px_32px_rgba(0,0,0,0.6)] ${
+        isMax ? "border-0" : "rounded-t-[8px] border-[3px]"
+      } ${
         isActive
-          ? "border-sky-400/50 bg-slate-950/90 shadow-[0_24px_70px_rgba(2,132,199,0.3)] ring-1 ring-sky-400/30"
-          : "border-slate-800/90 bg-slate-950/80 shadow-[0_12px_40px_rgba(0,0,0,0.5)]"
+          ? "border-[#0055ea] ring-1 ring-[#003882]"
+          : "border-[#7a96df] opacity-95"
       }`}
     >
-      {/* Title bar / Header */}
+      {/* Windows XP Luna Blue Glossy Title Bar */}
       <div
         onMouseDown={handleMouseDown}
-        className={`h-10 px-4 flex items-center justify-between select-none cursor-grab active:cursor-grabbing border-b ${
+        onDoubleClick={onMaximize}
+        className={`h-[28px] px-2 flex items-center justify-between select-none cursor-default ${
+          isMax ? "" : "rounded-t-[5px]"
+        } ${
           isActive
-            ? "border-slate-800 bg-slate-900/80"
-            : "border-slate-900 bg-slate-950/60"
+            ? "bg-gradient-to-r from-[#0058ee] via-[#267df8] to-[#0050d8] text-white shadow-[inset_0_1px_rgba(255,255,255,0.6)]"
+            : "bg-gradient-to-r from-[#759cf6] via-[#8baeff] to-[#7398f0] text-slate-200"
         }`}
       >
-        {/* macOS Traffic Lights - Comfortably Sized for Easy Clicking */}
-        <div className="flex items-center gap-2.5 group/lights py-1">
-          {/* Close (Red) */}
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              onClose();
-            }}
-            aria-label="Close window"
-            title="Close"
-            className="window-control-btn w-3.5 h-3.5 rounded-full bg-[#ff5f56] hover:brightness-110 flex items-center justify-center text-black/80 focus:outline-none transition-all shadow-sm active:scale-90"
+        {/* Left Side: Icon + Title */}
+        <div className="flex items-center gap-1.5 min-w-0 pr-2 pointer-events-none">
+          <div className="w-4 h-4 rounded-sm flex items-center justify-center shrink-0">
+            <AppIconComponent className="w-3.5 h-3.5 text-white drop-shadow-sm" />
+          </div>
+          <span
+            className="text-xs font-bold tracking-tight truncate drop-shadow-[1px_1px_1px_rgba(0,0,0,0.8)]"
+            style={{ textShadow: "1px 1px 1px #002266" }}
           >
-            <X className="w-2.5 h-2.5 opacity-0 group-hover/lights:opacity-100 transition-opacity stroke-[2.5]" />
-          </button>
+            {windowState.title}
+          </span>
+        </div>
 
-          {/* Minimize (Yellow) */}
+        {/* Right Side: Iconic 3D Luna XP Window Buttons */}
+        <div className="flex items-center gap-1 shrink-0">
+          {/* Minimize Button */}
           <button
             onClick={(e) => {
               e.stopPropagation();
               onMinimize();
             }}
-            aria-label="Minimize window"
+            aria-label="Minimize"
             title="Minimize"
-            className="window-control-btn w-3.5 h-3.5 rounded-full bg-[#ffbd2e] hover:brightness-110 flex items-center justify-center text-black/80 focus:outline-none transition-all shadow-sm active:scale-90"
+            className="xp-win-btn w-[21px] h-[21px] rounded-[3px] bg-[#0050d8] hover:brightness-110 active:brightness-90 border border-white/80 shadow-[inset_1px_1px_#8bb8ff,inset_-1px_-1px_#002868] flex items-center justify-center text-white focus:outline-none"
           >
-            <Minus className="w-2.5 h-2.5 opacity-0 group-hover/lights:opacity-100 transition-opacity stroke-[2.5]" />
+            <Minus className="w-3 h-3 stroke-[2.5]" />
           </button>
 
-          {/* Maximize (Green) */}
+          {/* Maximize / Restore Button */}
           <button
             onClick={(e) => {
               e.stopPropagation();
               onMaximize();
             }}
-            aria-label="Maximize window"
-            title="Maximize"
-            className="window-control-btn w-3.5 h-3.5 rounded-full bg-[#27c93f] hover:brightness-110 flex items-center justify-center text-black/80 focus:outline-none transition-all shadow-sm active:scale-90"
+            aria-label={isMax ? "Restore" : "Maximize"}
+            title={isMax ? "Restore" : "Maximize"}
+            className="xp-win-btn w-[21px] h-[21px] rounded-[3px] bg-[#0050d8] hover:brightness-110 active:brightness-90 border border-white/80 shadow-[inset_1px_1px_#8bb8ff,inset_-1px_-1px_#002868] flex items-center justify-center text-white focus:outline-none"
           >
-            <Maximize2 className="w-2 h-2 opacity-0 group-hover/lights:opacity-100 transition-opacity stroke-[2.5]" />
+            {isMax ? (
+              <Copy className="w-2.5 h-2.5 stroke-[2] -rotate-90" />
+            ) : (
+              <Square className="w-2.5 h-2.5 stroke-[2]" />
+            )}
           </button>
-        </div>
 
-        {/* Window Title */}
-        <div className="flex items-center gap-2 text-xs font-medium text-slate-300 pointer-events-none truncate max-w-[65%]">
-          <span>{windowState.title}</span>
-        </div>
-
-        {/* Right side spacer / indicator */}
-        <div className="w-12 flex justify-end">
-          <span className="text-[10px] font-mono text-slate-600 uppercase">
-            IITJ
-          </span>
+          {/* Close Button (Iconic Crimson Red) */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              onClose();
+            }}
+            aria-label="Close"
+            title="Close"
+            className="xp-win-btn w-[21px] h-[21px] rounded-[3px] bg-[#d13b19] hover:bg-[#e04322] active:bg-[#b02e12] border border-white/90 shadow-[inset_1px_1px_#ff9580,inset_-1px_-1px_#6b1502] flex items-center justify-center text-white focus:outline-none ml-0.5"
+          >
+            <X className="w-3.5 h-3.5 stroke-[2.5]" />
+          </button>
         </div>
       </div>
 
       {/* Window Body Content */}
-      <div className="flex-1 overflow-auto bg-slate-950/40 text-slate-100">
+      <div className="flex-1 overflow-auto bg-[#080f1d] text-slate-100 flex flex-col border-t border-[#003882]">
         {children}
       </div>
     </div>
