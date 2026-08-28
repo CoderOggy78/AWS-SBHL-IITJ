@@ -5,8 +5,8 @@ export const INTERNS_DATA: InternItem[] = [
     id: "intern-1",
     name: "Sanjeevani Pawar",
     institute: "Shivaji University",
-    track: "Content Writing",
-    domain: "Content Writing",
+    track: "Software Engineering",
+    domain: "Software Engineering",
     offerLetter: "Sanjeevani Pawar",
   },
   {
