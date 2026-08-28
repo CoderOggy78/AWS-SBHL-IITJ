@@ -1,0 +1,58 @@
+import { ActivityFeedItem } from "@/types/os";
+
+export const ACTIVITY_FEED: ActivityFeedItem[] = [
+  {
+    id: "feed-1",
+    timestamp: "Just now",
+    action: "System Boot Initialized",
+    detail: "AWS Builder OS v1.0 connected to IIT Jodhpur cloud node successfully.",
+    category: "community",
+    author: "sys-daemon",
+    hash: "c7f91a2",
+  },
+  {
+    id: "feed-2",
+    timestamp: "2 hours ago",
+    action: "Workshop Registration Open",
+    detail: "GenAI & RAG on Amazon Bedrock hands-on immersion opened on Meetup.",
+    category: "event",
+    author: "Vishwanath Barve",
+    hash: "b83e401",
+  },
+  {
+    id: "feed-3",
+    timestamp: "1 day ago",
+    action: "Architecture Spec Committed",
+    detail: "Campus RAG Navigator: OpenSearch Serverless k-NN index blueprint added.",
+    category: "repo",
+    author: "IITJ Technical Team",
+    hash: "e441c90",
+  },
+  {
+    id: "feed-4",
+    timestamp: "2 days ago",
+    action: "Cloud Library Updated",
+    detail: "Added AWS CDK TypeScript starter blueprint and Fargate container guides.",
+    category: "resource",
+    author: "Armaan Kachhawa",
+    hash: "91d30fb",
+  },
+  {
+    id: "feed-5",
+    timestamp: "3 days ago",
+    action: "Community Channel Synchronized",
+    detail: "Official WhatsApp builder cohort crossed milestone for semester onboarding.",
+    category: "community",
+    author: "Tanmay Da",
+    hash: "f104d55",
+  },
+  {
+    id: "feed-6",
+    timestamp: "5 days ago",
+    action: "Sensor Telemetry Deployed",
+    detail: "IITJ Solar & Sensor Stream pipeline successfully verified in sandbox VPC.",
+    category: "project",
+    author: "Ashwani Dwivedi",
+    hash: "3a8862e",
+  },
+];
