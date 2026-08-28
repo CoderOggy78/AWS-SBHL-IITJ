@@ -13,7 +13,6 @@ import {
   Award,
   ExternalLink,
   HardDrive,
-  Trash2,
   Globe,
   Folder,
   Network,
@@ -30,7 +29,6 @@ interface DesktopShortcut {
   iconBg: string;
   iconColor: string;
   externalUrl?: string;
-  isRecycle?: boolean;
 }
 
 // Column 1 Icons (Main System & Programs)
@@ -55,13 +53,6 @@ const COLUMN_1_SHORTCUTS: DesktopShortcut[] = [
     icon: Network,
     iconBg: "from-[#0f9d58] to-[#0b6c3c]",
     iconColor: "text-white",
-  },
-  {
-    label: "Recycle Bin",
-    icon: Trash2,
-    iconBg: "from-[#607d8b] to-[#37474f]",
-    iconColor: "text-slate-200",
-    isRecycle: true,
   },
   {
     label: "Internet Explorer",
@@ -93,7 +84,7 @@ const COLUMN_1_SHORTCUTS: DesktopShortcut[] = [
   },
 ];
 
-// Column 2 Icons (The 3 bottom shortcuts moved to a new column)
+// Column 2 Icons (Additional programs and documentation)
 const COLUMN_2_SHORTCUTS: DesktopShortcut[] = [
   {
     id: "resources",
@@ -156,8 +147,6 @@ export const DesktopIcons: React.FC<DesktopIconsProps> = ({ onOpenApp }) => {
         onClick={() => {
           if (item.id) {
             onOpenApp(item.id);
-          } else if (item.isRecycle) {
-            onOpenApp("about");
           }
         }}
         className="group flex flex-col items-center gap-1 w-20 p-1.5 rounded hover:bg-[#0055ea]/30 active:bg-[#0055ea]/50 transition-all text-center focus:outline-none"
@@ -184,7 +173,7 @@ export const DesktopIcons: React.FC<DesktopIconsProps> = ({ onOpenApp }) => {
         {COLUMN_1_SHORTCUTS.map((item, idx) => renderShortcut(item, idx))}
       </div>
 
-      {/* Column 2 (Bottom 3 shortcuts in their own column) */}
+      {/* Column 2 */}
       <div className="flex flex-col gap-2">
         {COLUMN_2_SHORTCUTS.map((item, idx) => renderShortcut(item, idx + 10))}
       </div>
