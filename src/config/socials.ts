@@ -5,6 +5,6 @@ export const SOCIAL_LINKS = {
   email: "mailto:aws.sbg@iitj.ac.in",
   iitj: "https://www.iitj.ac.in",
   communityName: "AWS Student Builder Group at IIT Jodhpur",
-  tagline: "Build on AWS. Learn Together. Create What’s Next.",
+  tagline: "Build on AWS. Learn Together. Create What’s Next :)",
   location: "Indian Institute of Technology Jodhpur, Rajasthan, India",
 } as const;
