@@ -18,14 +18,16 @@ import {
 } from "lucide-react";
 import { SOCIAL_LINKS } from "@/config/socials";
 
+import { DarkWallpaperTheme } from "@/components/desktop/Wallpaper";
+
 interface MenuBarProps {
   activeAppId: AppId | null;
   onOpenApp: (id: AppId) => void;
   onOpenSpotlight: () => void;
   onToggleNotifications: () => void;
   unreadNotifications: number;
-  currentTheme?: "sky" | "azure" | "midnight";
-  onSelectTheme?: (theme: "sky" | "azure" | "midnight") => void;
+  currentTheme?: DarkWallpaperTheme;
+  onSelectTheme?: (theme: DarkWallpaperTheme) => void;
 }
 
 export const MenuBar: React.FC<MenuBarProps> = ({
@@ -34,7 +36,7 @@ export const MenuBar: React.FC<MenuBarProps> = ({
   onOpenSpotlight,
   onToggleNotifications,
   unreadNotifications,
-  currentTheme = "sky",
+  currentTheme = "midnight",
   onSelectTheme,
 }) => {
   const [timeString, setTimeString] = useState<string>("");
@@ -143,26 +145,6 @@ export const MenuBar: React.FC<MenuBarProps> = ({
                   </span>
                   <div className="grid grid-cols-3 gap-1">
                     <button
-                      onClick={() => onSelectTheme?.("sky")}
-                      className={`px-2 py-1 rounded text-[10px] font-mono text-center transition-all ${
-                        currentTheme === "sky"
-                          ? "bg-sky-500 text-white font-semibold shadow-sm"
-                          : "bg-slate-800 text-slate-400 hover:text-slate-200"
-                      }`}
-                    >
-                      Sky Blue
-                    </button>
-                    <button
-                      onClick={() => onSelectTheme?.("azure")}
-                      className={`px-2 py-1 rounded text-[10px] font-mono text-center transition-all ${
-                        currentTheme === "azure"
-                          ? "bg-sky-500 text-white font-semibold shadow-sm"
-                          : "bg-slate-800 text-slate-400 hover:text-slate-200"
-                      }`}
-                    >
-                      Azure
-                    </button>
-                    <button
                       onClick={() => onSelectTheme?.("midnight")}
                       className={`px-2 py-1 rounded text-[10px] font-mono text-center transition-all ${
                         currentTheme === "midnight"
@@ -171,6 +153,26 @@ export const MenuBar: React.FC<MenuBarProps> = ({
                       }`}
                     >
                       Midnight
+                    </button>
+                    <button
+                      onClick={() => onSelectTheme?.("obsidian")}
+                      className={`px-2 py-1 rounded text-[10px] font-mono text-center transition-all ${
+                        currentTheme === "obsidian"
+                          ? "bg-sky-500 text-white font-semibold shadow-sm"
+                          : "bg-slate-800 text-slate-400 hover:text-slate-200"
+                      }`}
+                    >
+                      Obsidian
+                    </button>
+                    <button
+                      onClick={() => onSelectTheme?.("aurora")}
+                      className={`px-2 py-1 rounded text-[10px] font-mono text-center transition-all ${
+                        currentTheme === "aurora"
+                          ? "bg-sky-500 text-white font-semibold shadow-sm"
+                          : "bg-slate-800 text-slate-400 hover:text-slate-200"
+                      }`}
+                    >
+                      Aurora
                     </button>
                   </div>
                 </div>

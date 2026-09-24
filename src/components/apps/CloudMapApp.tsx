@@ -106,7 +106,7 @@ export const CloudMapApp: React.FC<CloudMapAppProps> = ({ onOpenApp }) => {
             [GATEWAY NODE: LEADERSHIP & COORDINATION]
           </p>
           <p className="text-[11px] text-slate-300">
-            Vishwanath Barve • Armaan Kachhawa • Ashwani Dwivedi • Tanmay Da
+            Vishwanath Barve • Ashwani Dwivedi • Quazi Arqam • Bishal Saha • Rahul
           </p>
         </div>
 

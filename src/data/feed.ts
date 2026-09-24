@@ -34,7 +34,7 @@ export const ACTIVITY_FEED: ActivityFeedItem[] = [
     action: "Cloud Library Updated",
     detail: "Added AWS CDK TypeScript starter blueprint and Fargate container guides.",
     category: "resource",
-    author: "Armaan Kachhawa",
+    author: "Bishal Saha",
     hash: "91d30fb",
   },
   {

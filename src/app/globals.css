@@ -1,67 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,slnt,wdth,wght,ROND@8..144,-10..0,25..150,400..700,0..100&family=Google+Sans+Code:ital,wght@0,400..700;1,400..700&display=swap');
 @import "tailwindcss";
 
 :root {
-  --background: #070b14;
-  --foreground: #f8fafc;
-  --aws-navy: #080d19;
-  --aws-blue: #0ea5e9;
-  --aws-cyan: #38bdf8;
-  --builder-purple: #a855f7;
+  --background: #ffffff;
+  --foreground: #111827;
+  --font-sans: 'Google Sans Flex', 'Google Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'Google Sans Code', 'JetBrains Mono', Menlo, monospace;
 }
 
-@theme inline {
+@theme {
+  --font-sans: 'Google Sans Flex', 'Google Sans', sans-serif;
+  --font-mono: 'Google Sans Code', monospace;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+}
+
+/* Universal Google Sans Flex typography matching Google Antigravity aesthetic */
+html,
+body,
+button,
+input,
+select,
+textarea,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+a,
+div,
+li {
+  font-family: 'Google Sans Flex', 'Google Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  letter-spacing: -0.015em;
+}
+
+code,
+kbd,
+samp,
+pre,
+.font-mono {
+  font-family: 'Google Sans Code', 'JetBrains Mono', Menlo, monospace !important;
+  letter-spacing: normal;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: light;
+  background-color: #ffffff;
 }
 
 body {
-  background: #070b14;
-  color: #f1f5f9;
-  overflow: hidden;
-  user-select: none;
+  background-color: #ffffff;
+  color: #111827;
+  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Custom sleek Windows 11 Fluent scrollbars */
+/* Antigravity Buttons */
+.ag-btn-black {
+  background-color: #000000;
+  color: #ffffff;
+  border-radius: 9999px;
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  padding: 0.625rem 1.375rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease-out;
+  cursor: pointer;
+  border: 1px solid transparent;
+  font-family: 'Google Sans Flex', 'Google Sans', sans-serif;
+}
+
+.ag-btn-black:hover {
+  background-color: #262626;
+  transform: translateY(-1px);
+}
+
+.ag-btn-light {
+  background-color: #f3f4f6;
+  color: #111827;
+  border-radius: 9999px;
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  padding: 0.625rem 1.375rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease-out;
+  cursor: pointer;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  font-family: 'Google Sans Flex', 'Google Sans', sans-serif;
+}
+
+.ag-btn-light:hover {
+  background-color: #e5e7eb;
+  transform: translateY(-1px);
+}
+
+/* Antigravity Card with Pastel Aura Glow (like Images 4 & 5) */
+.ag-card-white {
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 28px;
+  transition: all 0.25s ease-out;
+}
+
+.ag-card-white:hover {
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.08);
+}
+
+.ag-aura-blue {
+  background: radial-gradient(circle at 70% 30%, rgba(56, 189, 248, 0.15) 0%, rgba(219, 234, 254, 0.3) 40%, rgba(255, 255, 255, 0.9) 80%);
+}
+
+.ag-aura-purple {
+  background: radial-gradient(circle at 70% 30%, rgba(168, 85, 247, 0.15) 0%, rgba(243, 232, 255, 0.35) 40%, rgba(255, 255, 255, 0.9) 80%);
+}
+
+.ag-aura-amber {
+  background: radial-gradient(circle at 70% 30%, rgba(251, 191, 36, 0.18) 0%, rgba(254, 243, 199, 0.4) 40%, rgba(255, 255, 255, 0.9) 80%);
+}
+
+.ag-aura-emerald {
+  background: radial-gradient(circle at 70% 30%, rgba(52, 211, 153, 0.15) 0%, rgba(209, 250, 229, 0.35) 40%, rgba(255, 255, 255, 0.9) 80%);
+}
+
+/* Blinking cursor animation from Image 3 */
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.blinking-cursor {
+  display: inline-block;
+  width: 3px;
+  height: 1.15em;
+  vertical-align: -0.15em;
+  margin-left: 2px;
+  background: linear-gradient(180deg, #3186ff 0%, #fc413d 33%, #fbbc04 66%, #00b95c 100%);
+  border-radius: 2px;
+  animation: cursorBlink 0.9s infinite ease-in-out;
+}
+
+/* Clean scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: #f8fafc;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(100, 116, 139, 0.4);
-  border-radius: 4px;
+  background: #cbd5e1;
+  border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(56, 189, 248, 0.7);
+  background: #94a3b8;
 }
 
-/* Windows 11 Fluent Acrylic utility */
-.acrylic-panel {
-  background: rgba(12, 20, 39, 0.85);
-  backdrop-filter: blur(28px);
-  -webkit-backdrop-filter: blur(28px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-/* Hide scrollbar utility */
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-.no-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-/* Subtle selection color */
+/* Selection */
 ::selection {
-  background: rgba(56, 189, 248, 0.35);
-  color: #ffffff;
+  background: rgba(49, 134, 255, 0.2);
+  color: #000000;
 }

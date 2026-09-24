@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { AppId, NotificationItem } from "@/types/os";
+import { DarkWallpaperTheme } from "@/components/desktop/Wallpaper";
 import {
   Volume2,
   VolumeX,
@@ -22,8 +23,8 @@ interface ActionCenterProps {
   onClearNotifications: () => void;
   soundOn: boolean;
   onToggleSound: () => void;
-  currentTheme: "sky" | "azure" | "midnight";
-  onSelectTheme: (theme: "sky" | "azure" | "midnight") => void;
+  currentTheme: DarkWallpaperTheme;
+  onSelectTheme: (theme: DarkWallpaperTheme) => void;
 }
 
 export const ActionCenter: React.FC<ActionCenterProps> = ({
@@ -96,30 +97,10 @@ export const ActionCenter: React.FC<ActionCenterProps> = ({
               {/* Wallpaper Desktop Theme Selector */}
               <div className="p-2.5 rounded bg-white border border-[#7f9db9] space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="font-bold text-slate-900 text-xs">Desktop Theme:</span>
+                  <span className="font-bold text-slate-900 text-xs">Desktop Theme (Dark):</span>
                   <span className="font-mono text-[11px] text-blue-700 uppercase font-semibold">{currentTheme}</span>
                 </div>
                 <div className="grid grid-cols-3 gap-1.5">
-                  <button
-                    onClick={() => onSelectTheme("sky")}
-                    className={`py-1 px-1.5 rounded text-[11px] font-sans font-semibold border transition-all ${
-                      currentTheme === "sky"
-                        ? "bg-[#316ac5] text-white border-[#003882] shadow-inner"
-                        : "bg-[#f1efe2] text-slate-800 border-[#7f9db9] hover:bg-[#e2dfd3]"
-                    }`}
-                  >
-                    Classic Bliss
-                  </button>
-                  <button
-                    onClick={() => onSelectTheme("azure")}
-                    className={`py-1 px-1.5 rounded text-[11px] font-sans font-semibold border transition-all ${
-                      currentTheme === "azure"
-                        ? "bg-[#316ac5] text-white border-[#003882] shadow-inner"
-                        : "bg-[#f1efe2] text-slate-800 border-[#7f9db9] hover:bg-[#e2dfd3]"
-                    }`}
-                  >
-                    Royale Blue
-                  </button>
                   <button
                     onClick={() => onSelectTheme("midnight")}
                     className={`py-1 px-1.5 rounded text-[11px] font-sans font-semibold border transition-all ${
@@ -128,7 +109,27 @@ export const ActionCenter: React.FC<ActionCenterProps> = ({
                         : "bg-[#f1efe2] text-slate-800 border-[#7f9db9] hover:bg-[#e2dfd3]"
                     }`}
                   >
-                    Night Bliss
+                    Midnight Bliss
+                  </button>
+                  <button
+                    onClick={() => onSelectTheme("obsidian")}
+                    className={`py-1 px-1.5 rounded text-[11px] font-sans font-semibold border transition-all ${
+                      currentTheme === "obsidian"
+                        ? "bg-[#316ac5] text-white border-[#003882] shadow-inner"
+                        : "bg-[#f1efe2] text-slate-800 border-[#7f9db9] hover:bg-[#e2dfd3]"
+                    }`}
+                  >
+                    Obsidian Dark
+                  </button>
+                  <button
+                    onClick={() => onSelectTheme("aurora")}
+                    className={`py-1 px-1.5 rounded text-[11px] font-sans font-semibold border transition-all ${
+                      currentTheme === "aurora"
+                        ? "bg-[#316ac5] text-white border-[#003882] shadow-inner"
+                        : "bg-[#f1efe2] text-slate-800 border-[#7f9db9] hover:bg-[#e2dfd3]"
+                    }`}
+                  >
+                    Cyber Aurora
                   </button>
                 </div>
               </div>
