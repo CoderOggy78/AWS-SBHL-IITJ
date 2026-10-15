@@ -10,7 +10,6 @@ import { HalloweenLecturesSection } from "@/components/halloween/HalloweenLectur
 import { HalloweenCertifications } from "@/components/halloween/HalloweenCertifications";
 import { HalloweenFooter } from "@/components/halloween/HalloweenFooter";
 import { HalloweenAtmosphere } from "@/components/halloween/HalloweenAtmosphere";
-import { HalloweenIntroGate } from "@/components/halloween/HalloweenIntroGate";
 
 // Clean Daylight Components (for toggle)
 import { CleanNavbar } from "@/components/antigravity/CleanNavbar";
@@ -28,8 +27,6 @@ export default function HomePage() {
   const [joinModalOpen, setJoinModalOpen] = useState(false);
   // Default to ultra-realistic very dark Halloween theme as requested
   const [theme, setTheme] = useState<"halloween" | "clean">("halloween");
-  // Horror Nightmare Video Intro Gate state
-  const [showIntroGate, setShowIntroGate] = useState(true);
 
   const toggleTheme = () => {
     setTheme((prev) => (prev === "halloween" ? "clean" : "halloween"));
@@ -47,18 +44,12 @@ export default function HomePage() {
     >
       {isHalloween ? (
         <>
-          {/* Horror Cinematic Video Gate Screen (Fantasy Spirit Nightmare Video) */}
-          {showIntroGate && (
-            <HalloweenIntroGate onEnterArena={() => setShowIntroGate(false)} />
-          )}
-
           {/* Spooky Atmospheric Layer (Dripping Blood, Graveyard, Occult Witchcraft Circle, Horror Smiles, Annabelle Doll, Bats, Mist) */}
-          <HalloweenAtmosphere onReplayIntro={() => setShowIntroGate(true)} />
+          <HalloweenAtmosphere />
 
-          {/* Dark Gothic Top Navbar with Blood Drips & Replay Intro button */}
+          {/* Dark Gothic Top Navbar with Blood Drips */}
           <HalloweenNavbar
             onOpenJoinModal={() => setJoinModalOpen(true)}
-            onReplayIntro={() => setShowIntroGate(true)}
           />
 
           <main className="flex-1">
@@ -79,7 +70,7 @@ export default function HomePage() {
           </main>
 
           {/* Gothic Graveyard Footer */}
-          <HalloweenFooter onReplayIntro={() => setShowIntroGate(true)} />
+          <HalloweenFooter />
         </>
       ) : (
         <>

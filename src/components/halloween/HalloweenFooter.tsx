@@ -4,14 +4,10 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { SOCIAL_LINKS } from "@/config/socials";
-import { Flame, Skull, Ghost, Heart, ArrowUp, Film } from "lucide-react";
+import { Flame, Skull, Ghost, Heart, ArrowUp } from "lucide-react";
 import { horrorAudio } from "./HorrorSoundManager";
 
-interface HalloweenFooterProps {
-  onReplayIntro?: () => void;
-}
-
-export const HalloweenFooter: React.FC<HalloweenFooterProps> = ({ onReplayIntro }) => {
+export const HalloweenFooter: React.FC = () => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -75,15 +71,6 @@ export const HalloweenFooter: React.FC<HalloweenFooterProps> = ({ onReplayIntro 
                 <Ghost className="w-3.5 h-3.5" />
                 <span>Witch Cackle</span>
               </button>
-              {onReplayIntro && (
-                <button
-                  onClick={onReplayIntro}
-                  className="px-3 py-1.5 rounded-full bg-neutral-900 border border-orange-900 hover:border-orange-500 text-orange-400 hover:text-orange-300 text-xs font-mono flex items-center gap-1.5 transition-all cursor-pointer"
-                >
-                  <Film className="w-3.5 h-3.5 text-red-500" />
-                  <span>Replay Film</span>
-                </button>
-              )}
             </div>
           </div>
 

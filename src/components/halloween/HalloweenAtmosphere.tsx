@@ -6,11 +6,7 @@ import { Volume2, VolumeX, Zap, Sparkles, Skull, Flame } from "lucide-react";
 import { horrorAudio } from "./HorrorSoundManager";
 import { FloatingGhosts } from "./FloatingGhosts";
 
-interface HalloweenAtmosphereProps {
-  onReplayIntro?: () => void;
-}
-
-export const HalloweenAtmosphere: React.FC<HalloweenAtmosphereProps> = ({ onReplayIntro }) => {
+export const HalloweenAtmosphere: React.FC = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [witchActive, setWitchActive] = useState(true);
   const [witchCackled, setWitchCackled] = useState(false);
