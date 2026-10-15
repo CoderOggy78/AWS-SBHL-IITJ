@@ -1,14 +1,17 @@
-# AWS Builder OS — IIT Jodhpur
-### Official Web Experience for AWS Student Builder Group at Indian Institute of Technology Jodhpur
+# AWS Student Builders Group IIT Jodhpur 🎃
+### Official Web Experience — Halloween Nightmare Abyss Edition
 
-[![Next.js 15+](https://img.shields.io/badge/Next.js-16.3-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
+[![Next.js 16](https://img.shields.io/badge/Next.js-16.3.3-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+[![React 19](https://img.shields.io/badge/React-19.2-61dafb?style=for-the-badge&logo=react)](https://react.dev/)
+[![TypeScript 5](https://img.shields.io/badge/TypeScript-5.0-3178c6?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
 [![Tailwind CSS v4](https://img.shields.io/badge/Tailwind_CSS-v4-38bdf8?style=for-the-badge&logo=tailwindcss)](https://tailwindcss.com/)
-[![AWS Region](https://img.shields.io/badge/AWS_Region-ap--south--1-orange?style=for-the-badge&logo=amazon-aws)](https://aws.amazon.com/)
+[![Three.js](https://img.shields.io/badge/Three.js-0.186-black?style=for-the-badge&logo=three.js)](https://threejs.org/)
+[![AWS Region](https://img.shields.io/badge/AWS_Region-ap--south--1-ff9900?style=for-the-badge&logo=amazon-aws)](https://aws.amazon.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
-An interactive, production-grade cloud operating system experience built specifically for the technical builder community at **Indian Institute of Technology Jodhpur**. 
+An immersive, production-grade web portal built for the technical builder community at the **Indian Institute of Technology Jodhpur (IITJ)**.
 
-Rather than a conventional static campus club landing page, this project implements **AWS Builder OS**, blending macOS desktop aesthetics with AWS cloud infrastructure metaphors, interactive windows, a functional command-line shell, hierarchical Finder directories, and an adaptive mobile layout.
+This release features the **Halloween Nightmare Abyss Edition** — transforming the official AWS SBG portal into a dark, horror movie-style experience blending cutting-edge WebGL 3D graphics, dynamic background video layers, continuous procedural horror audio, floating ethereal spirits, and gothic aesthetic design while preserving the complete official student chapter curriculum, team directory, and masterclasses.
 
 ---
 
@@ -17,90 +20,115 @@ Rather than a conventional static campus club landing page, this project impleme
 - **LinkedIn**: [AWS Student Builder Group at IIT Jodhpur](https://www.linkedin.com/company/aws-student-builder-group-at-iit-jodhpur/)
 - **Meetup Chapter**: [AWS SBG at IIT Jodhpur](https://www.meetup.com/aws-sbg-at-indian-institute-of-technology-jodhpur/)
 - **WhatsApp Community**: [Official Builder Cohort](https://chat.whatsapp.com/JFbSaqFNsXeCYUpZu5w3OE)
-- **GitHub**: [github.com/aws-sbg-iitj](https://github.com/aws-sbg-iitj)
+- **GitHub Organization**: [github.com/aws-sbg-iitj](https://github.com/aws-sbg-iitj)
 
 ---
 
-## 🖥️ Builder OS Experience Flow
+## 🎃 Halloween Nightmare Edition Highlights
 
-1. **Stage 1: Click to Begin**
-   - Deep obsidian navy minimalist hero screen.
-   - 9x9 crenellated electronic silicon chip glyph with ambient glow.
-   - Dynamic canvas particle field with real-time mouse perturbation.
-   - Built-in Web Audio API datacenter ambient synthesizer (no external audio files, muted by default).
+### 1. 🎬 Cinematic Scary Mask Hero with 3D Jack-o'-Lantern
+- **Live Background Video Layer**: High-definition Pixabay Scary Halloween Mask video (`mask-hero.mp4`) with smooth infinite loop playback beneath multi-tier blood-red and obsidian vignetting.
+- **Interactive Three.js 3D Jack-o'-Lantern**: Custom WebGL pumpkin model built with procedural segmented geometry, realistic ribbed lobes, green twisted stem, carved triangular eyes, jagged fangs, and interior point light simulating real candle flicker with real-time mouse/pointer tracking.
 
-2. **Stage 2: Cloud Journey Flythrough**
-   - 3D forward-travel camera through cloud topology (API Gateway, Bedrock AI, Lambda Compute, DynamoDB clusters, Fargate MicroVMs).
-   - Real-time bootloader telemetry streaming verification logs (`[OK] Cloud initialized`, `[OK] IIT Jodhpur node connected`).
-   - Interactive Skip button (`[Esc]` / Space) for fast desktop access.
+### 2. 👻 3D Floating Ethereal White Ghosts (`FloatingGhosts.tsx`)
+- Translucent, floating spirits with undulating spectral tails drifting organically across the viewport.
+- Dynamic alpha transparency, subtle glow drop-shadows, and organic floating physics mimicking apparitions gliding through a haunted night.
 
-3. **Stage 3: macOS-Inspired Cloud OS**
-   - **Top Menu Bar**: System health telemetry, digital clock, sound toggle, Spotlight trigger (`Cmd+K`), notification badge.
-   - **Interactive Dock**: Glassmorphism dock with icon magnification physics, active indicator dots, and quick launches.
-   - **Multi-Window Manager**: Draggable, resizable, minimizable windows with authentic macOS traffic lights and z-index elevation.
-   - **Spotlight Search (`Cmd+K`)**: Instant modal searching across members, projects, workshops, and cloud docs.
-   - **Interactive Shell (Terminal.app)**: Real shell interpreting `help`, `whoami`, `cloud-status`, `leads`, `projects`, `open <app>`, and developer easter eggs (`sudo build-the-cloud`, `coffee`, `rm -rf procrastination`).
-   - **Mobile Experience**: Adaptive iOS builder shell for screens under 768px with touch-friendly app icons, full-screen slide sheets, and bottom navigation.
+### 3. 🌾 Haunted Scarecrow Guardian (`HauntedScarecrow.tsx`)
+- Positioned at the **Path of Shadows** (Curriculum Roadmap).
+- Features a carved glowing pumpkin head with flame-lit eye sockets, tattered dark trenchcoat, outstretched straw claws, and a perched sinister black crow watching over learners as they advance through cloud architecture milestones.
+
+### 4. 🔊 Compulsory Continuous Horror Audio (`HorrorSoundManager.ts` & `HalloweenAtmosphere.tsx`)
+- **Soundtrack**: Looping Pixabay Horror Scream SFX (`horror-scream.mp3`) paired with real-time Web Audio API procedural synthesis generating howling wind and low-frequency sub-bass atmospheric drones.
+- **Seamless Autoplay Resilience**: High-priority passive listeners (`mousemove`, `pointermove`, `scroll`, `touchstart`) ensure the audio starts without delay even if strict browser zero-gesture autoplay policies intervene.
+
+### 5. 🕷️ Spooky Interactive Atmospheric Layer
+- **Dripping Viscous Blood Border**: SVG blood dripping header across the screen top with animated falling blood droplets.
+- **Occult Witchcraft Summoning Circle**: Subtle geometric alchemical circle with pentagram runes rotating slowly in the dark background.
+- **Sinister Lurking Grin**: Cheshire/Pennywise razor-sharp demonic smile with glowing yellow slit eyes lurking in the shadows (clickable for thunder stingers).
+- **Annabelle Porcelain Doll**: Cracked vintage porcelain doll with blood tears watching from the corner (clickable for whisper stingers).
+- **Roaming Witch on Broomstick**: Animated silhouette flying across the upper sky (clickable for witch cackles).
+- **Cemetery Ground Layer**: Tombstones and animated skeletal zombie hands clawing out of the graveyard dirt.
+
+### 6. 🏛️ Complete Guild & Curriculum Content Preserved
+- **Council of Shadows (Team Directory)**: Dedicated tombstone-style cards for leadership and student builders with real names, roles, focus areas, and verified LinkedIn/GitHub links.
+- **Path of Shadows (Curriculum Roadmap)**: Step-by-step zero-to-hero cloud developer curriculum covering Cloud Foundations, Core Compute & Networking, Security & DevSecOps, and Generative AI on AWS.
+- **Dark Archives (50 Free Video Masterclasses)**: Filterable masterclass library categorized by AWS certifications and skill tracks.
+- **Grimoire Badges (100 Free Badges & Certifications)**: Interactive catalog of free AWS skill badges and certification roadmaps.
+- **Daylight Clean Theme Toggle**: Floating button to seamlessly toggle between the dark Halloween Nightmare Edition and the clean Google Antigravity Daylight theme.
 
 ---
 
-## 🏛️ Application Directory Architecture
+## 🛠️ Technology Stack
 
-| Application | Description |
+| Layer | Technology |
 | :--- | :--- |
-| **Home.app** | Hero manifesto, dynamic Cloud Status dashboard, and interactive 5-stage cloud architecture pipeline. |
-| **About.app** | Core manifesto, engineering philosophy ("Learn deeply. Build together. Break things. Fix them. Ship something meaningful."), and 8 disciplines. |
-| **Leads.app** | Finder-style leadership directory featuring Vishwanath Barve, Armaan Kachhawa, Ashwani Dwivedi, and Core Leads with profile inspector. |
-| **Team.app** | Hierarchical Finder folder tree (`Team/Leadership`, `Technical`, `Community Management`, `Social Media & Management`). |
-| **Builder Lab** | Project cards with status filters (`IDEA`, `BUILDING`, `SHIPPED`, `EXPERIMENTAL`), interactive node topology diagrams, and tech specs. |
-| **Events.app** | Scheduled immersion sessions, workshops, and hackathons linked directly to the official Meetup chapter. |
-| **Resources.app**| Cloud library with categorized AWS whitepapers, architecture specs, and certification study guides. |
-| **CloudMap.app** | Interactive architectural graph connecting leadership, technical systems, and community branches. |
-| **Feed.app** | Verified chronological audit log of commits, releases, and milestones. |
-| **Photos.app** | High-resolution gallery featuring the official modular grid poster, silicon chip branding, and workshop moments. |
-| **Contact.app** | Direct access to official WhatsApp, LinkedIn, Meetup, and campus contact forms. |
-| **Terminal.app** | Interactive zsh shell with system status commands and developer easter eggs. |
+| **Framework** | [Next.js 16.3.3](https://nextjs.org/) (App Router, Turbopack) |
+| **Runtime & UI** | [React 19.2.8](https://react.dev/) + React DOM |
+| **Language** | [TypeScript 5](https://www.typescriptlang.org/) (Strict typing) |
+| **Styling** | [Tailwind CSS v4](https://tailwindcss.com/) + PostCSS |
+| **3D Graphics** | [Three.js 0.186.1](https://threejs.org/) (Custom WebGL Canvas) |
+| **Audio** | Web Audio API + HTML5 Audio Looper |
+| **Typography** | Creepster, Nosifer, Cinzel Decorative, Plus Jakarta Sans, JetBrains Mono |
+| **Icons** | [Lucide React](https://lucide.dev/) |
 
 ---
 
 ## 📂 Repository File Structure
 
 ```
-aws-builder-iitj/
+AWS-SBHL-IITJ/
 ├── public/
-│   └── brand/
-│       ├── aws-sbg-chip-purple.png    # Official crenellated chip glyph
-│       └── aws-sbg-theme-poster.png   # Official modular grid brand poster
+│   ├── brand/
+│   │   ├── aws-sbg-chip-purple.png      # Official crenellated chip glyph
+│   │   └── aws-sbg-theme-poster.png     # Official modular brand poster
+│   └── halloween/
+│       ├── mask-hero.mp4                # Scary Halloween Mask dynamic hero video
+│       ├── horror-scream.mp3            # Atmospheric horror scream SFX
+│       ├── graveyard-zombie-hand.jpg    # Atmospheric graveyard image
+│       ├── haunted-house-red.jpg        # Haunted mansion background
+│       └── jack-o-lantern-3d.jpg        # 3D pumpkin texture reference
 ├── src/
 │   ├── app/
-│   │   ├── globals.css                # Tailwind 4, glass tokens, custom scrollbars
-│   │   ├── layout.tsx                 # Root layout with OpenGraph, SEO, and fonts
-│   │   ├── not-found.tsx              # Kernel Panic themed 404 screen
-│   │   ├── page.tsx                   # Main OS orchestration engine
-│   │   ├── robots.ts                  # SEO crawler directives
-│   │   └── sitemap.ts                 # Dynamic XML sitemap
+│   │   ├── globals.css                  # Tailwind v4, custom keyframes, scrollbars
+│   │   ├── layout.tsx                   # Font imports (Creepster, Nosifer, Google Fonts) & SEO
+│   │   ├── not-found.tsx                # Horror 404 page
+│   │   ├── page.tsx                     # Main application entry point (Halloween / Clean toggle)
+│   │   ├── robots.ts                    # Search engine crawler directives
+│   │   └── sitemap.ts                   # Dynamic XML sitemap generator
 │   ├── components/
-│   │   ├── apps/                      # 13 standalone window applications
-│   │   ├── desktop/                   # MenuBar, DesktopIcons, Wallpaper, Spotlight, NotificationCenter
-│   │   ├── dock/                      # macOS Glass Dock with magnification
-│   │   ├── intro/                     # BeginScreen & CloudJourney flythrough
-│   │   ├── mobile/                    # iOS-adapted MobileOS shell
-│   │   ├── ui/                        # Scalable Logo SVG & Web Audio Synthesizer
-│   │   └── window/                    # WindowFrame with draggable traffic lights
+│   │   ├── halloween/                   # 🎃 Halloween Nightmare Edition Components
+│   │   │   ├── HalloweenNavbar.tsx      # Dark gothic header with blood drips
+│   │   │   ├── HalloweenHero.tsx        # Hero with mask video background & 3D Jack-o'-lantern
+│   │   │   ├── Halloween3DScene.tsx     # Three.js WebGL Jack-o'-lantern implementation
+│   │   │   ├── FloatingGhosts.tsx       # 3D floating ethereal white spirits
+│   │   │   ├── HauntedScarecrow.tsx     # Haunted pumpkin scarecrow guardian
+│   │   │   ├── HalloweenAtmosphere.tsx  # Blood drips, occult circle, witch, doll, audio loop
+│   │   │   ├── HorrorSoundManager.ts    # Web Audio API horror sound synthesizer & manager
+│   │   │   ├── HalloweenCurriculum.tsx  # Path of Shadows curriculum roadmap
+│   │   │   ├── HalloweenTeamDirectory.tsx # Council of Shadows team directory
+│   │   │   ├── HalloweenLecturesSection.tsx # Dark Archives 50 video masterclasses
+│   │   │   ├── HalloweenCertifications.tsx # 100 free badges & certification guide
+│   │   │   └── HalloweenFooter.tsx      # Graveyard footer with interactive sound buttons
+│   │   └── antigravity/                 # ☀️ Clean Daylight Theme Components
+│   │       ├── CleanNavbar.tsx
+│   │       ├── CleanHero.tsx
+│   │       ├── CleanTeamDirectory.tsx
+│   │       ├── CleanCurriculum.tsx
+│   │       ├── AwsLecturesSection.tsx
+│   │       ├── CleanCertifications.tsx
+│   │       ├── CleanFooter.tsx
+│   │       └── CleanJoinModal.tsx
 │   ├── config/
-│   │   └── socials.ts                 # LinkedIn, Meetup, WhatsApp, and GitHub URLs
-│   ├── data/
-│   │   ├── events.ts                  # Scheduled workshops and sessions
-│   │   ├── feed.ts                    # Activity stream items
-│   │   ├── projects.ts                # Builder lab projects and architecture nodes
-│   │   ├── resources.ts               # AWS cloud library documents
-│   │   └── team.ts                    # Leadership and team category data
-│   └── types/
-│       └── os.ts                      # TypeScript definitions
-├── .env.example
+│   │   └── socials.ts                   # LinkedIn, Meetup, WhatsApp, GitHub links
+│   └── data/
+│       ├── team.ts                      # Leadership & builder cohort members
+│       ├── events.ts                    # Workshops and sessions
+│       └── projects.ts                  # Cloud lab projects
 ├── next.config.ts
 ├── package.json
-└── tsconfig.json
+├── tsconfig.json
+└── README.md
 ```
 
 ---
@@ -109,75 +137,53 @@ aws-builder-iitj/
 
 ### Prerequisites
 
-- Node.js `v18.17.0+` or `v20+` (tested on Node 26)
-- npm `v9+` or pnpm `v8+`
+- **Node.js**: `v18.17.0+` or `v20+` (tested on Node.js 26)
+- **Package Manager**: `npm` (v9+) or `pnpm` (v8+)
 
-### Installation
+### Local Development
 
 ```bash
-# Clone the repository
-git clone https://github.com/aws-sbg-iitj/aws-builder-os.git
-cd aws-builder-os
+# 1. Clone the repository
+git clone https://github.com/CoderOggy78/AWS-SBHL-IITJ.git
+cd AWS-SBHL-IITJ
 
-# Install dependencies
+# 2. Install dependencies
 npm install
 
-# Start development server
+# 3. Launch development server with Turbopack
 npm run dev
 ```
 
-Visit `http://localhost:3000` to launch AWS Builder OS.
+Open [http://localhost:3000](http://localhost:3000) in your browser to explore the **Halloween Nightmare Edition**.
+
+### Production Build
+
+```bash
+# Build the optimized production bundle
+npm run build
+
+# Start the production server
+npm run start
+```
 
 ---
 
-## 🔧 Adding New Content
+## 👥 Adding New Team Members
 
-### 1. Adding Team Members
-Edit `src/data/team.ts`:
+To add or update members in the Council of Shadows team directory, edit [src/data/team.ts](file:///Users/oggy/Library/Mobile%20Documents/com~apple~CloudDocs/AWS%20SBGL%20WEBSITE%20IITJ/src/data/team.ts):
+
 ```typescript
 {
-  id: "builder-id",
-  name: "Builder Name",
-  role: "Role in Club",
-  category: "Technical", // "Leadership" | "Technical" | "Community Management" | "Social Media & Management" | "Advisors"
+  id: "member-slug",
+  name: "Full Name",
+  role: "Lead / Core Builder",
+  category: "Leadership", // "Leadership" | "Technical" | "Community Management" | "Social Media & Management"
   affiliation: "AWS Student Builder Group",
   institute: "Indian Institute of Technology Jodhpur",
-  bio: "Short biography...",
-  focusAreas: ["Cloud", "DevOps"],
-  linkedin: "https://linkedin.com/in/...",
-}
-```
-
-### 2. Adding Builder Lab Projects
-Edit `src/data/projects.ts`:
-```typescript
-{
-  id: "project-slug",
-  name: "Project Name",
-  problem: "What challenge does this solve?",
-  status: "BUILDING", // "IDEA" | "BUILDING" | "SHIPPED" | "EXPERIMENTAL"
-  technology: ["Next.js", "AWS Lambda", "DynamoDB"],
-  repository: "https://github.com/...",
-  contributors: ["Student Contributor"],
-  architectureSummary: "Client -> API Gateway -> Lambda -> DynamoDB",
-  nodes: [ /* visual diagram nodes */ ],
-  edges: [ /* data flow edges */ ],
-}
-```
-
-### 3. Adding Events
-Edit `src/data/events.ts`:
-```typescript
-{
-  id: "session-slug",
-  title: "Workshop Title",
-  date: "Date String",
-  venue: "Auditorium / Lab, IIT Jodhpur",
-  type: "Workshop",
-  status: "Upcoming",
-  description: "Description of the session...",
-  registrationUrl: "https://meetup.com/...",
-  topics: ["Cloud", "Bedrock"],
+  bio: "Short builder bio...",
+  focusAreas: ["Cloud Architecture", "Amazon Bedrock", "DevOps"],
+  linkedin: "https://www.linkedin.com/in/...",
+  github: "https://github.com/...",
 }
 ```
 
@@ -185,11 +191,11 @@ Edit `src/data/events.ts`:
 
 ## 🛡️ Disclaimer
 
-> **Important Community Initiative Disclaimer**:
-> The AWS Student Builder Group at IIT Jodhpur is a student developer community initiative and must not be represented as employment directly with Amazon Web Services or Amazon unless explicitly stated otherwise.
+> **Official Community Initiative Notice**:  
+> The AWS Student Builder Group at IIT Jodhpur is an independent student developer community chapter and is not an offer of employment or a legal entity of Amazon Web Services (AWS) or Amazon.com, Inc. unless explicitly stated otherwise.
 
 ---
 
 ## 📄 License
 
-Distributed under the MIT License. See `LICENSE` for more information. Built with pride by the student builders at Indian Institute of Technology Jodhpur.
+Distributed under the **MIT License**. See `LICENSE` for details. Built with 🧡 & 🎃 by the student builders at **Indian Institute of Technology Jodhpur**.
