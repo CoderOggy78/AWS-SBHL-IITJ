@@ -41,7 +41,7 @@ export const TeamFeatureShowcases: React.FC<{ onOpenJoinModal: () => void }> = (
                 Lead: <span className="text-sky-600 font-bold">Bishal Saha</span>
               </div>
               <div className="text-xs text-neutral-500 font-mono">
-                Core Team: Satyam • Aryan • Yash • Tanmay
+                Core Team: Satyam Mishra • Aryan Vishwakarma • Yash Gogawale • Tanmay Damre
               </div>
             </div>
 
@@ -129,7 +129,7 @@ export const TeamFeatureShowcases: React.FC<{ onOpenJoinModal: () => void }> = (
                 Lead: <span className="text-purple-600 font-bold">Quazi Arqam</span>
               </div>
               <div className="text-xs text-neutral-500 font-mono">
-                Core Team: Harshpreet • Lakshya Gupta • Anita Kumari • Sadaf Naaz
+                Core Team: Harshpreet Singh • Lakshya Gupta • Anita Kumari • Sadaf Naaz
               </div>
             </div>
 
@@ -215,10 +215,10 @@ export const TeamFeatureShowcases: React.FC<{ onOpenJoinModal: () => void }> = (
 
             <div className="space-y-1">
               <div className="text-sm font-semibold text-neutral-900">
-                Lead: <span className="text-amber-600 font-bold">Rahul</span>
+                Lead: <span className="text-amber-600 font-bold">Rahul Wakhale</span>
               </div>
               <div className="text-xs text-neutral-500 font-mono">
-                Core Team: Kavita • Shantanu • Tanujit • Lipika
+                Core Team: Kavita Dixit • Shantanu Joshi • Tanuj Khatkar • Lipika Parida
               </div>
             </div>
 

@@ -43,9 +43,8 @@ export const CleanNavbar: React.FC<CleanNavbarProps> = ({ onOpenJoinModal }) => 
             >
               <span>Teams</span>
               <ChevronDown
-                className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                  teamsDropdownOpen ? "rotate-180" : ""
-                }`}
+                className={`w-3.5 h-3.5 transition-transform duration-200 ${teamsDropdownOpen ? "rotate-180" : ""
+                  }`}
               />
             </button>
 

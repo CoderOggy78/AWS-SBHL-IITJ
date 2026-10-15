@@ -16,9 +16,9 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://aws-sbg-iitj.ac.in"),
-  title: "AWS Student Builder Group IITJ | IIT Jodhpur",
+  title: "AWS Student Builders Group IITJ | Halloween Nightmare Edition 🎃",
   description:
-    "Official website of the AWS Student Builder Group at Indian Institute of Technology Jodhpur. Master DevOps, Cloud Architecture, Cloud Security, System Design, and Generative AI with free lectures, badges, and cohorts.",
+    "Official website of AWS Student Builders Group at Indian Institute of Technology Jodhpur — Halloween Nightmare Special. Master DevOps, Cloud Architecture, Cloud Security, System Design, and Generative AI with 50+ free lectures, badges, and cohorts.",
   keywords: [
     "AWS",
     "AWS Student Builder Group IITJ",
@@ -60,12 +60,12 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
           rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,slnt,wdth,wght,ROND@8..144,-10..0,25..150,400..700,0..100&family=Google+Sans+Code:ital,wght@0,400..700;1,400..700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Creepster&family=Nosifer&family=Cinzel+Decorative:wght@700;900&family=Butcherman&family=Google+Sans+Flex:opsz,slnt,wdth,wght,ROND@8..144,-10..0,25..150,400..700,0..100&family=Google+Sans+Code:ital,wght@0,400..700;1,400..700&display=swap"
         />
       </head>
       <body
         suppressHydrationWarning
-        className="min-h-full flex flex-col bg-white text-neutral-900 selection:bg-sky-500/20 selection:text-black font-sans overflow-x-hidden"
+        className="min-h-full flex flex-col bg-neutral-950 text-white selection:bg-orange-500/30 selection:text-orange-200 font-sans overflow-x-hidden"
       >
         {children}
       </body>
