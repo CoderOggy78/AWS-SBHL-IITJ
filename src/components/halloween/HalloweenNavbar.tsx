@@ -3,14 +3,16 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Flame, Skull } from "lucide-react";
+import { Flame, Skull, Film } from "lucide-react";
 
 interface HalloweenNavbarProps {
   onOpenJoinModal: () => void;
+  onReplayIntro?: () => void;
 }
 
 export const HalloweenNavbar: React.FC<HalloweenNavbarProps> = ({
   onOpenJoinModal,
+  onReplayIntro,
 }) => {
   const [scrolled, setScrolled] = useState(false);
 
@@ -92,6 +94,16 @@ export const HalloweenNavbar: React.FC<HalloweenNavbarProps> = ({
 
         {/* Right Action Buttons */}
         <div className="flex items-center gap-3">
+          {onReplayIntro && (
+            <button
+              onClick={onReplayIntro}
+              className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-neutral-900/80 hover:bg-neutral-800 text-neutral-300 hover:text-orange-400 border border-neutral-800 hover:border-orange-500/50 text-xs font-mono transition-all cursor-pointer shadow-sm"
+              title="Replay Nightmare Intro Video"
+            >
+              <Film className="w-3.5 h-3.5 text-red-500" />
+              <span>Intro Film</span>
+            </button>
+          )}
 
           {/* Summon Guild CTA */}
           <button

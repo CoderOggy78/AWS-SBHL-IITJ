@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { CLOUD_ROADMAP_STAGES } from "@/data/roadmap";
 import { Flame, CheckCircle2, Award, ChevronRight, Skull } from "lucide-react";
 import { horrorAudio } from "./HorrorSoundManager";
+import { HauntedScarecrow } from "./HauntedScarecrow";
 
 export const HalloweenCurriculum: React.FC = () => {
   const [selectedPhase, setSelectedPhase] = useState<number>(0);
@@ -63,6 +64,11 @@ export const HalloweenCurriculum: React.FC = () => {
         {/* Active Phase Deep Dive in Dark Obsidian Box */}
         <div className="rounded-3xl p-8 sm:p-12 bg-neutral-900/80 shadow-2xl border border-neutral-800 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-80 h-80 bg-orange-600/10 rounded-full blur-3xl pointer-events-none" />
+
+          {/* Haunted Scarecrow Guarding the Grimoire Pathway */}
+          <div className="absolute -bottom-6 -right-4 hidden xl:block pointer-events-auto z-0 opacity-85">
+            <HauntedScarecrow variant="left" />
+          </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start relative z-10">
             <div className="lg:col-span-7 space-y-6">

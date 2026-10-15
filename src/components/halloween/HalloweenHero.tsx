@@ -13,18 +13,19 @@ interface HalloweenHeroProps {
 export const HalloweenHero: React.FC<HalloweenHeroProps> = ({ onOpenJoinModal }) => {
   return (
     <section className="relative min-h-[92vh] flex items-center justify-center pt-28 pb-16 overflow-hidden bg-neutral-950">
-      {/* 1. Cinematic Background Image Layer with Blood Red Dark Vignette */}
-      <div className="absolute inset-0 z-0 pointer-events-none select-none">
-        <Image
-          src="/halloween/haunted-house-red.jpg"
-          alt="Haunted House Red Sky"
-          fill
-          priority
-          className="object-cover object-center opacity-40 scale-105"
+      {/* 1. Cinematic Background Video Layer: Scary Halloween Mask */}
+      <div className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden">
+        <video
+          src="/halloween/mask-hero.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="w-full h-full object-cover opacity-40 scale-105"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/80 to-neutral-950/45" />
+        <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/75 to-neutral-950/50" />
         <div className="absolute inset-0 bg-gradient-to-r from-neutral-950 via-transparent to-neutral-950" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,_rgba(220,38,38,0.28)_0%,_rgba(0,0,0,0.85)_80%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,_rgba(220,38,38,0.25)_0%,_rgba(0,0,0,0.85)_80%)]" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
@@ -111,16 +112,6 @@ export const HalloweenHero: React.FC<HalloweenHeroProps> = ({ onOpenJoinModal })
             {/* Seamless 3D Canvas (No ugly square black box!) */}
             <div className="relative w-full h-[460px] sm:h-[520px] flex items-center justify-center">
               <Halloween3DScene className="w-full h-full" />
-
-              {/* Floating Interactive Badge at bottom */}
-              <div className="absolute bottom-2 inset-x-4 sm:inset-x-8 text-center pointer-events-none">
-                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-neutral-950/85 backdrop-blur-md border border-orange-500/40 shadow-[0_0_20px_rgba(249,115,22,0.3)]">
-                  <span className="w-2 h-2 rounded-full bg-orange-500 animate-ping" />
-                  <span className="text-[11px] font-mono text-orange-300">
-                    🔥 3D Jack-O'-Lantern: Move mouse to track • Click to ignite flame
-                  </span>
-                </div>
-              </div>
             </div>
           </div>
         </div>

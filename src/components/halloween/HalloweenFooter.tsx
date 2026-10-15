@@ -4,18 +4,32 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { SOCIAL_LINKS } from "@/config/socials";
-import { Flame, Skull, Ghost, Heart, ArrowUp } from "lucide-react";
+import { Flame, Skull, Ghost, Heart, ArrowUp, Film } from "lucide-react";
 import { horrorAudio } from "./HorrorSoundManager";
 
-export const HalloweenFooter: React.FC = () => {
+interface HalloweenFooterProps {
+  onReplayIntro?: () => void;
+}
+
+export const HalloweenFooter: React.FC<HalloweenFooterProps> = ({ onReplayIntro }) => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
     <footer className="relative bg-neutral-950 border-t border-neutral-900 text-neutral-400 font-sans overflow-hidden pt-16 pb-12">
-      {/* Background Ambience */}
-      <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-red-950/20 to-transparent pointer-events-none" />
+      {/* Background Ambience: Realistic Graveyard Zombie Hand image + Red Glow */}
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-25 select-none">
+        <Image
+          src="/halloween/graveyard-zombie-hand.jpg"
+          alt="Graveyard Zombie Hand"
+          fill
+          className="object-cover object-bottom"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/85 to-neutral-950/95" />
+      </div>
+
+      <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-red-950/30 to-transparent pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-neutral-900">
@@ -61,6 +75,15 @@ export const HalloweenFooter: React.FC = () => {
                 <Ghost className="w-3.5 h-3.5" />
                 <span>Witch Cackle</span>
               </button>
+              {onReplayIntro && (
+                <button
+                  onClick={onReplayIntro}
+                  className="px-3 py-1.5 rounded-full bg-neutral-900 border border-orange-900 hover:border-orange-500 text-orange-400 hover:text-orange-300 text-xs font-mono flex items-center gap-1.5 transition-all cursor-pointer"
+                >
+                  <Film className="w-3.5 h-3.5 text-red-500" />
+                  <span>Replay Film</span>
+                </button>
+              )}
             </div>
           </div>
 
