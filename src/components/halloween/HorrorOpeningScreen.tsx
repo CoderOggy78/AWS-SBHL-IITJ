@@ -129,7 +129,7 @@ export const HorrorOpeningScreen: React.FC<HorrorOpeningScreenProps> = ({
         <source src="/halloween/horror-bgm.m4a" type="audio/mp4" />
       </audio>
 
-      {/* 1. Cinematic Background Video: Woman in Death Costume (Pexels 13740795) - FULLY VISIBLE & VIVID */}
+      {/* 1. Cinematic Background Video: Person in Cloak Touching Scythe (Pexels 10355541) - FULLY VISIBLE & VIVID */}
       <video
         ref={videoRef}
         autoPlay
@@ -141,9 +141,10 @@ export const HorrorOpeningScreen: React.FC<HorrorOpeningScreenProps> = ({
           videoLoaded ? "opacity-95" : "opacity-40"
         } filter contrast-115 brightness-95 saturate-85 scale-100`}
       >
+        <source src="/halloween/horror-scythe.mp4" type="video/mp4" />
         <source src="/halloween/horror-death.mp4" type="video/mp4" />
         <source
-          src="https://videos.pexels.com/video-files/13740795/13740795-hd_1280_720_24fps.mp4"
+          src="https://videos.pexels.com/video-files/10355541/10355541-hd_1280_720_30fps.mp4"
           type="video/mp4"
         />
       </video>
