@@ -3,14 +3,18 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Flame, Skull } from "lucide-react";
+import { Flame, Skull, Volume2, VolumeX } from "lucide-react";
 
 interface HalloweenNavbarProps {
   onOpenJoinModal: () => void;
+  soundEnabled?: boolean;
+  onToggleSound?: () => void;
 }
 
 export const HalloweenNavbar: React.FC<HalloweenNavbarProps> = ({
   onOpenJoinModal,
+  soundEnabled = true,
+  onToggleSound,
 }) => {
   const [scrolled, setScrolled] = useState(false);
 
@@ -91,7 +95,38 @@ export const HalloweenNavbar: React.FC<HalloweenNavbarProps> = ({
         </nav>
 
         {/* Right Action Buttons */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2.5 sm:gap-3">
+          {/* Sound On / Off Button */}
+          {onToggleSound && (
+            <button
+              onClick={onToggleSound}
+              className={`flex items-center gap-2 px-3 py-1.5 rounded-full border text-xs font-mono font-bold transition-all transform hover:scale-105 active:scale-95 cursor-pointer select-none ${
+                soundEnabled
+                  ? "bg-red-950/90 border-red-600/90 text-red-300 shadow-[0_0_15px_rgba(220,38,38,0.6)] hover:bg-red-900/90"
+                  : "bg-neutral-900/90 border-neutral-700/70 text-neutral-400 hover:text-white hover:border-neutral-500"
+              }`}
+              title={soundEnabled ? "Turn Horror Music OFF" : "Turn Horror Music ON (Default)"}
+            >
+              {soundEnabled ? (
+                <>
+                  <Volume2 className="w-3.5 h-3.5 text-red-400 animate-pulse" />
+                  <span className="hidden sm:inline">SOUND ON</span>
+                  {/* Equalizer animation waves */}
+                  <span className="flex items-end gap-0.5 h-3">
+                    <span className="w-0.5 h-2 bg-red-400 animate-bounce" style={{ animationDelay: "0ms" }} />
+                    <span className="w-0.5 h-3 bg-red-400 animate-bounce" style={{ animationDelay: "150ms" }} />
+                    <span className="w-0.5 h-1.5 bg-red-400 animate-bounce" style={{ animationDelay: "300ms" }} />
+                  </span>
+                </>
+              ) : (
+                <>
+                  <VolumeX className="w-3.5 h-3.5 text-neutral-400" />
+                  <span className="hidden sm:inline">SOUND OFF</span>
+                </>
+              )}
+            </button>
+          )}
+
           {/* Summon Guild CTA */}
           <button
             onClick={onOpenJoinModal}

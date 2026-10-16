@@ -10,6 +10,7 @@ import { HalloweenLecturesSection } from "@/components/halloween/HalloweenLectur
 import { HalloweenCertifications } from "@/components/halloween/HalloweenCertifications";
 import { HalloweenFooter } from "@/components/halloween/HalloweenFooter";
 import { HalloweenAtmosphere } from "@/components/halloween/HalloweenAtmosphere";
+import { HorrorOpeningScreen } from "@/components/halloween/HorrorOpeningScreen";
 
 // Clean Daylight Components (for toggle)
 import { CleanNavbar } from "@/components/antigravity/CleanNavbar";
@@ -27,6 +28,14 @@ export default function HomePage() {
   const [joinModalOpen, setJoinModalOpen] = useState(false);
   // Default to ultra-realistic very dark Halloween theme as requested
   const [theme, setTheme] = useState<"halloween" | "clean">("halloween");
+  // Default audio to ON
+  const [soundEnabled, setSoundEnabled] = useState(true);
+  // Horror Opening Screen state
+  const [hasEntered, setHasEntered] = useState(false);
+
+  const toggleSound = () => {
+    setSoundEnabled((prev) => !prev);
+  };
 
   const toggleTheme = () => {
     setTheme((prev) => (prev === "halloween" ? "clean" : "halloween"));
@@ -42,14 +51,28 @@ export default function HomePage() {
           : "bg-white text-neutral-900 selection:bg-sky-500/20 selection:text-black"
       }`}
     >
+      {/* Intro Horror Opening Screen with Death Costume Video, Music On/Off, and Enter Arena Button in Bottom-Right */}
+      {!hasEntered && isHalloween && (
+        <HorrorOpeningScreen
+          onEnter={() => setHasEntered(true)}
+          soundEnabled={soundEnabled}
+          onToggleSound={toggleSound}
+        />
+      )}
+
       {isHalloween ? (
         <>
           {/* Spooky Atmospheric Layer (Dripping Blood, Graveyard, Occult Witchcraft Circle, Horror Smiles, Annabelle Doll, Bats, Mist) */}
-          <HalloweenAtmosphere />
+          <HalloweenAtmosphere
+            soundEnabled={soundEnabled}
+            onToggleSound={toggleSound}
+          />
 
-          {/* Dark Gothic Top Navbar with Blood Drips */}
+          {/* Dark Gothic Top Navbar with Blood Drips and Music On/Off Toggle Button */}
           <HalloweenNavbar
             onOpenJoinModal={() => setJoinModalOpen(true)}
+            soundEnabled={soundEnabled}
+            onToggleSound={toggleSound}
           />
 
           <main className="flex-1">

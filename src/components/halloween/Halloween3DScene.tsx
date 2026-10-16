@@ -107,80 +107,203 @@ export const Halloween3DScene: React.FC<Halloween3DSceneProps> = ({
     pumpkinGroup.add(stem);
 
     // 3. Menacing Fiery Carved Eyes and Grin (Facing DIRECTLY towards camera on +Z)
-    const flameMat = new THREE.MeshBasicMaterial({
-      color: 0xffcc00,
+    // 3. Menacing Fiery Carved Eyes and Grin (Facing DIRECTLY towards camera on +Z)
+    // Multi-layer horror materials: Charred burnt flesh backing + Blazing magma fire + Demon pupils
+    const charredRimMat = new THREE.MeshBasicMaterial({
+      color: 0x050000,
+      side: THREE.DoubleSide,
+    });
+
+    const demonFlameMat = new THREE.MeshBasicMaterial({
+      color: 0xff3300,
       transparent: true,
       opacity: 0.98,
+      side: THREE.DoubleSide,
     });
 
-    const emberGlowMat = new THREE.MeshBasicMaterial({
-      color: 0xff3700,
+    const demonCoreMat = new THREE.MeshBasicMaterial({
+      color: 0xffcc00,
       transparent: true,
-      opacity: 0.85,
+      opacity: 0.95,
+      side: THREE.DoubleSide,
     });
 
-    // Left Triangular Menacing Eye
+    const demonPupilMat = new THREE.MeshBasicMaterial({
+      color: 0x080101,
+      side: THREE.DoubleSide,
+    });
+
+    // --- MASSIVE SCARY JAGGED DEMONIC EYES ---
+    // Left Demon Eye (Huge, aggressively slanted inward with razor-sharp serrations & temple claw)
     const leftEyeShape = new THREE.Shape();
-    leftEyeShape.moveTo(-0.1, -0.15);
-    leftEyeShape.lineTo(0.18, -0.15);
-    leftEyeShape.lineTo(0.04, 0.18);
+    leftEyeShape.moveTo(-0.28, 0.24); // top outer horn
+    leftEyeShape.lineTo(-0.20, 0.12);
+    leftEyeShape.lineTo(-0.14, 0.22); // brow fang
+    leftEyeShape.lineTo(-0.04, 0.12);
+    leftEyeShape.lineTo(0.06, 0.20);  // second brow fang
+    leftEyeShape.lineTo(0.24, -0.06); // deep piercing inner tear duct
+    leftEyeShape.lineTo(0.16, -0.16); // bottom jagged ledge
+    leftEyeShape.lineTo(0.08, -0.06); // inner tooth
+    leftEyeShape.lineTo(-0.02, -0.20);
+    leftEyeShape.lineTo(-0.10, -0.10);
+    leftEyeShape.lineTo(-0.22, -0.22); // bottom outer sharp barb
+    leftEyeShape.lineTo(-0.25, -0.02);
     leftEyeShape.closePath();
+
+    // Right Demon Eye (Mirrored horizontally for balanced terrifying menacing glare)
+    const rightEyeShape = new THREE.Shape();
+    rightEyeShape.moveTo(0.28, 0.24); // top outer horn
+    rightEyeShape.lineTo(0.20, 0.12);
+    rightEyeShape.lineTo(0.14, 0.22); // brow fang
+    rightEyeShape.lineTo(0.04, 0.12);
+    rightEyeShape.lineTo(-0.06, 0.20); // second brow fang
+    rightEyeShape.lineTo(-0.24, -0.06); // deep piercing inner tear duct
+    rightEyeShape.lineTo(-0.16, -0.16); // bottom jagged ledge
+    rightEyeShape.lineTo(-0.08, -0.06); // inner tooth
+    rightEyeShape.lineTo(0.02, -0.20);
+    rightEyeShape.lineTo(0.10, -0.10);
+    rightEyeShape.lineTo(0.22, -0.22); // bottom outer sharp barb
+    rightEyeShape.lineTo(0.25, -0.02);
+    rightEyeShape.closePath();
+
+    // Left Eye Charred Outer Depth Rim
+    const leftEyeRimGeo = new THREE.ShapeGeometry(leftEyeShape);
+    const leftEyeRim = new THREE.Mesh(leftEyeRimGeo, charredRimMat);
+    leftEyeRim.position.set(-0.35, 0.18, 0.91);
+    leftEyeRim.scale.set(1.15, 1.15, 1.15);
+    leftEyeRim.rotation.z = -0.15;
+    leftEyeRim.rotation.x = -0.15;
+    pumpkinGroup.add(leftEyeRim);
+
+    // Left Eye Fiery Mesh
     const leftEyeGeo = new THREE.ShapeGeometry(leftEyeShape);
-    const leftEye = new THREE.Mesh(leftEyeGeo, flameMat);
-    leftEye.position.set(-0.35, 0.16, 0.92);
-    leftEye.rotation.z = -0.25;
+    const leftEye = new THREE.Mesh(leftEyeGeo, demonFlameMat);
+    leftEye.position.set(-0.35, 0.18, 0.925);
+    leftEye.rotation.z = -0.15;
     leftEye.rotation.x = -0.15;
     pumpkinGroup.add(leftEye);
 
-    // Right Triangular Menacing Eye
-    const rightEyeShape = new THREE.Shape();
-    rightEyeShape.moveTo(-0.18, -0.15);
-    rightEyeShape.lineTo(0.1, -0.15);
-    rightEyeShape.lineTo(-0.04, 0.18);
-    rightEyeShape.closePath();
+    // Left Eye Blazing Inner Core
+    const leftEyeCore = new THREE.Mesh(leftEyeGeo, demonCoreMat);
+    leftEyeCore.position.set(-0.35, 0.18, 0.93);
+    leftEyeCore.scale.set(0.68, 0.68, 0.68);
+    leftEyeCore.rotation.z = -0.15;
+    leftEyeCore.rotation.x = -0.15;
+    pumpkinGroup.add(leftEyeCore);
+
+    // Left Eye Demonic Slit Pupil
+    const slitShape = new THREE.Shape();
+    slitShape.moveTo(0, 0.13);
+    slitShape.lineTo(0.026, 0);
+    slitShape.lineTo(0, -0.13);
+    slitShape.lineTo(-0.026, 0);
+    slitShape.closePath();
+    const slitGeo = new THREE.ShapeGeometry(slitShape);
+    const leftPupil = new THREE.Mesh(slitGeo, demonPupilMat);
+    leftPupil.position.set(-0.35, 0.18, 0.938);
+    leftPupil.rotation.z = 0.05;
+    leftPupil.rotation.x = -0.15;
+    pumpkinGroup.add(leftPupil);
+
+    // Right Eye Charred Outer Depth Rim
+    const rightEyeRimGeo = new THREE.ShapeGeometry(rightEyeShape);
+    const rightEyeRim = new THREE.Mesh(rightEyeRimGeo, charredRimMat);
+    rightEyeRim.position.set(0.35, 0.18, 0.91);
+    rightEyeRim.scale.set(1.15, 1.15, 1.15);
+    rightEyeRim.rotation.z = 0.15;
+    rightEyeRim.rotation.x = -0.15;
+    pumpkinGroup.add(rightEyeRim);
+
+    // Right Eye Fiery Mesh
     const rightEyeGeo = new THREE.ShapeGeometry(rightEyeShape);
-    const rightEye = new THREE.Mesh(rightEyeGeo, flameMat);
-    rightEye.position.set(0.35, 0.16, 0.92);
-    rightEye.rotation.z = 0.25;
+    const rightEye = new THREE.Mesh(rightEyeGeo, demonFlameMat);
+    rightEye.position.set(0.35, 0.18, 0.925);
+    rightEye.rotation.z = 0.15;
     rightEye.rotation.x = -0.15;
     pumpkinGroup.add(rightEye);
 
-    // Carved Nose (Small inverted triangle)
+    // Right Eye Blazing Inner Core
+    const rightEyeCore = new THREE.Mesh(rightEyeGeo, demonCoreMat);
+    rightEyeCore.position.set(0.35, 0.18, 0.93);
+    rightEyeCore.scale.set(0.68, 0.68, 0.68);
+    rightEyeCore.rotation.z = 0.15;
+    rightEyeCore.rotation.x = -0.15;
+    pumpkinGroup.add(rightEyeCore);
+
+    // Right Eye Demonic Slit Pupil
+    const rightPupil = new THREE.Mesh(slitGeo, demonPupilMat);
+    rightPupil.position.set(0.35, 0.18, 0.938);
+    rightPupil.rotation.z = -0.05;
+    rightPupil.rotation.x = -0.15;
+    pumpkinGroup.add(rightPupil);
+
+    // Dedicated Eye Point Lights for Intense Horror Volumetric Flare
+    const leftEyeLight = new THREE.PointLight(0xff1800, 4.0, 3.5);
+    leftEyeLight.position.set(-0.35, 0.18, 0.88);
+    pumpkinGroup.add(leftEyeLight);
+
+    const rightEyeLight = new THREE.PointLight(0xff1800, 4.0, 3.5);
+    rightEyeLight.position.set(0.35, 0.18, 0.88);
+    pumpkinGroup.add(rightEyeLight);
+
+    // Carved Jagged Skull Nose
     const noseShape = new THREE.Shape();
-    noseShape.moveTo(-0.08, 0.08);
-    noseShape.lineTo(0.08, 0.08);
-    noseShape.lineTo(0, -0.08);
+    noseShape.moveTo(-0.09, 0.11);
+    noseShape.lineTo(0, 0.04); // notch
+    noseShape.lineTo(0.09, 0.11);
+    noseShape.lineTo(0.06, -0.02);
+    noseShape.lineTo(0, -0.13); // fang
+    noseShape.lineTo(-0.06, -0.02);
     noseShape.closePath();
     const noseGeo = new THREE.ShapeGeometry(noseShape);
-    const nose = new THREE.Mesh(noseGeo, flameMat);
+    const noseRim = new THREE.Mesh(noseGeo, charredRimMat);
+    noseRim.position.set(0, 0.02, 0.94);
+    noseRim.scale.set(1.2, 1.2, 1.2);
+    pumpkinGroup.add(noseRim);
+    const nose = new THREE.Mesh(noseGeo, demonCoreMat);
     nose.position.set(0, 0.02, 0.96);
     pumpkinGroup.add(nose);
 
-    // Sinister Wide Jagged Grin with Carved Teeth
+    // Terrifying Wide Jagged Horror Maw with Interlocking Vampire Needle Fangs
     const mouthShape = new THREE.Shape();
-    // Arc smile with jagged tooth cutouts
-    mouthShape.moveTo(-0.65, -0.05);
-    mouthShape.lineTo(-0.45, -0.28);
-    mouthShape.lineTo(-0.35, -0.18); // tooth
-    mouthShape.lineTo(-0.25, -0.32);
-    mouthShape.lineTo(-0.15, -0.19); // tooth
-    mouthShape.lineTo(0, -0.35);
-    mouthShape.lineTo(0.15, -0.19); // tooth
-    mouthShape.lineTo(0.25, -0.32);
-    mouthShape.lineTo(0.35, -0.18); // tooth
-    mouthShape.lineTo(0.45, -0.28);
-    mouthShape.lineTo(0.65, -0.05);
-    mouthShape.lineTo(0.48, -0.12);
-    mouthShape.lineTo(0.32, 0.01); // upper tooth
-    mouthShape.lineTo(0.2, -0.14);
-    mouthShape.lineTo(0, 0.03); // center upper tooth
-    mouthShape.lineTo(-0.2, -0.14);
-    mouthShape.lineTo(-0.32, 0.01); // upper tooth
-    mouthShape.lineTo(-0.48, -0.12);
+    mouthShape.moveTo(-0.72, 0.02);
+    // Lower jaw contour with jagged razor fangs
+    mouthShape.lineTo(-0.55, -0.24);
+    mouthShape.lineTo(-0.46, -0.12); // fang 1
+    mouthShape.lineTo(-0.36, -0.32);
+    mouthShape.lineTo(-0.26, -0.14); // fang 2
+    mouthShape.lineTo(-0.14, -0.38);
+    mouthShape.lineTo(0, -0.15);     // lower center fang
+    mouthShape.lineTo(0.14, -0.38);
+    mouthShape.lineTo(0.26, -0.14);  // fang 4
+    mouthShape.lineTo(0.36, -0.32);
+    mouthShape.lineTo(0.46, -0.12);  // fang 5
+    mouthShape.lineTo(0.55, -0.24);
+    mouthShape.lineTo(0.72, 0.02);
+    // Upper jaw contour with long dripping vicious needle teeth
+    mouthShape.lineTo(0.58, -0.10);
+    mouthShape.lineTo(0.44, 0.06);   // upper needle 1
+    mouthShape.lineTo(0.34, -0.12);
+    mouthShape.lineTo(0.22, 0.10);   // upper massive fang 2
+    mouthShape.lineTo(0.10, -0.14);
+    mouthShape.lineTo(0, 0.12);      // center upper death tooth
+    mouthShape.lineTo(-0.10, -0.14);
+    mouthShape.lineTo(-0.22, 0.10);  // upper massive fang 4
+    mouthShape.lineTo(-0.34, -0.12);
+    mouthShape.lineTo(-0.44, 0.06);  // upper needle 5
+    mouthShape.lineTo(-0.58, -0.10);
     mouthShape.closePath();
 
     const mouthGeo = new THREE.ShapeGeometry(mouthShape);
-    const mouth = new THREE.Mesh(mouthGeo, flameMat);
+    // Dark charred mouth rim
+    const mouthRim = new THREE.Mesh(mouthGeo, charredRimMat);
+    mouthRim.position.set(0, -0.22, 0.905);
+    mouthRim.scale.set(1.08, 1.08, 1.08);
+    mouthRim.rotation.x = -0.1;
+    pumpkinGroup.add(mouthRim);
+
+    // Blazing fiery mouth
+    const mouth = new THREE.Mesh(mouthGeo, demonFlameMat);
     mouth.position.set(0, -0.22, 0.92);
     mouth.rotation.x = -0.1;
     pumpkinGroup.add(mouth);
@@ -292,6 +415,8 @@ export const Halloween3DScene: React.FC<Halloween3DSceneProps> = ({
     let currentRotX = 0;
     let currentRotY = 0;
 
+    let shudder = 0;
+
     const handleMouseMove = (e: MouseEvent) => {
       if (!interactive) return;
       const rect = container.getBoundingClientRect();
@@ -304,14 +429,25 @@ export const Halloween3DScene: React.FC<Halloween3DSceneProps> = ({
 
     window.addEventListener("mousemove", handleMouseMove);
 
-    // Click pumpkin triggers fire flare
+    // Click pumpkin triggers demonic horror surge & witch cackle
     const handleClick = () => {
-      fireLight.intensity = 16;
-      fireGlowLight.intensity = 8;
+      shudder = 1.0;
+      horrorAudio.playWitchCackle();
+      fireLight.intensity = 26;
+      fireGlowLight.intensity = 16;
+      leftEyeLight.intensity = 24;
+      rightEyeLight.intensity = 24;
+      demonFlameMat.color.setHex(0xff0000);
+      demonCoreMat.color.setHex(0xffffff);
+
       setTimeout(() => {
         fireLight.intensity = 5.5;
         fireGlowLight.intensity = 3.0;
-      }, 400);
+        leftEyeLight.intensity = 4.0;
+        rightEyeLight.intensity = 4.0;
+        demonFlameMat.color.setHex(0xff3300);
+        demonCoreMat.color.setHex(0xffcc00);
+      }, 550);
     };
     container.addEventListener("click", handleClick);
 
@@ -339,11 +475,29 @@ export const Halloween3DScene: React.FC<Halloween3DSceneProps> = ({
       pumpkinGroup.rotation.y = currentRotY + Math.cos(time * 1.2) * 0.06;
       pumpkinGroup.position.y = Math.sin(time * 2.2) * 0.1;
 
-      // Realistic candle fire flicker inside
+      // Demonic horror twitch/shudder
+      if (shudder > 0.01) {
+        pumpkinGroup.position.x = (Math.random() - 0.5) * shudder * 0.25;
+        pumpkinGroup.position.z = (Math.random() - 0.5) * shudder * 0.25;
+        shudder *= 0.91;
+      } else {
+        pumpkinGroup.position.x = 0;
+        pumpkinGroup.position.z = 0;
+      }
+
+      // Realistic candle fire flicker inside + demon eye flare
       const flicker = Math.sin(time * 16) * 0.8 + Math.cos(time * 28) * 0.5;
       fireLight.intensity = 5.5 + flicker;
-      flameMat.opacity = 0.92 + Math.sin(time * 14) * 0.08;
+      leftEyeLight.intensity = 4.0 + Math.sin(time * 18) * 1.5;
+      rightEyeLight.intensity = 4.0 + Math.cos(time * 22) * 1.5;
+      demonFlameMat.opacity = 0.92 + Math.sin(time * 14) * 0.08;
+      demonCoreMat.opacity = 0.9 + Math.cos(time * 18) * 0.08;
       core.scale.setScalar(1 + flicker * 0.05);
+
+      // Pupil dilation / creepy jitter
+      const pupilJitter = Math.sin(time * 7) * 0.08;
+      leftPupil.scale.set(1 + pupilJitter, 1, 1);
+      rightPupil.scale.set(1 - pupilJitter, 1, 1);
 
       // Animate embers rising
       const pos = emberGeo.attributes.position.array as Float32Array;

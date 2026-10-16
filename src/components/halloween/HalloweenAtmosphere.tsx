@@ -6,7 +6,15 @@ import { Volume2, VolumeX, Zap, Sparkles, Skull, Flame } from "lucide-react";
 import { horrorAudio } from "./HorrorSoundManager";
 import { FloatingGhosts } from "./FloatingGhosts";
 
-export const HalloweenAtmosphere: React.FC = () => {
+interface HalloweenAtmosphereProps {
+  soundEnabled?: boolean;
+  onToggleSound?: () => void;
+}
+
+export const HalloweenAtmosphere: React.FC<HalloweenAtmosphereProps> = ({
+  soundEnabled = true,
+  onToggleSound,
+}) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [witchActive, setWitchActive] = useState(true);
   const [witchCackled, setWitchCackled] = useState(false);
@@ -14,19 +22,44 @@ export const HalloweenAtmosphere: React.FC = () => {
   const [smileCreepy, setSmileCreepy] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
+  // Sync audio playback with soundEnabled prop
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (soundEnabled) {
+      if (audio) {
+        audio.muted = false;
+        audio.volume = 0.85;
+        audio.play().catch(() => {
+          // If unmuted autoplay blocked on initial mount, start muted and unmute on first motion
+          audio.muted = true;
+          audio.play().catch(() => {});
+        });
+      }
+      horrorAudio.startAmbience();
+    } else {
+      if (audio) {
+        audio.pause();
+        audio.muted = true;
+      }
+      horrorAudio.stopAmbience();
+    }
+  }, [soundEnabled]);
+
   useEffect(() => {
     const unsub = horrorAudio.subscribe((playing) => {
       setIsPlaying(playing);
     });
 
-    // Start procedural atmospheric horror wind and drone loop
-    horrorAudio.startAmbience();
-
-    // Continuous loop audio playback on homescreen
     const audio = audioRef.current;
-    if (audio) {
-      audio.volume = 0.75;
-      audio.play().catch(() => {});
+    if (soundEnabled && audio) {
+      audio.muted = false;
+      audio.volume = 0.85;
+      audio.play().catch(() => {
+        // Fallback: start playback muted, immediately unmute on first gesture
+        audio.muted = true;
+        audio.play().catch(() => {});
+      });
+      horrorAudio.startAmbience();
     }
 
     const events = [
@@ -43,29 +76,37 @@ export const HalloweenAtmosphere: React.FC = () => {
       "focus",
     ];
 
-    const ensurePlaying = () => {
-      if (audio && audio.paused) {
-        audio.play().catch(() => {});
+    const unlockAudio = () => {
+      // ONLY unlock if sound is enabled (not turned off by user)
+      if (!soundEnabled) return;
+      if (audio) {
+        if (audio.muted) {
+          audio.muted = false;
+        }
+        audio.volume = 0.85;
+        if (audio.paused) {
+          audio.play().catch(() => {});
+        }
       }
       horrorAudio.startAmbience();
     };
 
     events.forEach((evt) => {
-      window.addEventListener(evt, ensurePlaying, { passive: true });
-      document.addEventListener(evt, ensurePlaying, { passive: true });
+      window.addEventListener(evt, unlockAudio, { passive: true, once: false });
+      document.addEventListener(evt, unlockAudio, { passive: true, once: false });
     });
 
     return () => {
       unsub();
       events.forEach((evt) => {
-        window.removeEventListener(evt, ensurePlaying);
-        document.removeEventListener(evt, ensurePlaying);
+        window.removeEventListener(evt, unlockAudio);
+        document.removeEventListener(evt, unlockAudio);
       });
       if (audio) {
         audio.pause();
       }
     };
-  }, []);
+  }, [soundEnabled]);
 
   const handleWitchClick = () => {
     setWitchCackled(true);
@@ -87,14 +128,17 @@ export const HalloweenAtmosphere: React.FC = () => {
 
   return (
     <>
-      {/* Continuous Loop Horror Audio on Homescreen */}
+      {/* Continuous Loop Horror Audio on Homescreen (Imported from https://youtu.be/vy4QRqXdkv8: Ghost Sounds Effect / Horror Sounds Crying) */}
       <audio
+        id="halloween-main-audio"
         ref={audioRef}
-        src="/halloween/horror-scream.mp3"
         loop
         autoPlay
         playsInline
-      />
+      >
+        <source src="/halloween/horror-bgm.webm" type="audio/webm" />
+        <source src="/halloween/horror-bgm.m4a" type="audio/mp4" />
+      </audio>
 
       {/* 0. MOVING 3D ETHEREAL WHITE GHOSTS FLOATING ACROSS SCREEN */}
       <FloatingGhosts />
@@ -434,6 +478,44 @@ export const HalloweenAtmosphere: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* Floating Sound Toggle Pill (Bottom Left) */}
+      {onToggleSound && (
+        <div className="fixed bottom-6 left-6 z-40 select-none">
+          <button
+            onClick={onToggleSound}
+            className={`flex items-center gap-2.5 px-3.5 py-2 rounded-full border backdrop-blur-md shadow-2xl transition-all transform hover:scale-105 active:scale-95 cursor-pointer ${
+              soundEnabled
+                ? "bg-neutral-950/90 border-red-600/80 text-red-300 shadow-[0_0_20px_rgba(220,38,38,0.5)]"
+                : "bg-neutral-900/90 border-neutral-700/60 text-neutral-400"
+            }`}
+            title={soundEnabled ? "Mute Horror Music" : "Unmute Horror Music"}
+          >
+            {soundEnabled ? (
+              <>
+                <Volume2 className="w-4 h-4 text-red-400 animate-pulse" />
+                <div className="flex flex-col text-left">
+                  <span className="text-[10px] font-mono font-bold leading-tight">HORROR BGM: PLAYING</span>
+                  <span className="text-[9px] font-mono text-neutral-400 leading-tight">Ghost Sounds Crying</span>
+                </div>
+                <span className="flex items-end gap-0.5 h-3.5 ml-1">
+                  <span className="w-0.5 h-2 bg-red-400 animate-bounce" style={{ animationDelay: "0ms" }} />
+                  <span className="w-0.5 h-3.5 bg-red-400 animate-bounce" style={{ animationDelay: "150ms" }} />
+                  <span className="w-0.5 h-1.5 bg-red-400 animate-bounce" style={{ animationDelay: "300ms" }} />
+                </span>
+              </>
+            ) : (
+              <>
+                <VolumeX className="w-4 h-4 text-neutral-400" />
+                <div className="flex flex-col text-left">
+                  <span className="text-[10px] font-mono font-bold leading-tight">HORROR BGM: MUTED</span>
+                  <span className="text-[9px] font-mono text-neutral-400 leading-tight">Click to Unmute</span>
+                </div>
+              </>
+            )}
+          </button>
+        </div>
+      )}
 
       <style jsx global>{`
         @keyframes occultRotate {
