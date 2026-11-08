@@ -6,23 +6,26 @@ import Image from "next/image";
 interface BuilderChipProps {
   size?: number;
   className?: string;
-  variant?: "purple" | "blue" | "white";
+  variant?: "cyan" | "blue" | "purple" | "white";
   glow?: boolean;
+  useImage?: boolean;
 }
 
 export const BuilderChip: React.FC<BuilderChipProps> = ({
   size = 40,
   className = "",
-  variant = "purple",
+  variant = "cyan",
   glow = false,
+  useImage = false,
 }) => {
   const colorMap = {
-    purple: "#a855f7",
+    cyan: "#38bdf8",
     blue: "#38bdf8",
+    purple: "#a855f7",
     white: "#ffffff",
   };
 
-  const fill = colorMap[variant] || colorMap.purple;
+  const fill = colorMap[variant] || colorMap.cyan;
   const glowStyle = glow
     ? {
         filter:
@@ -32,57 +35,61 @@ export const BuilderChip: React.FC<BuilderChipProps> = ({
       }
     : {};
 
+  if (useImage) {
+    return (
+      <div
+        className={`relative flex items-center justify-center select-none ${className}`}
+        style={{ width: size, height: size, ...glowStyle }}
+      >
+        <Image
+          src="/brand/aws-sbg-chip-cyan.png"
+          alt="AWS SBG IITJ Logo"
+          width={size}
+          height={size}
+          className="object-contain"
+          priority
+        />
+      </div>
+    );
+  }
+
   return (
     <div
       className={`relative flex items-center justify-center select-none ${className}`}
       style={{ width: size, height: size, ...glowStyle }}
     >
       <svg
-        viewBox="0 0 100 100"
+        viewBox="0 0 286 286"
         width={size}
         height={size}
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         className="transition-transform duration-300"
       >
-        {/*
-          Precise geometric recreation of the AWS Builder Chip from Reference Image 1 & 2:
-          9x9 modular grid where unit = 11.11px (or base 100px):
-          - Center hollow square: x=33.3 to 66.6, y=33.3 to 66.6
-          - Outer teeth:
-            Top: 3 teeth at x=[22.2..33.3], x=[44.4..55.5], x=[66.6..77.7] rising to y=0
-            Bottom: 3 teeth at same x columns, dropping to y=100
-            Left: 3 teeth at y=[22.2..33.3], y=[44.4..55.5], y=[66.6..77.7] extending to x=0
-            Right: 3 teeth at same y rows, extending to x=100
-            Corners: empty quadrants
-        */}
         <g fill={fill}>
-          {/* Top 3 teeth */}
-          <rect x="22" y="0" width="12" height="22" rx="1" />
-          <rect x="44" y="0" width="12" height="22" rx="1" />
-          <rect x="66" y="0" width="12" height="22" rx="1" />
+          {/* Top Comb: 3 outer teeth & spine */}
+          <rect x="62" y="31" width="162" height="31" />
+          <rect x="62" y="0" width="34" height="31" />
+          <rect x="126" y="0" width="34" height="31" />
+          <rect x="190" y="0" width="34" height="31" />
 
-          {/* Bottom 3 teeth */}
-          <rect x="22" y="78" width="12" height="22" rx="1" />
-          <rect x="44" y="78" width="12" height="22" rx="1" />
-          <rect x="66" y="78" width="12" height="22" rx="1" />
+          {/* Bottom Comb: 3 outer teeth & spine */}
+          <rect x="62" y="224" width="162" height="31" />
+          <rect x="62" y="255" width="34" height="31" />
+          <rect x="126" y="255" width="34" height="31" />
+          <rect x="190" y="255" width="34" height="31" />
 
-          {/* Left 3 teeth */}
-          <rect x="0" y="22" width="22" height="12" rx="1" />
-          <rect x="0" y="44" width="22" height="12" rx="1" />
-          <rect x="0" y="66" width="22" height="12" rx="1" />
+          {/* Left Comb: 3 outer teeth & spine */}
+          <rect x="31" y="62" width="31" height="162" />
+          <rect x="0" y="62" width="31" height="34" />
+          <rect x="0" y="126" width="31" height="34" />
+          <rect x="0" y="190" width="31" height="34" />
 
-          {/* Right 3 teeth */}
-          <rect x="78" y="22" width="22" height="12" rx="1" />
-          <rect x="78" y="44" width="22" height="12" rx="1" />
-          <rect x="78" y="66" width="22" height="12" rx="1" />
-
-          {/* Solid connecting frame ring */}
-          <path
-            fillRule="evenodd"
-            clipRule="evenodd"
-            d="M22 22 H78 V78 H22 V22 Z M35 35 V65 H65 V35 H35 Z"
-          />
+          {/* Right Comb: 3 outer teeth & spine */}
+          <rect x="224" y="62" width="31" height="162" />
+          <rect x="255" y="62" width="31" height="34" />
+          <rect x="255" y="126" width="31" height="34" />
+          <rect x="255" y="190" width="31" height="34" />
         </g>
       </svg>
     </div>

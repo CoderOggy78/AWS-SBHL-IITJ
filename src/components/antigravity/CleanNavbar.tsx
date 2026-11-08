@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { ChevronDown, Menu, X, ArrowDownToLine, Tv } from "lucide-react";
+import { ChevronDown, Menu, X, Tv } from "lucide-react";
 import { BuilderChip } from "@/components/ui/Logo";
 
 interface CleanNavbarProps {
@@ -13,24 +13,24 @@ export const CleanNavbar: React.FC<CleanNavbarProps> = ({ onOpenJoinModal }) => 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-black/5">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between">
+    <header className="sticky top-0 z-40 bg-[#030712]/80 backdrop-blur-xl border-b border-cyan-500/15 transition-all">
+      <div className="max-w-7xl 2xl:max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between gap-4">
         {/* Left: Brand Logo */}
         <a
           href="#"
-          className="flex items-center gap-2.5 group focus:outline-none"
+          className="flex items-center gap-2.5 group focus:outline-none shrink-0 mr-3 xl:mr-6"
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         >
-          <div className="relative flex items-center justify-center p-1 rounded-xl bg-neutral-100 group-hover:bg-neutral-200 transition-colors">
-            <BuilderChip size={26} variant="purple" />
+          <div className="relative flex items-center justify-center p-1.5 rounded-xl bg-cyan-500/10 border border-cyan-500/25 group-hover:bg-cyan-500/20 group-hover:border-cyan-400/50 transition-all shadow-[0_0_15px_rgba(6,182,212,0.2)]">
+            <BuilderChip size={24} variant="cyan" />
           </div>
-          <span className="font-semibold text-base sm:text-lg tracking-tight text-neutral-900 group-hover:text-sky-600 transition-colors">
+          <span className="font-semibold text-base sm:text-lg tracking-tight text-white group-hover:text-cyan-400 transition-colors whitespace-nowrap">
             AWS Student Builder Group IITJ
           </span>
         </a>
 
         {/* Center: Desktop Navigation Links */}
-        <nav className="hidden md:flex items-center gap-6 lg:gap-8 text-sm font-normal text-neutral-700">
+        <nav className="hidden lg:flex items-center gap-5 xl:gap-7 text-sm font-normal text-slate-300">
           {/* Teams Dropdown */}
           <div
             className="relative"
@@ -39,145 +39,160 @@ export const CleanNavbar: React.FC<CleanNavbarProps> = ({ onOpenJoinModal }) => 
           >
             <button
               onClick={() => setTeamsDropdownOpen(!teamsDropdownOpen)}
-              className="flex items-center gap-1 hover:text-black py-2 focus:outline-none cursor-pointer"
+              className="flex items-center gap-1 hover:text-cyan-300 py-2 focus:outline-none cursor-pointer transition-colors"
             >
               <span>Teams</span>
               <ChevronDown
-                className={`w-3.5 h-3.5 transition-transform duration-200 ${teamsDropdownOpen ? "rotate-180" : ""
-                  }`}
+                className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                  teamsDropdownOpen ? "rotate-180 text-cyan-400" : ""
+                }`}
               />
             </button>
 
             {teamsDropdownOpen && (
-              <div className="absolute top-full left-0 mt-1 w-64 p-2 bg-white rounded-2xl border border-black/10 shadow-xl animate-in fade-in duration-150">
+              <div className="absolute top-full left-0 mt-1 w-64 p-2 bg-[#070e20]/95 backdrop-blur-2xl rounded-2xl border border-cyan-500/25 shadow-2xl shadow-black/80 animate-in fade-in duration-150">
                 <a
                   href="#team-technical"
                   onClick={() => setTeamsDropdownOpen(false)}
-                  className="block px-3 py-2 rounded-xl text-xs font-medium text-neutral-800 hover:bg-neutral-100 hover:text-black"
+                  className="block px-3 py-2 rounded-xl text-xs font-medium text-slate-200 hover:bg-cyan-500/15 hover:text-cyan-200 transition-colors"
                 >
-                  <div className="font-semibold">Technical Team</div>
-                  <div className="text-[11px] text-neutral-500">Lead: Bishal Saha</div>
+                  <div className="font-semibold text-white">Technical Team</div>
+                  <div className="text-[11px] text-slate-400">Lead: Bishal Saha</div>
                 </a>
                 <a
                   href="#team-community"
                   onClick={() => setTeamsDropdownOpen(false)}
-                  className="block px-3 py-2 rounded-xl text-xs font-medium text-neutral-800 hover:bg-neutral-100 hover:text-black"
+                  className="block px-3 py-2 rounded-xl text-xs font-medium text-slate-200 hover:bg-cyan-500/15 hover:text-cyan-200 transition-colors"
                 >
-                  <div className="font-semibold">Community Management</div>
-                  <div className="text-[11px] text-neutral-500">Lead: Quazi Arqam</div>
+                  <div className="font-semibold text-white">Community Management</div>
+                  <div className="text-[11px] text-slate-400">Lead: Quazi Arqam</div>
                 </a>
                 <a
                   href="#team-social"
                   onClick={() => setTeamsDropdownOpen(false)}
-                  className="block px-3 py-2 rounded-xl text-xs font-medium text-neutral-800 hover:bg-neutral-100 hover:text-black"
+                  className="block px-3 py-2 rounded-xl text-xs font-medium text-slate-200 hover:bg-cyan-500/15 hover:text-cyan-200 transition-colors"
                 >
-                  <div className="font-semibold">Social Media Team</div>
-                  <div className="text-[11px] text-neutral-500">Lead: Rahul</div>
+                  <div className="font-semibold text-white">Social Media Team</div>
+                  <div className="text-[11px] text-slate-400">Lead: Rahul Wakhale</div>
                 </a>
                 <a
                   href="#team-leadership"
                   onClick={() => setTeamsDropdownOpen(false)}
-                  className="block px-3 py-2 rounded-xl text-xs font-medium text-neutral-800 hover:bg-neutral-100 hover:text-black"
+                  className="block px-3 py-2 rounded-xl text-xs font-medium text-slate-200 hover:bg-cyan-500/15 hover:text-cyan-200 transition-colors"
                 >
-                  <div className="font-semibold">Leadership & Advisory</div>
-                  <div className="text-[11px] text-neutral-500">Vishwanath Barve • Ashwani Dwivedi Sir</div>
+                  <div className="font-semibold text-white">Leadership & Advisory</div>
+                  <div className="text-[11px] text-slate-400">Vishwanath Barve • Ashwani Dwivedi Sir</div>
+                </a>
+                <a
+                  href="#about"
+                  onClick={() => setTeamsDropdownOpen(false)}
+                  className="block px-3 py-2 rounded-xl text-xs font-medium text-slate-200 hover:bg-cyan-500/15 hover:text-cyan-200 transition-colors border-t border-cyan-500/15 mt-1 pt-2"
+                >
+                  <div className="font-semibold text-cyan-300">About IITJ Chapter</div>
+                  <div className="text-[11px] text-slate-400">Campus Cloud Excellence</div>
                 </a>
               </div>
             )}
           </div>
 
-          <a href="#lectures" className="hover:text-black transition-colors font-medium text-sky-700 flex items-center gap-1.5">
+          <a href="#lectures" className="hover:text-cyan-300 transition-colors font-medium text-cyan-400 flex items-center gap-1.5">
             <Tv className="w-3.5 h-3.5" />
             <span>Free Lectures</span>
           </a>
 
-          <a href="#curriculum" className="hover:text-black transition-colors">
+          <a href="#curriculum" className="hover:text-cyan-300 transition-colors">
             Curriculum
           </a>
 
-          <a href="#certifications" className="hover:text-black transition-colors">
+          <a href="#research" className="hover:text-cyan-300 transition-colors">
+            Research
+          </a>
+
+          <a href="#certifications" className="hover:text-cyan-300 transition-colors">
             Certifications
           </a>
 
-          <a href="#directory" className="hover:text-black transition-colors">
+          <a href="#directory" className="hover:text-cyan-300 transition-colors">
             Directory
-          </a>
-
-          <a href="#about" className="hover:text-black transition-colors">
-            About IITJ
           </a>
         </nav>
 
-        {/* Right: Join Button (Rocket removed as requested) */}
-        <div className="flex items-center gap-3">
+        {/* Right: Join Button without download icon */}
+        <div className="flex items-center gap-3 shrink-0">
           <button
             onClick={onOpenJoinModal}
-            className="ag-btn-black flex items-center gap-1.5 text-xs sm:text-sm font-medium"
+            className="ag-btn-black text-xs sm:text-sm font-semibold tracking-tight px-5 py-2.5"
           >
             <span>Join AWS SBG</span>
-            <ArrowDownToLine className="w-3.5 h-3.5" />
           </button>
 
           {/* Mobile hamburger */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 text-neutral-700 hover:text-black focus:outline-none"
+            className="lg:hidden p-2 text-slate-300 hover:text-white focus:outline-none"
             aria-label="Toggle navigation menu"
           >
-            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            {mobileMenuOpen ? <X className="w-5 h-5 text-cyan-400" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
       </div>
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-b border-black/10 bg-white px-5 pt-3 pb-6 space-y-3">
+        <div className="lg:hidden border-b border-cyan-500/20 bg-[#070e20] px-5 pt-3 pb-6 space-y-3">
           <a
             href="#lectures"
             onClick={() => setMobileMenuOpen(false)}
-            className="block text-sm font-bold text-sky-700 py-1"
+            className="block text-sm font-bold text-cyan-400 py-1"
           >
             Free AWS Lectures (YouTube Library)
           </a>
           <a
             href="#team-technical"
             onClick={() => setMobileMenuOpen(false)}
-            className="block text-sm font-medium text-neutral-800 py-1"
+            className="block text-sm font-medium text-slate-200 py-1"
           >
             Technical Team (Lead: Bishal Saha)
           </a>
           <a
             href="#team-community"
             onClick={() => setMobileMenuOpen(false)}
-            className="block text-sm font-medium text-neutral-800 py-1"
+            className="block text-sm font-medium text-slate-200 py-1"
           >
             Community Management (Lead: Quazi Arqam)
           </a>
           <a
             href="#team-social"
             onClick={() => setMobileMenuOpen(false)}
-            className="block text-sm font-medium text-neutral-800 py-1"
+            className="block text-sm font-medium text-slate-200 py-1"
           >
-            Social Media Team (Lead: Rahul)
+            Social Media Team (Lead: Rahul Wakhale)
           </a>
           <a
             href="#team-leadership"
             onClick={() => setMobileMenuOpen(false)}
-            className="block text-sm font-medium text-neutral-800 py-1"
+            className="block text-sm font-medium text-slate-200 py-1"
           >
             Leadership & Advisory
           </a>
           <a
             href="#curriculum"
             onClick={() => setMobileMenuOpen(false)}
-            className="block text-sm font-medium text-neutral-800 py-1"
+            className="block text-sm font-medium text-slate-200 py-1"
           >
             Curriculum Roadmap
           </a>
           <a
+            href="#research"
+            onClick={() => setMobileMenuOpen(false)}
+            className="block text-sm font-medium text-slate-200 py-1"
+          >
+            Research Papers & CLI Labs
+          </a>
+          <a
             href="#certifications"
             onClick={() => setMobileMenuOpen(false)}
-            className="block text-sm font-medium text-neutral-800 py-1"
+            className="block text-sm font-medium text-slate-200 py-1"
           >
             100 Free Badges & Certs
           </a>

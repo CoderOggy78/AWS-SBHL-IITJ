@@ -17,11 +17,10 @@ import {
   Box,
   Code,
   FileCode,
-  Layers,
 } from "lucide-react";
 
 export const IconRibbonSection: React.FC = () => {
-  // 16 icons matching Reference Image 3 arranged in a gentle curved arc
+  // 16 icons arranged in a gentle curved arc
   const ribbonIcons = [
     { icon: LayoutGrid, y: 16 },
     { icon: Sparkles, y: 8 },
@@ -42,9 +41,9 @@ export const IconRibbonSection: React.FC = () => {
   ];
 
   return (
-    <section className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-white text-center overflow-hidden">
+    <section className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-[#030712] text-center overflow-hidden border-t border-cyan-500/10">
       <div className="max-w-6xl mx-auto">
-        {/* Curved Icon Ribbon (Exact Reference Image 3 Style) */}
+        {/* Curved Icon Ribbon */}
         <div className="flex items-center justify-center gap-2 sm:gap-3.5 overflow-x-auto pb-8 pt-4 no-scrollbar">
           {ribbonIcons.map((item, idx) => {
             const Icon = item.icon;
@@ -52,17 +51,17 @@ export const IconRibbonSection: React.FC = () => {
               <div
                 key={idx}
                 style={{ transform: `translateY(${item.y}px)` }}
-                className="w-10 h-10 sm:w-13 sm:h-13 rounded-full bg-neutral-100 hover:bg-neutral-200 border border-neutral-200/80 flex items-center justify-center text-neutral-800 shrink-0 shadow-sm transition-all hover:scale-110 cursor-pointer"
+                className="w-10 h-10 sm:w-13 sm:h-13 rounded-full bg-white/[0.04] hover:bg-cyan-500/15 border border-cyan-500/20 hover:border-cyan-400/60 flex items-center justify-center text-cyan-300 shrink-0 shadow-sm transition-all hover:scale-110 hover:shadow-[0_0_20px_rgba(6,182,212,0.3)] cursor-pointer"
               >
-                <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-neutral-700" />
+                <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-400" />
               </div>
             );
           })}
         </div>
 
-        {/* Large Clean Antigravity Statement (Exact Reference Image 3 Style) */}
+        {/* Large Statement with Electric Cyan-Blue Cursor */}
         <div className="mt-12 sm:mt-16 max-w-4xl mx-auto text-left sm:text-center">
-          <h2 className="text-2xl sm:text-4xl md:text-5xl font-normal tracking-tight text-neutral-900 leading-[1.2]">
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-normal tracking-tight text-slate-100 leading-[1.2]">
             AWS Student Builder Group IITJ is our premier cloud innovation
             community, allowing anyone to build at IIT Jodhpur.
             <span className="blinking-cursor" aria-hidden="true" />
