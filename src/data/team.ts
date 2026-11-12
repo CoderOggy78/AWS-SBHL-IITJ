@@ -25,7 +25,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
       "Fostering student open-source contributions on AWS",
       "Connecting IIT Jodhpur builders with industry mentors",
     ],
-    email: "vishwanath@iitj.ac.in",
+    email: "b25bs3556@iitj.ac.in",
   },
   {
     id: "ashwani-dwivedi",
@@ -127,7 +127,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     tier: "Lead",
     department: "Technical Team",
     affiliation: "AWS Student Builders Group",
-    institute: "Pimpri Chinchwad University / IIT Jodhpur Partner Chapter",
+    institute: "Indian Institute of Technology Jodhpur",
     bio: "Leading the core technical initiatives, architecture curriculum, coding workshops, cloud engineering prototypes, and hands-on AWS labs.",
     focusAreas: ["Cloud Systems", "AWS Architecture", "Full Stack Engineering", "Open Source"],
     responsibilities: [
