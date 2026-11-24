@@ -12,7 +12,6 @@ import { CloudResearchPapers } from "@/components/antigravity/CloudResearchPaper
 import { CleanCertifications } from "@/components/antigravity/CleanCertifications";
 import { CleanFooter } from "@/components/antigravity/CleanFooter";
 import { CleanJoinModal } from "@/components/antigravity/CleanJoinModal";
-import SplashCursor from "@/components/ui/SplashCursor";
 import { SmoothScroll } from "@/components/ui/SmoothScroll";
 
 export default function HomePage() {
@@ -37,20 +36,7 @@ export default function HomePage() {
 
   return (
     <SmoothScroll>
-      <div className="min-h-screen bg-[#030712] text-slate-100 flex flex-col font-sans selection:bg-cyan-500/30 selection:text-cyan-200">
-        {/* Interactive WebGL2 Fluid Splash Cursor */}
-        <SplashCursor
-          rainbow
-          size={1}
-          force={1}
-          swirl={3}
-          trail={1}
-          clickSplash
-          colorSpeed={0.55}
-          intensity={0.8}
-          zIndex={30}
-        />
-
+      <div className="min-h-screen bg-[#030712] text-slate-100 flex flex-col font-sans selection:bg-sky-500/20 selection:text-sky-100">
         {/* 1. Sleek Frosted Glass Top Navbar */}
         <CleanNavbar onOpenJoinModal={() => setJoinModalOpen(true)} />
 

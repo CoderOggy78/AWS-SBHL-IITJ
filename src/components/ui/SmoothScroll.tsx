@@ -122,37 +122,24 @@ export const SmoothScroll: React.FC<SmoothScrollProps> = ({ children }) => {
 
   return (
     <>
-      {/* 1. Neon Cyan Scroll Progress Bar */}
-      <div
-        className="fixed top-0 left-0 right-0 h-[2.5px] z-50 pointer-events-none"
-        aria-hidden="true"
-      >
-        <div
-          className="h-full bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500 shadow-[0_0_12px_rgba(6,182,212,0.8)] transition-transform duration-75 origin-left"
-          style={{
-            transform: `scaleX(${scrollProgress})`,
-          }}
-        />
-      </div>
-
-      {/* 2. Page Content Wrapped */}
+      {/* Page Content Wrapped */}
       {children}
 
-      {/* 3. Floating Glass Back to Top Pill */}
+      {/* Floating Quiet Back to Top Button */}
       <div
-        className={`fixed bottom-6 right-6 z-40 transition-all duration-300 ${
+        className={`fixed bottom-6 right-6 z-40 transition-all duration-200 ${
           showScrollTop
             ? "opacity-100 translate-y-0 pointer-events-auto"
-            : "opacity-0 translate-y-4 pointer-events-none"
+            : "opacity-0 translate-y-2 pointer-events-none"
         }`}
       >
         <button
           onClick={scrollToTop}
-          className="group flex items-center gap-2 px-4 py-2.5 rounded-full bg-[#050b18]/85 hover:bg-[#07122a]/95 text-slate-200 hover:text-white border border-cyan-500/30 hover:border-cyan-400/60 shadow-[0_4px_24px_rgba(0,0,0,0.6)] hover:shadow-[0_0_24px_rgba(6,182,212,0.35)] backdrop-blur-xl transition-all cursor-pointer active:scale-95"
+          className="group flex items-center gap-1.5 px-3 py-2 rounded-lg bg-slate-900/90 hover:bg-slate-800 text-slate-300 hover:text-white border border-white/10 shadow-lg backdrop-blur-md transition-colors cursor-pointer text-xs font-mono"
           aria-label="Scroll back to top"
         >
-          <ArrowUp className="w-4 h-4 text-cyan-400 group-hover:-translate-y-0.5 transition-transform" />
-          <span className="text-xs font-semibold tracking-tight">Top</span>
+          <ArrowUp className="w-3.5 h-3.5 text-slate-400 group-hover:text-white transition-colors" />
+          <span>Top</span>
         </button>
       </div>
     </>

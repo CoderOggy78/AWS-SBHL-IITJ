@@ -26,8 +26,8 @@ export const TeamFeatureShowcases: React.FC<{ onOpenJoinModal: () => void }> = (
         <div id="team-technical" className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center scroll-mt-28">
           {/* Left Column: Copy & Actions */}
           <div className="lg:col-span-5 space-y-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-medium tracking-wide uppercase bg-cyan-950/60 text-cyan-300 border border-cyan-500/30 shadow-[0_0_15px_rgba(6,182,212,0.15)]">
-              <Code className="w-3.5 h-3.5 text-cyan-400" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md text-xs font-mono text-slate-300 bg-slate-900 border border-white/10">
+              <Code className="w-3.5 h-3.5 text-slate-400" />
               Technical Team
             </div>
 
@@ -37,7 +37,7 @@ export const TeamFeatureShowcases: React.FC<{ onOpenJoinModal: () => void }> = (
 
             <div className="space-y-1">
               <div className="text-sm font-semibold text-slate-200">
-                Lead: <span className="text-cyan-400 font-bold">Bishal Saha</span>
+                Lead: <span className="text-white font-bold">Bishal Saha</span>
               </div>
               <div className="text-xs text-slate-400 font-mono">
                 Core Team: Satyam Mishra • Aryan Vishwakarma • Yash Gogawale • Tanmay Damre
@@ -53,13 +53,13 @@ export const TeamFeatureShowcases: React.FC<{ onOpenJoinModal: () => void }> = (
             <div className="pt-2 flex flex-wrap items-center gap-3">
               <button
                 onClick={onOpenJoinModal}
-                className="ag-btn-light text-sm px-6 py-2.5"
+                className="ag-btn-light text-sm px-5 py-2.5"
               >
                 Join Technical Track
               </button>
               <a
                 href="#directory"
-                className="text-sm font-medium text-cyan-400 hover:text-cyan-300 inline-flex items-center gap-1 transition-colors"
+                className="text-sm font-medium text-slate-300 hover:text-white inline-flex items-center gap-1 transition-colors"
               >
                 <span>View Full Team Roster</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -67,26 +67,26 @@ export const TeamFeatureShowcases: React.FC<{ onOpenJoinModal: () => void }> = (
             </div>
           </div>
 
-          {/* Right Column: Neon Aura Card */}
+          {/* Right Column: Crafted Technical Card */}
           <div className="lg:col-span-7">
-            <div className="relative rounded-[36px] p-6 sm:p-10 ag-aura-blue border border-cyan-500/20 shadow-2xl shadow-cyan-500/10">
+            <div className="relative rounded-2xl p-6 sm:p-8 bg-[#080d1a] border border-white/10">
               {/* Clean Mock Interface */}
-              <div className="bg-[#050a18]/95 backdrop-blur-xl rounded-2xl border border-cyan-500/25 shadow-xl p-6 space-y-4 text-slate-200">
+              <div className="bg-[#050914] rounded-xl border border-white/10 p-6 space-y-4 text-slate-200">
                 {/* Top selector */}
                 <div className="flex items-center gap-2 text-xs font-medium text-slate-300">
-                  <Folder className="w-4 h-4 text-cyan-400" />
+                  <Folder className="w-4 h-4 text-slate-400" />
                   <span className="text-white font-mono">aws-bedrock-rag-agent</span>
                   <ChevronDown className="w-3.5 h-3.5 text-slate-500" />
                 </div>
 
                 {/* Input prompt area */}
-                <div className="rounded-xl border border-cyan-500/20 bg-[#030712] p-3.5 space-y-3">
+                <div className="rounded-lg border border-white/10 bg-[#030712] p-3.5 space-y-3">
                   <div className="text-xs text-slate-400">
                     Ask anything, @ to mention, / for cloud actions
                   </div>
                   <div className="flex items-center justify-between pt-2 border-t border-white/10 text-xs">
-                    <div className="flex items-center gap-2 text-cyan-300 font-medium">
-                      <Plus className="w-3.5 h-3.5 text-cyan-400" />
+                    <div className="flex items-center gap-2 text-slate-200 font-medium">
+                      <Plus className="w-3.5 h-3.5 text-slate-400" />
                       <span>Amazon Bedrock (Claude 3.7)</span>
                       <ChevronDown className="w-3 h-3 text-slate-500" />
                     </div>
@@ -96,12 +96,12 @@ export const TeamFeatureShowcases: React.FC<{ onOpenJoinModal: () => void }> = (
 
                 {/* Mock dropdown status pills */}
                 <div className="flex items-center gap-2 text-xs text-slate-300 font-mono">
-                  <div className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-white/[0.04] border border-cyan-500/20">
-                    <GitBranch className="w-3 h-3 text-cyan-400" />
+                  <div className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/10">
+                    <GitBranch className="w-3 h-3 text-slate-400" />
                     <span>main</span>
                   </div>
-                  <div className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-white/[0.04] border border-cyan-500/20">
-                    <Laptop className="w-3 h-3 text-cyan-400" />
+                  <div className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/10">
+                    <Laptop className="w-3 h-3 text-slate-400" />
                     <span>ap-south-1 (Mumbai)</span>
                   </div>
                 </div>
@@ -114,8 +114,8 @@ export const TeamFeatureShowcases: React.FC<{ onOpenJoinModal: () => void }> = (
         <div id="team-community" className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center scroll-mt-28">
           {/* Left Column: Copy & Actions */}
           <div className="lg:col-span-5 space-y-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-medium tracking-wide uppercase bg-purple-950/60 text-purple-300 border border-purple-500/30 shadow-[0_0_15px_rgba(168,85,247,0.15)]">
-              <Users className="w-3.5 h-3.5 text-purple-400" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md text-xs font-mono text-slate-300 bg-slate-900 border border-white/10">
+              <Users className="w-3.5 h-3.5 text-slate-400" />
               Community Management Team
             </div>
 
@@ -125,7 +125,7 @@ export const TeamFeatureShowcases: React.FC<{ onOpenJoinModal: () => void }> = (
 
             <div className="space-y-1">
               <div className="text-sm font-semibold text-slate-200">
-                Lead: <span className="text-purple-400 font-bold">Quazi Arqam</span>
+                Lead: <span className="text-white font-bold">Quazi Arqam</span>
               </div>
               <div className="text-xs text-slate-400 font-mono">
                 Core Team: Harshpreet Singh • Lakshya Gupta • Anita Kumari • Sadaf Naaz
@@ -140,13 +140,13 @@ export const TeamFeatureShowcases: React.FC<{ onOpenJoinModal: () => void }> = (
             <div className="pt-2 flex flex-wrap items-center gap-3">
               <button
                 onClick={onOpenJoinModal}
-                className="ag-btn-light text-sm px-6 py-2.5"
+                className="ag-btn-light text-sm px-5 py-2.5"
               >
                 Join Student Cohorts
               </button>
               <a
                 href="#directory"
-                className="text-sm font-medium text-purple-400 hover:text-purple-300 inline-flex items-center gap-1 transition-colors"
+                className="text-sm font-medium text-slate-300 hover:text-white inline-flex items-center gap-1 transition-colors"
               >
                 <span>View Full Team Roster</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -154,14 +154,14 @@ export const TeamFeatureShowcases: React.FC<{ onOpenJoinModal: () => void }> = (
             </div>
           </div>
 
-          {/* Right Column: Purple-Blue Aura Card */}
+          {/* Right Column: Crafted Cohort Card */}
           <div className="lg:col-span-7">
-            <div className="relative rounded-[36px] p-6 sm:p-10 ag-aura-purple border border-purple-500/20 shadow-2xl shadow-purple-500/10">
-              <div className="bg-[#050a18]/95 backdrop-blur-xl rounded-2xl border border-purple-500/25 shadow-xl p-6 space-y-4 text-slate-200">
+            <div className="relative rounded-2xl p-6 sm:p-8 bg-[#080d1a] border border-white/10">
+              <div className="bg-[#050914] rounded-xl border border-white/10 p-6 space-y-4 text-slate-200">
                 <div className="flex items-center justify-between border-b border-white/10 pb-3 text-xs font-mono text-slate-400">
                   <div className="flex items-center gap-2">
                     <span className="font-semibold text-white">Active Cohort (2026-27)</span>
-                    <span className="px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 font-bold text-[10px] border border-cyan-500/30">
+                    <span className="px-2 py-0.5 rounded-md bg-white/5 text-slate-300 font-mono text-[10px] border border-white/10">
                       Live
                     </span>
                   </div>
@@ -169,28 +169,28 @@ export const TeamFeatureShowcases: React.FC<{ onOpenJoinModal: () => void }> = (
                 </div>
 
                 <div className="space-y-2.5">
-                  <div className="p-3 rounded-xl bg-[#030712] border border-white/10 flex items-center justify-between text-xs">
+                  <div className="p-3 rounded-lg bg-[#030712] border border-white/10 flex items-center justify-between text-xs">
                     <div className="flex items-center gap-2.5">
-                      <CheckCircle2 className="w-4 h-4 text-purple-400" />
+                      <CheckCircle2 className="w-4 h-4 text-slate-400" />
                       <span className="font-medium text-slate-200">AWS Cloud Practitioner Study Circle</span>
                     </div>
-                    <span className="text-cyan-400 font-mono text-[11px]">Free Tier</span>
+                    <span className="text-slate-400 font-mono text-[11px]">Free Tier</span>
                   </div>
 
-                  <div className="p-3 rounded-xl bg-[#030712] border border-white/10 flex items-center justify-between text-xs">
+                  <div className="p-3 rounded-lg bg-[#030712] border border-white/10 flex items-center justify-between text-xs">
                     <div className="flex items-center gap-2.5">
-                      <CheckCircle2 className="w-4 h-4 text-purple-400" />
+                      <CheckCircle2 className="w-4 h-4 text-slate-400" />
                       <span className="font-medium text-slate-200">Hands-on Bedrock AI Immersion Labs</span>
                     </div>
-                    <span className="text-cyan-400 font-mono text-[11px]">Hands-On</span>
+                    <span className="text-slate-400 font-mono text-[11px]">Hands-On</span>
                   </div>
 
-                  <div className="p-3 rounded-xl bg-[#030712] border border-white/10 flex items-center justify-between text-xs">
+                  <div className="p-3 rounded-lg bg-[#030712] border border-white/10 flex items-center justify-between text-xs">
                     <div className="flex items-center gap-2.5">
-                      <CheckCircle2 className="w-4 h-4 text-purple-400" />
+                      <CheckCircle2 className="w-4 h-4 text-slate-400" />
                       <span className="font-medium text-slate-200">Peer Architecture Review Sessions</span>
                     </div>
-                    <span className="text-cyan-400 font-mono text-[11px]">Mentored</span>
+                    <span className="text-slate-400 font-mono text-[11px]">Mentored</span>
                   </div>
                 </div>
               </div>
@@ -202,8 +202,8 @@ export const TeamFeatureShowcases: React.FC<{ onOpenJoinModal: () => void }> = (
         <div id="team-social" className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center scroll-mt-28">
           {/* Left Column: Copy & Actions */}
           <div className="lg:col-span-5 space-y-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-medium tracking-wide uppercase bg-blue-950/60 text-blue-300 border border-blue-500/30 shadow-[0_0_15px_rgba(59,130,246,0.15)]">
-              <Share2 className="w-3.5 h-3.5 text-blue-400" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md text-xs font-mono text-slate-300 bg-slate-900 border border-white/10">
+              <Share2 className="w-3.5 h-3.5 text-slate-400" />
               Social Media Team
             </div>
 
@@ -213,7 +213,7 @@ export const TeamFeatureShowcases: React.FC<{ onOpenJoinModal: () => void }> = (
 
             <div className="space-y-1">
               <div className="text-sm font-semibold text-slate-200">
-                Lead: <span className="text-blue-400 font-bold">Rahul Wakhale</span>
+                Lead: <span className="text-white font-bold">Rahul Wakhale</span>
               </div>
               <div className="text-xs text-slate-400 font-mono">
                 Core Team: Kavita Dixit • Shantanu Joshi • Tanuj Khatkar • Lipika Parida
@@ -228,13 +228,13 @@ export const TeamFeatureShowcases: React.FC<{ onOpenJoinModal: () => void }> = (
             <div className="pt-2 flex flex-wrap items-center gap-3">
               <button
                 onClick={onOpenJoinModal}
-                className="ag-btn-light text-sm px-6 py-2.5"
+                className="ag-btn-light text-sm px-5 py-2.5"
               >
                 Connect With Us
               </button>
               <a
                 href="#directory"
-                className="text-sm font-medium text-blue-400 hover:text-blue-300 inline-flex items-center gap-1 transition-colors"
+                className="text-sm font-medium text-slate-300 hover:text-white inline-flex items-center gap-1 transition-colors"
               >
                 <span>View Full Team Roster</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -242,27 +242,27 @@ export const TeamFeatureShowcases: React.FC<{ onOpenJoinModal: () => void }> = (
             </div>
           </div>
 
-          {/* Right Column: Cyan-Blue Aura Card */}
+          {/* Right Column: Crafted Brand Strategy Card */}
           <div className="lg:col-span-7">
-            <div className="relative rounded-[36px] p-6 sm:p-10 ag-aura-amber border border-cyan-500/20 shadow-2xl shadow-cyan-500/10">
-              <div className="bg-[#050a18]/95 backdrop-blur-xl rounded-2xl border border-cyan-500/25 shadow-xl p-6 space-y-4 text-slate-200">
+            <div className="relative rounded-2xl p-6 sm:p-8 bg-[#080d1a] border border-white/10">
+              <div className="bg-[#050914] rounded-xl border border-white/10 p-6 space-y-4 text-slate-200">
                 <div className="flex items-center justify-between border-b border-white/10 pb-3 text-xs font-mono text-slate-400">
                   <span className="font-semibold text-white">Brand Strategy & Media</span>
                   <span>IIT Jodhpur</span>
                 </div>
 
                 <div className="grid grid-cols-2 gap-3">
-                  <div className="p-4 rounded-xl bg-[#030712] border border-white/10">
+                  <div className="p-4 rounded-lg bg-[#030712] border border-white/10">
                     <div className="text-xs font-bold text-white">Visual Identity</div>
                     <div className="text-[11px] text-slate-400 mt-1">Flyers, infographics & slides</div>
                   </div>
-                  <div className="p-4 rounded-xl bg-[#030712] border border-white/10">
+                  <div className="p-4 rounded-lg bg-[#030712] border border-white/10">
                     <div className="text-xs font-bold text-white">Student Stories</div>
                     <div className="text-[11px] text-slate-400 mt-1">Spotlights on campus builders</div>
                   </div>
                 </div>
 
-                <div className="p-3.5 rounded-xl bg-cyan-950/40 border border-cyan-500/25 text-xs text-cyan-200 font-mono">
+                <div className="p-3 rounded-lg bg-white/[0.03] border border-white/10 text-xs text-slate-300 font-mono">
                   Official Channels: LinkedIn • WhatsApp • Meetup Chapter
                 </div>
               </div>
@@ -274,8 +274,8 @@ export const TeamFeatureShowcases: React.FC<{ onOpenJoinModal: () => void }> = (
         <div id="team-leadership" className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center scroll-mt-28">
           {/* Left Column: Copy & Actions */}
           <div className="lg:col-span-5 space-y-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-medium tracking-wide uppercase bg-emerald-950/60 text-emerald-300 border border-emerald-500/30 shadow-[0_0_15px_rgba(16,185,129,0.15)]">
-              <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md text-xs font-mono text-slate-300 bg-slate-900 border border-white/10">
+              <ShieldCheck className="w-3.5 h-3.5 text-slate-400" />
               Leadership & Advisory
             </div>
 
@@ -285,10 +285,10 @@ export const TeamFeatureShowcases: React.FC<{ onOpenJoinModal: () => void }> = (
 
             <div className="space-y-1">
               <div className="text-sm font-semibold text-slate-200">
-                Club Lead & Organizer: <span className="text-cyan-400 font-bold">Vishwanath Barve</span>
+                Club Lead & Organizer: <span className="text-white font-bold">Vishwanath Barve</span>
               </div>
               <div className="text-sm font-semibold text-slate-200">
-                Club Co-Ordinator: <span className="text-cyan-400 font-bold">Ashwani Dwivedi Sir</span>
+                Club Co-Ordinator: <span className="text-white font-bold">Ashwani Dwivedi Sir</span>
               </div>
             </div>
 
@@ -300,7 +300,7 @@ export const TeamFeatureShowcases: React.FC<{ onOpenJoinModal: () => void }> = (
             <div className="pt-2">
               <a
                 href="#directory"
-                className="ag-btn-light text-sm px-6 py-2.5 inline-flex items-center gap-2"
+                className="ag-btn-light text-sm px-5 py-2.5 inline-flex items-center gap-2"
               >
                 <span>Inspect All 17 Members in Directory</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -308,10 +308,10 @@ export const TeamFeatureShowcases: React.FC<{ onOpenJoinModal: () => void }> = (
             </div>
           </div>
 
-          {/* Right Column: Emerald-Cyan Aura Card */}
+          {/* Right Column: Crafted Leadership Card */}
           <div className="lg:col-span-7">
-            <div className="relative rounded-[36px] p-6 sm:p-10 ag-aura-emerald border border-emerald-500/20 shadow-2xl shadow-emerald-500/10">
-              <div className="bg-[#050a18]/95 backdrop-blur-xl rounded-2xl border border-emerald-500/25 shadow-xl p-6 space-y-4 text-slate-200">
+            <div className="relative rounded-2xl p-6 sm:p-8 bg-[#080d1a] border border-white/10">
+              <div className="bg-[#050914] rounded-xl border border-white/10 p-6 space-y-4 text-slate-200">
                 <div className="flex items-center justify-between border-b border-white/10 pb-3 text-xs font-mono text-slate-400">
                   <span className="font-semibold text-white">Executive Mandate</span>
                   <span>Session 2026-27</span>
@@ -319,15 +319,15 @@ export const TeamFeatureShowcases: React.FC<{ onOpenJoinModal: () => void }> = (
 
                 <div className="space-y-3 text-xs text-slate-300 leading-relaxed">
                   <div className="flex items-start gap-2.5">
-                    <CheckCircle2 className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-4 h-4 text-slate-400 shrink-0 mt-0.5" />
                     <span>Directing student cloud architecture curriculum and milestone roadmap</span>
                   </div>
                   <div className="flex items-start gap-2.5">
-                    <CheckCircle2 className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-4 h-4 text-slate-400 shrink-0 mt-0.5" />
                     <span>Connecting IIT Jodhpur builders with AWS industry mentors and alumni</span>
                   </div>
                   <div className="flex items-start gap-2.5">
-                    <CheckCircle2 className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-4 h-4 text-slate-400 shrink-0 mt-0.5" />
                     <span>Institutional coordination ensuring adherence to campus technical standards</span>
                   </div>
                 </div>

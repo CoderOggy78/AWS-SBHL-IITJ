@@ -59,12 +59,11 @@ export const IconRibbonSection: React.FC = () => {
           })}
         </div>
 
-        {/* Large Statement with Electric Cyan-Blue Cursor */}
+        {/* Large Statement */}
         <div className="mt-12 sm:mt-16 max-w-4xl mx-auto text-left sm:text-center">
           <h2 className="text-2xl sm:text-4xl md:text-5xl font-normal tracking-tight text-slate-100 leading-[1.2]">
             AWS Student Builder Group IITJ is our premier cloud innovation
             community, allowing anyone to build at IIT Jodhpur.
-            <span className="blinking-cursor" aria-hidden="true" />
           </h2>
         </div>
       </div>

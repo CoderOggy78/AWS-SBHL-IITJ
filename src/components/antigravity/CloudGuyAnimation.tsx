@@ -380,9 +380,6 @@ export const CloudGuyAnimation: React.FC = () => {
 
   return (
     <section className="relative py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-[#030712] text-center overflow-hidden">
-      {/* Subtle Cyan Glow (No horizontal border lines!) */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none" />
-
       <div className="relative z-10 max-w-6xl mx-auto flex flex-col items-center">
         {/* Animated 3D Guy Sitting on Cloud Canvas */}
         <div
@@ -392,17 +389,17 @@ export const CloudGuyAnimation: React.FC = () => {
         >
           {/* Fallback Animated SVG Illustration (used if WebGL is disabled or unavailable) */}
           {useFallback && (
-            <div className="relative w-full h-full flex flex-col items-center justify-center animate-in fade-in duration-500">
-              <div className="relative animate-bounce duration-[4000ms]">
+            <div className="relative w-full h-full flex flex-col items-center justify-center animate-in fade-in duration-300">
+              <div className="relative">
                 {/* Stylized Cloud SVG with Builder */}
                 <svg
                   viewBox="0 0 500 350"
-                  className="w-80 sm:w-96 drop-shadow-[0_0_35px_rgba(6,182,212,0.4)]"
+                  className="w-80 sm:w-96"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   {/* Fluffy Cloud Base */}
-                  <g filter="drop-shadow(0 0 20px rgba(6,182,212,0.3))">
+                  <g>
                     <path
                       d="M120 260 C90 260 70 235 70 205 C70 175 95 155 125 155 C135 120 170 95 210 95 C250 95 285 118 298 150 C310 145 325 145 338 150 C365 150 390 170 390 200 C415 205 435 225 435 250 C435 275 410 295 385 295 L135 295 C105 295 85 275 120 260 Z"
                       fill="url(#cloudGrad)"
@@ -420,26 +417,26 @@ export const CloudGuyAnimation: React.FC = () => {
                   {/* Torso Hoodie */}
                   <path d="M215 175 L230 115 L270 115 L285 175 Z" fill="#0f172a" />
                   {/* Cyan Chip on Chest */}
-                  <rect x="244" y="130" width="12" height="12" rx="2" fill="#06b6d4" />
+                  <rect x="244" y="130" width="12" height="12" rx="2" fill="#0284c7" />
 
                   {/* Head */}
                   <circle cx="250" cy="85" r="24" fill="#fbd5b5" />
-                  {/* Cyber Visor */}
-                  <rect x="236" y="80" width="28" height="10" rx="3" fill="#06b6d4" />
+                  {/* Visor */}
+                  <rect x="236" y="80" width="28" height="10" rx="3" fill="#0284c7" />
                   {/* Headphones */}
                   <path d="M226 85 C226 70 274 70 274 85" stroke="#0f172a" strokeWidth="4" fill="none" />
-                  <rect x="222" y="80" width="8" height="14" rx="3" fill="#06b6d4" />
-                  <rect x="270" y="80" width="8" height="14" rx="3" fill="#06b6d4" />
+                  <rect x="222" y="80" width="8" height="14" rx="3" fill="#0284c7" />
+                  <rect x="270" y="80" width="8" height="14" rx="3" fill="#0284c7" />
 
-                  {/* Glowing Laptop */}
+                  {/* Laptop */}
                   <rect x="225" y="150" width="50" height="6" rx="2" fill="#334155" />
-                  <path d="M232 150 L238 120 L262 120 L268 150 Z" fill="#06b6d4" opacity="0.9" />
+                  <path d="M232 150 L238 120 L262 120 L268 150 Z" fill="#0284c7" opacity="0.9" />
 
                   {/* Floating Code Particles */}
-                  <circle cx="160" cy="90" r="4" fill="#38bdf8" opacity="0.7" className="animate-ping" />
-                  <circle cx="340" cy="100" r="5" fill="#38bdf8" opacity="0.8" />
-                  <circle cx="200" cy="60" r="3" fill="#38bdf8" opacity="0.6" />
-                  <circle cx="300" cy="50" r="4" fill="#38bdf8" opacity="0.5" />
+                  <circle cx="160" cy="90" r="3" fill="#38bdf8" opacity="0.5" />
+                  <circle cx="340" cy="100" r="4" fill="#38bdf8" opacity="0.6" />
+                  <circle cx="200" cy="60" r="3" fill="#38bdf8" opacity="0.5" />
+                  <circle cx="300" cy="50" r="3" fill="#38bdf8" opacity="0.4" />
 
                   <defs>
                     <linearGradient id="cloudGrad" x1="70" y1="95" x2="435" y2="295" gradientUnits="userSpaceOnUse">
@@ -453,33 +450,31 @@ export const CloudGuyAnimation: React.FC = () => {
             </div>
           )}
 
-          {/* Floating Pill Badge */}
-          <div className="absolute top-2 left-1/2 -translate-x-1/2 inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-cyan-950/60 backdrop-blur-md border border-cyan-500/30 text-[11px] font-mono text-cyan-300 shadow-[0_0_15px_rgba(6,182,212,0.25)] pointer-events-none">
-            <Cloud className="w-3.5 h-3.5 text-cyan-400 animate-pulse" />
+          {/* Quiet Status Badge */}
+          <div className="absolute top-2 left-1/2 -translate-x-1/2 inline-flex items-center gap-2 px-3 py-1 rounded-md bg-slate-900/90 backdrop-blur-md border border-white/10 text-xs font-mono text-slate-300 pointer-events-none">
+            <Cloud className="w-3.5 h-3.5 text-slate-400" />
             <span>AWS SBG Builder in the Cloud</span>
-            <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping" />
           </div>
         </div>
 
-        {/* Large Statement with Electric Cyan-Blue Cursor */}
+        {/* Large Clean Statement */}
         <div className="mt-4 max-w-4xl mx-auto text-center px-4">
           <h2 className="text-2xl sm:text-4xl md:text-5xl font-normal tracking-tight text-slate-100 leading-[1.25]">
             AWS Student Builder Group IITJ is our premier cloud innovation
             community, allowing anyone to build at IIT Jodhpur.
-            <span className="blinking-cursor" aria-hidden="true" />
           </h2>
 
           <div className="mt-6 inline-flex flex-wrap items-center justify-center gap-3 text-xs sm:text-sm text-slate-400 font-mono">
-            <span className="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-cyan-300 flex items-center gap-1.5">
-              <Terminal className="w-3.5 h-3.5 text-cyan-400" />
-              $ aws sbg init --chapter iitj
+            <span className="px-3 py-1 rounded-md bg-slate-900 border border-white/10 text-slate-200 flex items-center gap-2">
+              <Terminal className="w-3.5 h-3.5 text-slate-400" />
+              aws sbg init --chapter iitj
             </span>
             <span className="hidden sm:inline text-slate-600">•</span>
             <span className="text-slate-300">Serverless</span>
             <span className="text-slate-600">•</span>
             <span className="text-slate-300">Microservices</span>
             <span className="text-slate-600">•</span>
-            <span className="text-cyan-300 font-semibold">Amazon Bedrock AI</span>
+            <span className="text-slate-200">Amazon Bedrock AI</span>
           </div>
         </div>
       </div>

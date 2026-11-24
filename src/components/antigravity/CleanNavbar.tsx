@@ -13,7 +13,7 @@ export const CleanNavbar: React.FC<CleanNavbarProps> = ({ onOpenJoinModal }) => 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-40 bg-[#030712]/80 backdrop-blur-xl border-b border-cyan-500/15 transition-all">
+    <header className="sticky top-0 z-40 bg-[#030712]/90 backdrop-blur-xl border-b border-white/10 transition-colors">
       <div className="max-w-7xl 2xl:max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between gap-4">
         {/* Left: Brand Logo */}
         <a
@@ -21,10 +21,10 @@ export const CleanNavbar: React.FC<CleanNavbarProps> = ({ onOpenJoinModal }) => 
           className="flex items-center gap-2.5 group focus:outline-none shrink-0 mr-3 xl:mr-6"
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         >
-          <div className="relative flex items-center justify-center p-1.5 rounded-xl bg-cyan-500/10 border border-cyan-500/25 group-hover:bg-cyan-500/20 group-hover:border-cyan-400/50 transition-all shadow-[0_0_15px_rgba(6,182,212,0.2)]">
-            <BuilderChip size={24} variant="cyan" />
+          <div className="relative flex items-center justify-center p-1.5 rounded-lg bg-white/5 border border-white/10 group-hover:border-white/25 transition-colors">
+            <BuilderChip size={22} variant="cyan" />
           </div>
-          <span className="font-semibold text-base sm:text-lg tracking-tight text-white group-hover:text-cyan-400 transition-colors whitespace-nowrap">
+          <span className="font-semibold text-base sm:text-lg tracking-tight text-white group-hover:text-slate-200 transition-colors whitespace-nowrap">
             AWS Student Builder Group IITJ
           </span>
         </a>
@@ -39,22 +39,22 @@ export const CleanNavbar: React.FC<CleanNavbarProps> = ({ onOpenJoinModal }) => 
           >
             <button
               onClick={() => setTeamsDropdownOpen(!teamsDropdownOpen)}
-              className="flex items-center gap-1 hover:text-cyan-300 py-2 focus:outline-none cursor-pointer transition-colors"
+              className="flex items-center gap-1 hover:text-white py-2 focus:outline-none cursor-pointer transition-colors"
             >
               <span>Teams</span>
               <ChevronDown
-                className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                  teamsDropdownOpen ? "rotate-180 text-cyan-400" : ""
+                className={`w-3.5 h-3.5 transition-transform duration-150 ${
+                  teamsDropdownOpen ? "rotate-180 text-white" : "text-slate-400"
                 }`}
               />
             </button>
 
             {teamsDropdownOpen && (
-              <div className="absolute top-full left-0 mt-1 w-64 p-2 bg-[#070e20]/95 backdrop-blur-2xl rounded-2xl border border-cyan-500/25 shadow-2xl shadow-black/80 animate-in fade-in duration-150">
+              <div className="absolute top-full left-0 mt-1 w-64 p-2 bg-slate-900/95 backdrop-blur-xl rounded-xl border border-white/10 shadow-2xl animate-in fade-in duration-100">
                 <a
                   href="#team-technical"
                   onClick={() => setTeamsDropdownOpen(false)}
-                  className="block px-3 py-2 rounded-xl text-xs font-medium text-slate-200 hover:bg-cyan-500/15 hover:text-cyan-200 transition-colors"
+                  className="block px-3 py-2 rounded-lg text-xs font-medium text-slate-300 hover:bg-white/5 hover:text-white transition-colors"
                 >
                   <div className="font-semibold text-white">Technical Team</div>
                   <div className="text-[11px] text-slate-400">Lead: Bishal Saha</div>
@@ -62,7 +62,7 @@ export const CleanNavbar: React.FC<CleanNavbarProps> = ({ onOpenJoinModal }) => 
                 <a
                   href="#team-community"
                   onClick={() => setTeamsDropdownOpen(false)}
-                  className="block px-3 py-2 rounded-xl text-xs font-medium text-slate-200 hover:bg-cyan-500/15 hover:text-cyan-200 transition-colors"
+                  className="block px-3 py-2 rounded-lg text-xs font-medium text-slate-300 hover:bg-white/5 hover:text-white transition-colors"
                 >
                   <div className="font-semibold text-white">Community Management</div>
                   <div className="text-[11px] text-slate-400">Lead: Quazi Arqam</div>
@@ -70,7 +70,7 @@ export const CleanNavbar: React.FC<CleanNavbarProps> = ({ onOpenJoinModal }) => 
                 <a
                   href="#team-social"
                   onClick={() => setTeamsDropdownOpen(false)}
-                  className="block px-3 py-2 rounded-xl text-xs font-medium text-slate-200 hover:bg-cyan-500/15 hover:text-cyan-200 transition-colors"
+                  className="block px-3 py-2 rounded-lg text-xs font-medium text-slate-300 hover:bg-white/5 hover:text-white transition-colors"
                 >
                   <div className="font-semibold text-white">Social Media Team</div>
                   <div className="text-[11px] text-slate-400">Lead: Rahul Wakhale</div>
@@ -78,7 +78,7 @@ export const CleanNavbar: React.FC<CleanNavbarProps> = ({ onOpenJoinModal }) => 
                 <a
                   href="#team-leadership"
                   onClick={() => setTeamsDropdownOpen(false)}
-                  className="block px-3 py-2 rounded-xl text-xs font-medium text-slate-200 hover:bg-cyan-500/15 hover:text-cyan-200 transition-colors"
+                  className="block px-3 py-2 rounded-lg text-xs font-medium text-slate-300 hover:bg-white/5 hover:text-white transition-colors"
                 >
                   <div className="font-semibold text-white">Leadership & Advisory</div>
                   <div className="text-[11px] text-slate-400">Vishwanath Barve • Ashwani Dwivedi Sir</div>
@@ -86,33 +86,33 @@ export const CleanNavbar: React.FC<CleanNavbarProps> = ({ onOpenJoinModal }) => 
                 <a
                   href="#about"
                   onClick={() => setTeamsDropdownOpen(false)}
-                  className="block px-3 py-2 rounded-xl text-xs font-medium text-slate-200 hover:bg-cyan-500/15 hover:text-cyan-200 transition-colors border-t border-cyan-500/15 mt-1 pt-2"
+                  className="block px-3 py-2 rounded-lg text-xs font-medium text-slate-300 hover:bg-white/5 hover:text-white transition-colors border-t border-white/10 mt-1 pt-2"
                 >
-                  <div className="font-semibold text-cyan-300">About IITJ Chapter</div>
+                  <div className="font-semibold text-white">About IITJ Chapter</div>
                   <div className="text-[11px] text-slate-400">Campus Cloud Excellence</div>
                 </a>
               </div>
             )}
           </div>
 
-          <a href="#lectures" className="hover:text-cyan-300 transition-colors font-medium text-cyan-400 flex items-center gap-1.5">
-            <Tv className="w-3.5 h-3.5" />
+          <a href="#lectures" className="hover:text-white transition-colors text-slate-300 flex items-center gap-1.5">
+            <Tv className="w-3.5 h-3.5 text-slate-400" />
             <span>Free Lectures</span>
           </a>
 
-          <a href="#curriculum" className="hover:text-cyan-300 transition-colors">
+          <a href="#curriculum" className="hover:text-white transition-colors text-slate-300">
             Curriculum
           </a>
 
-          <a href="#research" className="hover:text-cyan-300 transition-colors">
+          <a href="#research" className="hover:text-white transition-colors text-slate-300">
             Research
           </a>
 
-          <a href="#certifications" className="hover:text-cyan-300 transition-colors">
+          <a href="#certifications" className="hover:text-white transition-colors text-slate-300">
             Certifications
           </a>
 
-          <a href="#directory" className="hover:text-cyan-300 transition-colors">
+          <a href="#directory" className="hover:text-white transition-colors text-slate-300">
             Directory
           </a>
         </nav>

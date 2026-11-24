@@ -33,30 +33,28 @@ export const CleanHero: React.FC<CleanHeroProps> = ({ onOpenJoinModal }) => {
       {/* Main Content */}
       <div className="relative z-20 max-w-5xl mx-auto flex flex-col items-center">
         {/* Brand Eyebrow Badge */}
-        <div className="inline-flex items-center gap-2 mb-6 select-none px-4 py-1.5 rounded-full bg-cyan-950/60 backdrop-blur-md border border-cyan-500/30 shadow-[0_0_20px_rgba(6,182,212,0.25)]">
-          <BuilderChip size={22} variant="cyan" />
-          <span className="text-sm font-semibold tracking-tight text-cyan-200 drop-shadow-sm">
-            AWS Student Builder Group IITJ
-          </span>
+        <div className="inline-flex items-center gap-2 mb-6 select-none px-3 py-1 rounded-lg bg-slate-900/80 backdrop-blur-md border border-white/10 text-xs font-mono text-slate-300">
+          <BuilderChip size={18} variant="cyan" />
+          <span>AWS Student Builder Group IITJ</span>
         </div>
 
-        {/* Huge High-Contrast Headline */}
-        <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-white leading-[1.08] max-w-4xl drop-shadow-[0_4px_24px_rgba(0,0,0,0.8)]">
+        {/* High-Contrast Headline */}
+        <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-white leading-[1.08] max-w-4xl">
           Experience liftoff with the
           <br className="hidden sm:inline" /> student cloud builder group
         </h1>
 
         {/* Subtitle */}
-        <p className="mt-6 text-base sm:text-lg text-slate-200 max-w-2xl font-normal leading-relaxed drop-shadow">
+        <p className="mt-6 text-base sm:text-lg text-slate-300 max-w-2xl font-normal leading-relaxed">
           The official cloud engineering community at Indian Institute of Technology Jodhpur.
           Architecting real-world systems, serverless microservices, and AI with Amazon Bedrock.
         </p>
 
         {/* Action Buttons */}
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
           <button
             onClick={onOpenJoinModal}
-            className="flex items-center gap-2 text-sm sm:text-base px-7 py-3.5 rounded-full font-bold bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-300 hover:to-blue-400 text-neutral-950 hover:scale-105 active:scale-95 transition-all shadow-[0_0_30px_rgba(6,182,212,0.45)] cursor-pointer"
+            className="flex items-center gap-2 text-sm px-6 py-3 rounded-xl font-semibold bg-white hover:bg-slate-100 text-slate-950 transition-colors border border-white/20 cursor-pointer"
           >
             <Laptop className="w-4 h-4" />
             <span>Join AWS SBG IITJ</span>
@@ -64,7 +62,7 @@ export const CleanHero: React.FC<CleanHeroProps> = ({ onOpenJoinModal }) => {
 
           <a
             href="#lectures"
-            className="text-sm sm:text-base px-7 py-3.5 rounded-full font-semibold bg-white/5 hover:bg-white/10 text-white border border-cyan-500/30 backdrop-blur-md hover:scale-105 active:scale-95 transition-all shadow-[0_0_15px_rgba(6,182,212,0.15)] cursor-pointer"
+            className="flex items-center gap-2 text-sm px-6 py-3 rounded-xl font-medium bg-white/5 hover:bg-white/10 text-white border border-white/10 backdrop-blur-md transition-colors cursor-pointer"
           >
             <span>Free AWS Video Lectures</span>
           </a>
